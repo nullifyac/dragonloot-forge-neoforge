@@ -1,0 +1,127 @@
+buildscript {
+	repositories {
+		maven { url = 'https://maven.minecraftforge.net' }
+		maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
+		mavenCentral()
+	}
+	dependencies {
+		classpath 'net.minecraftforge.gradle:ForgeGradle:4.1.+'
+		classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+	}
+}
+
+apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'maven-publish'
+apply plugin: 'org.spongepowered.mixin'
+
+version = project.mod_version
+group = project.maven_group
+archivesBaseName = project.archives_base_name
+
+java {
+	sourceCompatibility = JavaVersion.VERSION_1_8
+	targetCompatibility = JavaVersion.VERSION_1_8
+	withSourcesJar()
+}
+
+minecraft {
+	mappings channel: project.mapping_channel, version: project.mapping_version
+
+	runs {
+		client {
+			workingDirectory project.file('run/client')
+			property 'forge.logging.console.level', 'debug'
+			property 'mixin.env.disableRefMap', 'true'
+			mods {
+				dragonloot {
+					source sourceSets.main
+				}
+			}
+		}
+		server {
+			workingDirectory project.file('run/server')
+			property 'forge.logging.console.level', 'debug'
+			property 'mixin.env.disableRefMap', 'true'
+			mods {
+				dragonloot {
+					source sourceSets.main
+				}
+			}
+		}
+		data {
+			workingDirectory project.file('run/data')
+			property 'forge.logging.console.level', 'debug'
+			args '--mod', 'dragonloot', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+			mods {
+				dragonloot {
+					source sourceSets.main
+				}
+			}
+		}
+	}
+}
+
+sourceSets {
+	main {
+		resources {
+			srcDir 'src/generated/resources'
+		}
+	}
+}
+
+repositories {
+	mavenCentral()
+	maven { url = 'https://maven.minecraftforge.net' }
+	maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
+}
+
+dependencies {
+	minecraft "net.minecraftforge:forge:${project.minecraft_version}-${project.forge_version}"
+	annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
+	def forgeFullJar = file("${gradle.gradleUserHomeDir}/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/${project.minecraft_version}-${project.forge_version}_mapped_${project.mapping_channel}_${project.mapping_version}/forge-${project.minecraft_version}-${project.forge_version}_mapped_${project.mapping_channel}_${project.mapping_version}.jar")
+	compileOnly files(forgeFullJar)
+}
+
+mixin {
+	add sourceSets.main, "dragonloot.refmap.json"
+	config "dragonloot.mixins.json"
+}
+
+tasks.withType(JavaCompile).configureEach {
+	options.encoding = 'UTF-8'
+}
+
+processResources {
+	inputs.property 'version', project.version
+	filesMatching('META-INF/mods.toml') {
+		expand 'version': project.version
+	}
+}
+
+jar {
+	manifest {
+		attributes([
+			"Specification-Title": project.archives_base_name,
+			"Specification-Vendor": project.maven_group,
+			"Specification-Version": '1',
+			"Implementation-Title": project.name,
+			"Implementation-Version": project.version,
+			"Implementation-Vendor": project.maven_group
+		])
+	}
+	from('LICENSE') {
+		rename { "${it}_${archivesBaseName}" }
+	}
+}
+
+jar.finalizedBy('reobfJar')
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			artifact jar
+		}
+	}
+}

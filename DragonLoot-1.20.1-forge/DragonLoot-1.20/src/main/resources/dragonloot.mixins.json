@@ -1,0 +1,29 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.dragonloot.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "dragonloot.refmap.json",
+  "mixins": [
+    "AnvilBlockMixin",
+    "AnvilScreenHandlerMixin",
+    "CrossbowItemMixin",
+    "EnderDragonEntityMixin",
+    "ItemEntityMixin",
+    "LivingEntityMixin",
+    "PlayerEntityMixin",
+    "PlayerInventoryMixin",
+    "RecipeManagerMixin"
+  ],
+  "client": [
+    "client.ClientPlayerEntityMixin",
+    "client.ElytraFeatureRendererMixin",
+    "client.HeadFeatureRendererMixin",
+    "client.PlayerEntityRendererMixin",
+    "client.AbstractClientPlayerEntityMixin",
+    "client.HeldItemRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
