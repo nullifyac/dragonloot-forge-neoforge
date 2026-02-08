@@ -23,7 +23,6 @@ public class DragonArmorMaterial implements ArmorMaterial {
     }
 
     private static final int[] BASE_DURABILITY = new int[] { 28, 32, 35, 26 };
-    private static final int[] PROTECTION_AMOUNTS = new int[] { ConfigInit.CONFIG.dragon_armor_protection_boots, ConfigInit.CONFIG.dragon_armor_protection_leggings, ConfigInit.CONFIG.dragon_armor_protection_chest, ConfigInit.CONFIG.dragon_armor_protection_helmet };
 
     @Override
     public int getDurabilityForSlot(EquipmentSlot slot) {
@@ -32,7 +31,20 @@ public class DragonArmorMaterial implements ArmorMaterial {
 
     @Override
     public int getDefenseForSlot(EquipmentSlot slot) {
-        return PROTECTION_AMOUNTS[getIndex(slot)];
+        // Do not cache config-driven values in static fields. The config is loaded/baked after
+        // classloading, and caching would permanently lock in the defaults.
+        switch (slot) {
+            case FEET:
+                return ConfigInit.CONFIG.dragon_armor_protection_boots;
+            case LEGS:
+                return ConfigInit.CONFIG.dragon_armor_protection_leggings;
+            case CHEST:
+                return ConfigInit.CONFIG.dragon_armor_protection_chest;
+            case HEAD:
+                return ConfigInit.CONFIG.dragon_armor_protection_helmet;
+            default:
+                return 0;
+        }
     }
 
     @Override

@@ -32,7 +32,8 @@ public final class ItemInit {
 
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, DragonLootMain.MOD_ID);
 
-    public static final ItemGroup DRAGON_ITEM_GROUP = new ItemGroup(DragonLootMain.MOD_ID) {
+    // Use the same translation key pattern as newer versions: itemGroup.<modid>.<tabid>
+    public static final ItemGroup DRAGON_ITEM_GROUP = new ItemGroup(DragonLootMain.MOD_ID + "." + DragonLootMain.MOD_ID) {
         @Override
         public ItemStack makeIcon() {
             return new ItemStack(DRAGON_SCALE_ITEM.get());

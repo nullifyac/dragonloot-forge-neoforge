@@ -2,6 +2,7 @@ package net.dragonloot.init;
 
 import net.dragonloot.DragonLootMain;
 import net.dragonloot.init.ConfigInit;
+import net.dragonloot.item.DragonArmorItem;
 import net.dragonloot.item.DragonArmorMaterial;
 import net.dragonloot.item.DragonAxeItem;
 import net.dragonloot.item.DragonBowItem;
@@ -40,11 +41,11 @@ public final class ItemInit {
 
     public static final DeferredHolder<Item, Item> DRAGON_HORSE_ARMOR_ITEM = ITEMS.register("dragon_horse_armor", () -> new AnimalArmorItem(DRAGON_ARMOR_MATERIAL, AnimalArmorItem.BodyType.EQUESTRIAN, false, new Item.Properties().stacksTo(1).fireResistant()));
 
-    public static final DeferredHolder<Item, Item> DRAGON_HELMET = ITEMS.register("dragon_helmet", () -> new ArmorItem(DRAGON_ARMOR_MATERIAL, ArmorItem.Type.HELMET, armorProperties(ArmorItem.Type.HELMET)));
-    public static final DeferredHolder<Item, Item> DRAGON_CHESTPLATE = ITEMS.register("dragon_chestplate", () -> new ArmorItem(DRAGON_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, armorProperties(ArmorItem.Type.CHESTPLATE)));
-    public static final DeferredHolder<Item, Item> DRAGON_LEGGINGS = ITEMS.register("dragon_leggings", () -> new ArmorItem(DRAGON_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, armorProperties(ArmorItem.Type.LEGGINGS)));
-    public static final DeferredHolder<Item, Item> DRAGON_BOOTS = ITEMS.register("dragon_boots", () -> new ArmorItem(DRAGON_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, armorProperties(ArmorItem.Type.BOOTS)));
-    public static final DeferredHolder<Item, Item> UPGRADED_DRAGON_CHESTPLATE = ITEMS.register("upgraded_dragon_chestplate", () -> new ArmorItem(DRAGON_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, armorProperties(ArmorItem.Type.CHESTPLATE).fireResistant()));
+    public static final DeferredHolder<Item, Item> DRAGON_HELMET = ITEMS.register("dragon_helmet", () -> new DragonArmorItem(DRAGON_ARMOR_MATERIAL, ArmorItem.Type.HELMET, armorProperties(ArmorItem.Type.HELMET)));
+    public static final DeferredHolder<Item, Item> DRAGON_CHESTPLATE = ITEMS.register("dragon_chestplate", () -> new DragonArmorItem(DRAGON_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, armorProperties(ArmorItem.Type.CHESTPLATE)));
+    public static final DeferredHolder<Item, Item> DRAGON_LEGGINGS = ITEMS.register("dragon_leggings", () -> new DragonArmorItem(DRAGON_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, armorProperties(ArmorItem.Type.LEGGINGS)));
+    public static final DeferredHolder<Item, Item> DRAGON_BOOTS = ITEMS.register("dragon_boots", () -> new DragonArmorItem(DRAGON_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, armorProperties(ArmorItem.Type.BOOTS)));
+    public static final DeferredHolder<Item, Item> UPGRADED_DRAGON_CHESTPLATE = ITEMS.register("upgraded_dragon_chestplate", () -> new DragonArmorItem(DRAGON_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, armorProperties(ArmorItem.Type.CHESTPLATE).fireResistant()));
 
     public static final DeferredHolder<Item, Item> DRAGON_PICKAXE_ITEM = ITEMS.register("dragon_pickaxe", () -> new DragonPickaxeItem(DragonToolMaterial.getInstance(), toolProperties()));
     public static final DeferredHolder<Item, Item> DRAGON_AXE_ITEM = ITEMS.register("dragon_axe", () -> new DragonAxeItem(DragonToolMaterial.getInstance(), toolProperties()));

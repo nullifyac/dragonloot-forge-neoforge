@@ -8,8 +8,11 @@
     "AnvilBlockMixin",
     "AnvilScreenHandlerMixin",
     "EnderDragonEntityMixin",
+    "EnderManPacifyMixin",
     "ItemEntityMixin",
     "LivingEntityMixin",
+    "PhantomPacifyMixin",
+    "PiglinPacifyMixin",
     "PlayerEntityMixin",
     "RecipeManagerMixin"
   ],

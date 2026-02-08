@@ -19,6 +19,7 @@ public class DragonLootConfig {
         public float dragon_item_base_damage = 5.0F;
         public int dragon_tool_enchantability = 20;
         public boolean dragon_anvil_no_cap = true;
+        public boolean advanced_netherite_gear_perks_enabled = false;
 
         private final ModConfigSpec.IntValue scaleMinimumDropAmountValue;
         private final ModConfigSpec.IntValue additionalScalesPerPlayerValue;
@@ -35,6 +36,7 @@ public class DragonLootConfig {
         private final ModConfigSpec.DoubleValue toolBaseDamageValue;
         private final ModConfigSpec.IntValue toolEnchantabilityValue;
         private final ModConfigSpec.BooleanValue dragonAnvilNoCapValue;
+        private final ModConfigSpec.BooleanValue advancedNetheriteGearPerksEnabledValue;
 
         public DragonLootConfig(ModConfigSpec.Builder builder) {
                 builder.push("dragonloot");
@@ -62,6 +64,11 @@ public class DragonLootConfig {
                 toolEnchantabilityValue = builder.defineInRange("dragon_tool_enchantability", 20, 1, 50);
                 builder.pop();
 
+                builder.push("compat");
+                advancedNetheriteGearPerksEnabledValue = builder.comment("If true, Dragon Scale gear perks are enabled (pacifies mobs and shows Advanced Netherite-style tooltips).")
+                        .define("advanced_netherite_gear_perks_enabled", false);
+                builder.pop();
+
                 dragonAnvilNoCapValue = builder.comment("If true, Dragon Anvils ignore the vanilla 40 level cap.")
                         .define("dragon_anvil_no_cap", true);
 
@@ -84,5 +91,6 @@ public class DragonLootConfig {
                 dragon_item_base_damage = toolBaseDamageValue.get().floatValue();
                 dragon_tool_enchantability = toolEnchantabilityValue.get();
                 dragon_anvil_no_cap = dragonAnvilNoCapValue.get();
+                advanced_netherite_gear_perks_enabled = advancedNetheriteGearPerksEnabledValue.get();
         }
 }

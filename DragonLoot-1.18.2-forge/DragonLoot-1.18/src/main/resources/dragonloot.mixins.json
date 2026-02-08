@@ -9,8 +9,11 @@
     "AnvilScreenHandlerMixin",
     "CrossbowItemMixin",
     "EnderDragonEntityMixin",
+    "EnderManPacifyMixin",
     "ItemEntityMixin",
     "LivingEntityMixin",
+    "PhantomPacifyMixin",
+    "PiglinPacifyMixin",
     "PlayerEntityMixin",
     "PlayerInventoryMixin",
     "RecipeManagerMixin"
