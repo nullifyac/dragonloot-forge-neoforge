@@ -42,6 +42,8 @@ bin/
 # Project-specific
 images
 .jdk8
+iron-spells-n-spellbooks
+/.tmp-advancednetherite/
 
 # Ignore generated debug folders
 **/debug/

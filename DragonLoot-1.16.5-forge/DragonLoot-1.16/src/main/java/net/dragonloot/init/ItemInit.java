@@ -15,15 +15,15 @@ import net.dragonloot.item.DragonToolMaterial;
 import net.dragonloot.item.DragonTridentItem;
 import net.dragonloot.item.render.DragonTridentBewlr;
 import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.IArmorMaterial;
 import net.minecraft.item.BlockItem;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.item.HorseArmorItem;
+import net.minecraft.item.IArmorMaterial;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.fml.RegistryObject;
 
 public final class ItemInit {
 
@@ -52,7 +52,7 @@ public final class ItemInit {
     public static final RegistryObject<Item> UPGRADED_DRAGON_CHESTPLATE = ITEMS.register("upgraded_dragon_chestplate", () -> new DragonArmor(DRAGON_ARMOR_MATERIAL, EquipmentSlotType.CHEST, new Item.Properties().fireResistant().tab(DRAGON_ITEM_GROUP)));
 
     public static final RegistryObject<Item> DRAGON_PICKAXE_ITEM = ITEMS.register("dragon_pickaxe", () -> new DragonPickaxeItem(DragonToolMaterial.getInstance(), 1, -2.8f, new Item.Properties().fireResistant().tab(DRAGON_ITEM_GROUP)));
-    public static final RegistryObject<Item> DRAGON_AXE_ITEM = ITEMS.register("dragon_axe", () -> new DragonAxeItem(DragonToolMaterial.getInstance(), 5, -3.0f, new Item.Properties().fireResistant().tab(DRAGON_ITEM_GROUP)));
+    public static final RegistryObject<Item> DRAGON_AXE_ITEM = ITEMS.register("dragon_axe", () -> new DragonAxeItem(DragonToolMaterial.getInstance(), 5.0F, -3.0f, new Item.Properties().fireResistant().tab(DRAGON_ITEM_GROUP)));
     public static final RegistryObject<Item> DRAGON_SHOVEL_ITEM = ITEMS.register("dragon_shovel", () -> new DragonShovelItem(DragonToolMaterial.getInstance(), 1.5f, -3.0f, new Item.Properties().fireResistant().tab(DRAGON_ITEM_GROUP)));
     public static final RegistryObject<Item> DRAGON_HOE_ITEM = ITEMS.register("dragon_hoe", () -> new DragonHoeItem(DragonToolMaterial.getInstance(), -4, -2.0f, new Item.Properties().fireResistant().tab(DRAGON_ITEM_GROUP)));
 

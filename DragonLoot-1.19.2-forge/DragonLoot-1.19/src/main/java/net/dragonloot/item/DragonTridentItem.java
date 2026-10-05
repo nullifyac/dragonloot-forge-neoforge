@@ -34,10 +34,16 @@ import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 
 public class DragonTridentItem extends TridentItem {
 
-    private final Multimap<Attribute, AttributeModifier> attributeModifiers;
-
     public DragonTridentItem(Item.Properties properties) {
         super(properties);
+    }
+
+    @Override
+    public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot slot) {
+        if (slot != EquipmentSlot.MAINHAND) {
+            return super.getDefaultAttributeModifiers(slot);
+        }
+
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
         for (Map.Entry<Attribute, AttributeModifier> entry : super.getDefaultAttributeModifiers(EquipmentSlot.MAINHAND).entries()) {
             Attribute attribute = entry.getKey();
@@ -49,12 +55,7 @@ public class DragonTridentItem extends TridentItem {
                 builder.put(attribute, modifier);
             }
         }
-        this.attributeModifiers = builder.build();
-    }
-
-    @Override
-    public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot slot) {
-        return slot == EquipmentSlot.MAINHAND ? this.attributeModifiers : super.getDefaultAttributeModifiers(slot);
+        return builder.build();
     }
 
     @Override

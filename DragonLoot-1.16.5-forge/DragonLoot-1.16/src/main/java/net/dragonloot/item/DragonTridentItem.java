@@ -30,11 +30,18 @@ import net.minecraft.world.World;
 
 public class DragonTridentItem extends TridentItem {
 
-    private final Multimap<Attribute, AttributeModifier> attributeModifiers;
     public DragonTridentItem(Item.Properties properties) {
         super(properties);
+    }
+
+    @Override
+    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlotType slot, ItemStack stack) {
+        if (slot != EquipmentSlotType.MAINHAND) {
+            return super.getAttributeModifiers(slot, stack);
+        }
+
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
-        for (Map.Entry<Attribute, AttributeModifier> entry : super.getDefaultAttributeModifiers(EquipmentSlotType.MAINHAND).entries()) {
+        for (Map.Entry<Attribute, AttributeModifier> entry : super.getAttributeModifiers(EquipmentSlotType.MAINHAND, stack).entries()) {
             Attribute attribute = entry.getKey();
             AttributeModifier modifier = entry.getValue();
             if (attribute.equals(Attributes.ATTACK_DAMAGE)) {
@@ -44,12 +51,7 @@ public class DragonTridentItem extends TridentItem {
                 builder.put(attribute, modifier);
             }
         }
-        this.attributeModifiers = builder.build();
-    }
-
-    @Override
-    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlotType slot, ItemStack stack) {
-        return slot == EquipmentSlotType.MAINHAND ? this.attributeModifiers : super.getAttributeModifiers(slot, stack);
+        return builder.build();
     }
 
     @Override

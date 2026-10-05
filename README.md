@@ -17,19 +17,17 @@ DragonLoot focuses on late-game progression by:
 ```
 dragonloot-forge/
 |-- DragonLoot-1.16.5-forge/
-|   |-- DragonLoot-1.16/            # Minecraft 1.16.5 (Forge)
-|   `-- release/                   # Built artifacts
+|   `-- DragonLoot-1.16/            # Minecraft 1.16.5 (Forge)
 |-- DragonLoot-1.18.2-forge/
-|   |-- DragonLoot-1.18/            # Minecraft 1.18.2 (Forge)
-|   `-- release/                   # Built artifacts
+|   `-- DragonLoot-1.18/            # Minecraft 1.18.2 (Forge)
 |-- DragonLoot-1.19.2-forge/
-|   |-- DragonLoot-1.19/            # Minecraft 1.19.2 (Forge)
-|   `-- release/                   # Built artifacts
+|   `-- DragonLoot-1.19/            # Minecraft 1.19.2 (Forge)
 |-- DragonLoot-1.20.1-forge/
-|   |-- DragonLoot-1.20/            # Minecraft 1.20.1 (Forge)
-|   `-- release/                   # Built artifacts
+|   `-- DragonLoot-1.20/            # Minecraft 1.20.1 (Forge)
 |-- DragonLoot-1.21.1-neoforge/
-|   |-- DragonLoot-1.21/            # Minecraft 1.21.1 (NeoForge)
+|   `-- DragonLoot-1.21/            # Minecraft 1.21.1 (NeoForge)
+|-- datapack/                      # Versioned compatibility datapacks
+`-- release/                       # Local built JARs (ignored by Git)
 ```
 
 ## Quick Start

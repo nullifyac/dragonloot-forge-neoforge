@@ -10,6 +10,11 @@ public class DragonToolMaterial implements Tier {
     private DragonToolMaterial() {
     }
 
+    // When Advanced Netherite compat/perks are enabled, Advanced Netherite's top-tier tools are
+    // significantly more durable than vanilla netherite. This minimum keeps Dragon gear as a
+    // sensible "next step" without forcing pack authors to edit configs.
+    private static final int ADVANCED_NETHERITE_COMPAT_MIN_DURABILITY_MULTIPLIER = 47;
+
     private static DragonToolMaterial INSTANCE = null;
 
     public static DragonToolMaterial getInstance() {
@@ -21,7 +26,11 @@ public class DragonToolMaterial implements Tier {
 
     @Override
     public int getUses() {
-        return 67 * ConfigInit.CONFIG.dragon_item_durability_multiplier;
+        int multiplier = ConfigInit.CONFIG.dragon_item_durability_multiplier;
+        if (ConfigInit.CONFIG.advanced_netherite_gear_perks_enabled) {
+            multiplier = Math.max(multiplier, ADVANCED_NETHERITE_COMPAT_MIN_DURABILITY_MULTIPLIER);
+        }
+        return 67 * multiplier;
     }
 
     @Override

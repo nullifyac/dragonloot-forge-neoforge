@@ -33,6 +33,7 @@ public final class ConfigInit {
     public static void register(IEventBus modBus) {
         ensureCommonConfigFile();
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, COMMON_SPEC);
+        preloadAndBakeCommonConfig();
         modBus.addListener(ConfigInit::onLoad);
         modBus.addListener(ConfigInit::onReload);
     }
@@ -66,6 +67,24 @@ public final class ConfigInit {
             }
         } catch (Exception e) {
             LOGGER.warn("Failed to pre-seed config {}", configPath, e);
+        }
+    }
+
+    private static void preloadAndBakeCommonConfig() {
+        Path configPath = FMLPaths.CONFIGDIR.get().resolve(COMMON_CONFIG_NAME);
+        try (CommentedFileConfig fileConfig = CommentedFileConfig.builder(configPath)
+                .sync()
+                .preserveInsertionOrder()
+                .build()) {
+            fileConfig.load();
+            if (!COMMON_SPEC.isCorrect(fileConfig)) {
+                COMMON_SPEC.correct(fileConfig);
+                fileConfig.save();
+            }
+            COMMON_SPEC.setConfig(fileConfig);
+            CONFIG.bake();
+        } catch (Exception e) {
+            LOGGER.warn("Failed to pre-load config {}", configPath, e);
         }
     }
 }

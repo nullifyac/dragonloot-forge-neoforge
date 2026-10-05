@@ -46,7 +46,7 @@ public final class ItemInit {
     public static final RegistryObject<Item> UPGRADED_DRAGON_CHESTPLATE = ITEMS.register("upgraded_dragon_chestplate", () -> new DragonArmor(DRAGON_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Properties().fireResistant()));
 
     public static final RegistryObject<Item> DRAGON_PICKAXE_ITEM = ITEMS.register("dragon_pickaxe", () -> new DragonPickaxeItem(DragonToolMaterial.getInstance(), 1, -2.8f, new Item.Properties().fireResistant()));
-    public static final RegistryObject<Item> DRAGON_AXE_ITEM = ITEMS.register("dragon_axe", () -> new DragonAxeItem(DragonToolMaterial.getInstance(), 5, -3.0f, new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> DRAGON_AXE_ITEM = ITEMS.register("dragon_axe", () -> new DragonAxeItem(DragonToolMaterial.getInstance(), 5.0F, -3.0f, new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> DRAGON_SHOVEL_ITEM = ITEMS.register("dragon_shovel", () -> new DragonShovelItem(DragonToolMaterial.getInstance(), 1.5f, -3.0f, new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> DRAGON_HOE_ITEM = ITEMS.register("dragon_hoe", () -> new DragonHoeItem(DragonToolMaterial.getInstance(), -4, -2.0f, new Item.Properties().fireResistant()));
 

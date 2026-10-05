@@ -1,8 +1,10 @@
-# DragonLoot
-DragonLoot adds basically dragon upgraded items to Minecraft.
+# DragonLoot for Minecraft 1.21.1 (NeoForge)
+DragonLoot adds Ender Dragon loot and dragon gear to Minecraft.
 
 ### Installation
-DragonLoot is a mod built for [NeoForge](https://neoforged.net/).
+Install NeoForge for Minecraft 1.21.1 and place the built mod JAR in your instance's `mods/` directory.
+
+See the [repository README](../../README.md) for build commands and configuration.
 
 ### License
-DragonLoot is licensed under GLPv3.
+DragonLoot is licensed under GPL-3.0-or-later. See [LICENSE](LICENSE).

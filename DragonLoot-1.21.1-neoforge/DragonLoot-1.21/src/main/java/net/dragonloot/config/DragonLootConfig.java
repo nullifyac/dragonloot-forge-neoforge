@@ -65,7 +65,7 @@ public class DragonLootConfig {
                 builder.pop();
 
                 builder.push("compat");
-                advancedNetheriteGearPerksEnabledValue = builder.comment("If true, Dragon Scale gear perks are enabled (pacifies mobs and shows Advanced Netherite-style tooltips).")
+                advancedNetheriteGearPerksEnabledValue = builder.comment("If true, Dragon Scale gear perks are enabled (pacifies mobs and shows Advanced Netherite-style tooltips). Also bumps Dragon gear stats to keep progression sensible alongside Advanced Netherite.")
                         .define("advanced_netherite_gear_perks_enabled", false);
                 builder.pop();
 

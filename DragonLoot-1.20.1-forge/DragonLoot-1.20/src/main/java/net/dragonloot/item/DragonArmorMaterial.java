@@ -24,9 +24,16 @@ public class DragonArmorMaterial implements ArmorMaterial {
 
     private static final int[] BASE_DURABILITY = new int[] { 28, 32, 35, 26 };
 
+    // Advanced Netherite's top tier uses a 47 durability multiplier.
+    private static final int ADVANCED_NETHERITE_COMPAT_MIN_ARMOR_DURABILITY_MULTIPLIER = 47;
+
     @Override
     public int getDurabilityForType(ArmorItem.Type type) {
-        return BASE_DURABILITY[type.getSlot().getIndex()] * ConfigInit.CONFIG.dragon_armor_durability_multiplier;
+        int multiplier = ConfigInit.CONFIG.dragon_armor_durability_multiplier;
+        if (ConfigInit.CONFIG.advanced_netherite_gear_perks_enabled) {
+            multiplier = Math.max(multiplier, ADVANCED_NETHERITE_COMPAT_MIN_ARMOR_DURABILITY_MULTIPLIER);
+        }
+        return BASE_DURABILITY[type.getSlot().getIndex()] * multiplier;
     }
 
     @Override

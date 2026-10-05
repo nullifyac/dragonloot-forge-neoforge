@@ -1,8 +1,10 @@
-# DragonLoot
-DragonLoot adds basically dragon upgraded items to Minecraft.
+# DragonLoot for Minecraft 1.19.2 (Forge)
+DragonLoot adds Ender Dragon loot and dragon gear to Minecraft.
 
 ### Installation
-DragonLoot is a mod built for the [Fabric Loader](https://fabricmc.net/). It requires [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api) and [Cloth Config API](https://www.curseforge.com/minecraft/mc-mods/cloth-config) to be installed separately; all other dependencies are installed with the mod.
+Install Forge for Minecraft 1.19.2 and place the built mod JAR in your instance's `mods/` directory.
+
+See the [repository README](../../README.md) for build commands and configuration.
 
 ### License
-DragonLoot is licensed under GLPv3.
+DragonLoot is licensed under GPL-3.0-or-later. See [LICENSE](LICENSE).

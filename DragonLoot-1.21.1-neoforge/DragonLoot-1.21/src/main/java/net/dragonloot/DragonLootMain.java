@@ -2,6 +2,7 @@ package net.dragonloot;
 
 import net.dragonloot.compat.recipes.CompatRecipes;
 import net.dragonloot.compat.recipes.RecipeGenerator;
+import net.dragonloot.event.DragonLootNeoForgeEvents;
 import net.dragonloot.init.BlockInit;
 import net.dragonloot.init.ConfigInit;
 import net.dragonloot.init.EntityInit;
@@ -34,6 +35,7 @@ public class DragonLootMain {
         NetworkInit.register(modBus);
 
         modBus.addListener(this::commonSetup);
+        NeoForge.EVENT_BUS.addListener(DragonLootNeoForgeEvents::onLivingDeath);
 
         if (FMLEnvironment.dist == Dist.CLIENT) {
             DragonLootClient.registerClientListeners(modBus);

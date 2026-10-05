@@ -1,11 +1,10 @@
 package net.dragonloot.item;
 
-import java.util.List;
-import java.util.UUID;
-
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.ImmutableMultimap.Builder;
 import com.google.common.collect.Multimap;
+import java.util.List;
+import java.util.UUID;
 import net.dragonloot.compat.AdvancedNetheriteCompat;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -23,10 +22,6 @@ import org.jetbrains.annotations.Nullable;
 
 public class DragonArmor extends ArmorItem {
     private static final UUID[] MODIFIERS = new UUID[] { UUID.fromString("845DB27C-C624-495F-8C9F-6020A9A58B6B"), UUID.fromString("D8499B04-0E66-4726-AB29-64469D734E0D"), UUID.fromString("9F3D476D-C118-4544-8365-64846904B48E"), UUID.fromString("2AD3F246-FEE1-4E67-B886-69FD380BB150") };
-    private final Multimap<Attribute, AttributeModifier> attributeModifiers;
-    private final int protection;
-    private final float toughness;
-    protected final float knockbackResistance;
     protected final EquipmentSlot slot;
     protected final ArmorMaterial material;
 
@@ -34,21 +29,25 @@ public class DragonArmor extends ArmorItem {
         super(material, slot, properties);
         this.material = material;
         this.slot = slot;
-        this.protection = material.getDefenseForSlot(slot);
-        this.toughness = material.getToughness();
-        this.knockbackResistance = material.getKnockbackResistance();
         DispenserBlock.registerBehavior(this, ArmorItem.DISPENSE_ITEM_BEHAVIOR);
-        Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
-        UUID uUID = MODIFIERS[this.slot.getIndex()];
-        builder.put(Attributes.ARMOR, new AttributeModifier(uUID, "Armor modifier", this.protection, AttributeModifier.Operation.ADDITION));
-        builder.put(Attributes.ARMOR_TOUGHNESS, new AttributeModifier(uUID, "Armor toughness", this.toughness, AttributeModifier.Operation.ADDITION));
-        builder.put(Attributes.KNOCKBACK_RESISTANCE, new AttributeModifier(uUID, "Armor knockback resistance", this.knockbackResistance / 10D, AttributeModifier.Operation.ADDITION));
-        this.attributeModifiers = builder.build();
     }
 
     @Override
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlot slot, ItemStack stack) {
-        return slot == this.slot ? this.attributeModifiers : super.getAttributeModifiers(slot, stack);
+        if (slot != this.slot) {
+            return super.getAttributeModifiers(slot, stack);
+        }
+
+        int protection = this.material.getDefenseForSlot(this.slot);
+        float toughness = this.material.getToughness();
+        float knockbackResistance = this.material.getKnockbackResistance();
+
+        Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
+        UUID uuid = MODIFIERS[this.slot.getIndex()];
+        builder.put(Attributes.ARMOR, new AttributeModifier(uuid, "Armor modifier", protection, AttributeModifier.Operation.ADDITION));
+        builder.put(Attributes.ARMOR_TOUGHNESS, new AttributeModifier(uuid, "Armor toughness", toughness, AttributeModifier.Operation.ADDITION));
+        builder.put(Attributes.KNOCKBACK_RESISTANCE, new AttributeModifier(uuid, "Armor knockback resistance", knockbackResistance / 10D, AttributeModifier.Operation.ADDITION));
+        return builder.build();
     }
 
     @Override
@@ -56,5 +55,4 @@ public class DragonArmor extends ArmorItem {
         super.appendHoverText(stack, level, tooltip, flag);
         AdvancedNetheriteCompat.appendArmorPerkTooltips(stack, tooltip);
     }
-
 }

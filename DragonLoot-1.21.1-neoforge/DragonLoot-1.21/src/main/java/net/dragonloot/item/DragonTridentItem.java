@@ -1,10 +1,7 @@
 package net.dragonloot.item;
 
-import java.util.function.Consumer;
 import net.dragonloot.entity.DragonTridentEntity;
 import net.dragonloot.init.ConfigInit;
-import net.dragonloot.item.render.DragonTridentBewlr;
-import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -13,7 +10,6 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -27,12 +23,31 @@ import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 
 public class DragonTridentItem extends TridentItem {
 
     public DragonTridentItem(Item.Properties properties) {
         super(properties);
+    }
+
+    @Override
+    public ItemAttributeModifiers getDefaultAttributeModifiers(ItemStack stack) {
+        ItemAttributeModifiers baseModifiers = TridentItem.createAttributes();
+        ItemAttributeModifiers.Builder builder = ItemAttributeModifiers.builder();
+        double bonus = ConfigInit.CONFIG.dragon_item_base_damage / 5F;
+
+        for (ItemAttributeModifiers.Entry entry : baseModifiers.modifiers()) {
+            if (entry.attribute().equals(Attributes.ATTACK_DAMAGE) && entry.modifier().operation() == AttributeModifier.Operation.ADD_VALUE) {
+                builder.add(
+                    entry.attribute(),
+                    new AttributeModifier(entry.modifier().id(), entry.modifier().amount() + bonus, entry.modifier().operation()),
+                    entry.slot());
+            } else {
+                builder.add(entry.attribute(), entry.modifier(), entry.slot());
+            }
+        }
+
+        return builder.build();
     }
 
     @Override
