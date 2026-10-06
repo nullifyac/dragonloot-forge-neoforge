@@ -1,22 +1,15 @@
 package net.dragonloot.init;
 
-import com.electronwill.nightconfig.core.file.CommentedFileConfig;
-import com.mojang.logging.LogUtils;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import net.dragonloot.config.DragonLootConfig;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.config.ModConfigEvent;
-import net.neoforged.fml.loading.FMLPaths;
 import net.neoforged.neoforge.common.ModConfigSpec;
 import org.apache.commons.lang3.tuple.Pair;
-import org.slf4j.Logger;
 
 public final class ConfigInit {
 
-    private static final Logger LOGGER = LogUtils.getLogger();
     private static final String COMMON_CONFIG_NAME = "dragonloot-common.toml";
 
     public static final DragonLootConfig CONFIG;
@@ -32,10 +25,11 @@ public final class ConfigInit {
     }
 
     public static void register(IEventBus modBus) {
-        ensureCommonConfigFile();
-        ModLoadingContext.get().getActiveContainer().registerConfig(ModConfig.Type.COMMON, COMMON_SPEC);
         modBus.addListener(ConfigInit::onLoad);
         modBus.addListener(ConfigInit::onReload);
+        // Item components and armor materials capture these values during registration.
+        // STARTUP loads now, before those registries, while keeping the existing file name.
+        ModLoadingContext.get().getActiveContainer().registerConfig(ModConfig.Type.STARTUP, COMMON_SPEC, COMMON_CONFIG_NAME);
     }
 
     private static void onLoad(final ModConfigEvent.Loading event) {
@@ -47,26 +41,6 @@ public final class ConfigInit {
     private static void onReload(final ModConfigEvent.Reloading event) {
         if (event.getConfig().getSpec() == COMMON_SPEC) {
             CONFIG.bake();
-        }
-    }
-
-    private static void ensureCommonConfigFile() {
-        Path configDir = FMLPaths.CONFIGDIR.get();
-        Path configPath = configDir.resolve(COMMON_CONFIG_NAME);
-        try {
-            Files.createDirectories(configDir);
-            try (CommentedFileConfig fileConfig = CommentedFileConfig.builder(configPath)
-                    .sync()
-                    .preserveInsertionOrder()
-                    .build()) {
-                fileConfig.load();
-                if (!COMMON_SPEC.isCorrect(fileConfig)) {
-                    COMMON_SPEC.correct(fileConfig);
-                    fileConfig.save();
-                }
-            }
-        } catch (Exception e) {
-            LOGGER.warn("Failed to pre-seed config {}", configPath, e);
         }
     }
 }

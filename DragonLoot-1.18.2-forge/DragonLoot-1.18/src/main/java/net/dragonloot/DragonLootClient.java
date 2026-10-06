@@ -2,8 +2,10 @@ package net.dragonloot;
 
 import net.dragonloot.init.ModelProviderInit;
 import net.dragonloot.init.RenderInit;
+import net.dragonloot.item.render.DragonTridentBewlr;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -30,4 +32,9 @@ public final class DragonLootClient {
     public static void registerLayerDefinitions(final EntityRenderersEvent.RegisterLayerDefinitions event) {
         RenderInit.registerLayerDefinitions(event);
     }
+    @SubscribeEvent
+    public static void registerReloadListeners(RegisterClientReloadListenersEvent event) {
+        event.registerReloadListener(DragonTridentBewlr.getInstance());
+    }
+
 }

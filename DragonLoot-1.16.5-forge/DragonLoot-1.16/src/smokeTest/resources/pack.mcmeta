@@ -1,0 +1,6 @@
+{
+  "pack": {
+    "description": "Development-only Dragon Loot dedicated-server smoke tests",
+    "pack_format": 6
+  }
+}

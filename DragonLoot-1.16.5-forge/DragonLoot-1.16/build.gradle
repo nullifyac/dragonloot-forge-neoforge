@@ -5,8 +5,8 @@ buildscript {
 		mavenCentral()
 	}
 	dependencies {
-		classpath 'net.minecraftforge.gradle:ForgeGradle:4.1.+'
-		classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+		classpath 'net.minecraftforge.gradle:ForgeGradle:4.1.16'
+		classpath 'org.spongepowered:mixingradle:0.7.38'
 	}
 }
 
@@ -24,6 +24,19 @@ java {
 	sourceCompatibility = JavaVersion.VERSION_1_8
 	targetCompatibility = JavaVersion.VERSION_1_8
 	withSourcesJar()
+}
+
+// Development-only dedicated-server assertions. These outputs are never added to jar/sourcesJar.
+sourceSets {
+	smokeTest {
+		compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+		runtimeClasspath += sourceSets.main.output + sourceSets.main.runtimeClasspath
+	}
+}
+
+def smokeCaseName = (project.findProperty('smokeCase') ?: 'baseline').toString()
+if (!(smokeCaseName ==~ /[A-Za-z0-9_-]+/)) {
+	throw new GradleException('smokeCase must contain only letters, digits, underscores or hyphens')
 }
 
 minecraft {
@@ -47,6 +60,23 @@ minecraft {
 			mods {
 				dragonloot {
 					source sourceSets.main
+				}
+			}
+		}
+		smokeTest {
+			parent minecraft.runs.server
+			workingDirectory project.file("run/smokeTest/${smokeCaseName}")
+			jvmArgs '-Xmx2G', '-XX:ActiveProcessorCount=2'
+			args 'nogui'
+			property 'forge.logging.console.level', 'info'
+			property 'mixin.env.disableRefMap', 'true'
+			property 'dragonloot.smoke.case', smokeCaseName
+			mods {
+				dragonloot {
+					source sourceSets.main
+				}
+				dragonloot_smoketest {
+					source sourceSets.smokeTest
 				}
 			}
 		}
@@ -91,6 +121,27 @@ mixin {
 
 tasks.withType(JavaCompile).configureEach {
 	options.encoding = 'UTF-8'
+}
+
+// Also expose the same Forge-generated launch setup for a standalone JVM. This
+// makes runtime exit status independent of Gradle's attached Windows console.
+tasks.register('writeSmokeTestLaunch') {
+	dependsOn 'prepareRunSmokeTest', 'smokeTestClasses'
+	doLast {
+		def runTask = tasks.named('runSmokeTest').get()
+		def launch = [
+			main: runTask.main,
+			args: runTask.args,
+			jvmArgs: runTask.allJvmArgs,
+			classpath: runTask.classpath.asPath,
+			workingDirectory: runTask.workingDir.absolutePath,
+			environment: runTask.environment.findAll { key, value ->
+				['MOD_CLASSES', 'target', 'MCP_VERSION', 'MC_VERSION', 'FORGE_GROUP', 'FORGE_VERSION',
+				 'nativesDirectory', 'assetDirectory', 'assetIndex'].contains(key)
+			}
+		]
+		file('build/smoke-test-launch.json').text = groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson(launch))
+	}
 }
 
 processResources {

@@ -2,6 +2,7 @@ package net.dragonloot.init;
 
 import net.dragonloot.DragonLootMain;
 import net.dragonloot.item.DragonArmor;
+import net.dragonloot.item.DragonWingedArmorItem;
 import net.dragonloot.item.DragonArmorMaterial;
 import net.dragonloot.item.DragonAxeItem;
 import net.dragonloot.item.DragonBowItem;
@@ -35,7 +36,7 @@ public final class ItemInit {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, DragonLootMain.MOD_ID);
 
     public static final RegistryObject<Item> DRAGON_SCALE_ITEM = ITEMS.register("dragon_scale", () -> new DragonScaleItem(new Item.Properties().fireResistant()));
-    public static final RegistryObject<Item> DRAGON_HORSE_ARMOR_ITEM = ITEMS.register("dragon_horse_armor", () -> new HorseArmorItem(18, "dragon", new Item.Properties().stacksTo(1).fireResistant()));
+    public static final RegistryObject<Item> DRAGON_HORSE_ARMOR_ITEM = ITEMS.register("dragon_horse_armor", () -> new HorseArmorItem(ConfigInit.CONFIG.dragon_armor_protection_horse, "dragon", new Item.Properties().stacksTo(1).fireResistant()));
 
     public static final ArmorMaterial DRAGON_ARMOR_MATERIAL = DragonArmorMaterial.getInstance();
 
@@ -43,7 +44,7 @@ public final class ItemInit {
     public static final RegistryObject<Item> DRAGON_CHESTPLATE = ITEMS.register("dragon_chestplate", () -> new DragonArmor(DRAGON_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> DRAGON_LEGGINGS = ITEMS.register("dragon_leggings", () -> new DragonArmor(DRAGON_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> DRAGON_BOOTS = ITEMS.register("dragon_boots", () -> new DragonArmor(DRAGON_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Properties().fireResistant()));
-    public static final RegistryObject<Item> UPGRADED_DRAGON_CHESTPLATE = ITEMS.register("upgraded_dragon_chestplate", () -> new DragonArmor(DRAGON_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> UPGRADED_DRAGON_CHESTPLATE = ITEMS.register("upgraded_dragon_chestplate", () -> new DragonWingedArmorItem(DRAGON_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Properties().fireResistant()));
 
     public static final RegistryObject<Item> DRAGON_PICKAXE_ITEM = ITEMS.register("dragon_pickaxe", () -> new DragonPickaxeItem(DragonToolMaterial.getInstance(), 1, -2.8f, new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> DRAGON_AXE_ITEM = ITEMS.register("dragon_axe", () -> new DragonAxeItem(DragonToolMaterial.getInstance(), 5.0F, -3.0f, new Item.Properties().fireResistant()));

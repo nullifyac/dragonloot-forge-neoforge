@@ -1,0 +1,58 @@
+import groovy.json.JsonOutput
+
+gradle.projectsEvaluated {
+    rootProject.tasks.register('writeGameTestLaunch') {
+        dependsOn {
+            def run = rootProject.tasks.named('runGameTestServer').get()
+            run.taskDependencies.getDependencies(run)
+        }
+        doLast {
+            def run = rootProject.tasks.named('runGameTestServer').get()
+            // ForgeGradle 6 populates MinecraftRunTask arguments inside exec().
+            // Resolve them through its own inspected token helpers before exporting.
+            if (run.hasProperty('runConfig')) {
+                def config = run.runConfig.get()
+                def generator = Class.forName('net.minecraftforge.gradle.common.util.runs.RunConfigGenerator',
+                    false, run.class.classLoader)
+                def invokeGenerator = { String name, Object[] arguments ->
+                    def method = generator.declaredMethods.find { it.name == name && it.parameterCount == arguments.length }
+                    if (method == null) { throw new GradleException("ForgeGradle export API missing: ${name}") }
+                    method.accessible = true
+                    method.invoke(null, arguments)
+                }
+                def modClasses = invokeGenerator('mapModClassesToGradle', [rootProject, config] as Object[])
+                def tokens = invokeGenerator('configureTokensLazy',
+                    [rootProject, config, modClasses, run.minecraftArtifacts, run.runtimeClasspathArtifacts] as Object[])
+                def programArgs = invokeGenerator('getArgsStream', [config, tokens, false] as Object[])
+                run.args(programArgs.toArray())
+                config.jvmArgs.each { argument -> run.jvmArgs(config.replace(tokens, argument)) }
+                config.environment.each { key, value -> run.environment(key, config.replace(tokens, value)) }
+                config.properties.each { key, value -> run.systemProperty(key, config.replace(tokens, value)) }
+                config.allSources.each { source -> run.classpath(source.runtimeClasspath) }
+                run.workingDir = config.workingDirectory
+            }
+            def allowedEnvironment = ['MOD_CLASSES', 'target', 'MCP_VERSION', 'MC_VERSION',
+                                      'FORGE_GROUP', 'FORGE_VERSION', 'assetDirectory',
+                                      'assetIndex', 'nativesDirectory'] as Set
+            // Gradle 8.14 resolves JavaExec's lazy arguments only inside exec().
+            // Exporting allJvmArgs alone loses ForgeGradle 6's heap, module and mod properties.
+            def lazyJvmArgs = run.hasProperty('jvmArguments') ? run.jvmArguments.getOrElse([]) : []
+            // allJvmArgs already expands JVM argument providers. Keep argument order and
+            // repeated option tokens intact; append the required cap as the final heap option.
+            def effectiveJvmArgs = run.allJvmArgs + lazyJvmArgs + ['-Xmx2G']
+            def providerArgs = run.argumentProviders.collectMany { it.asArguments().toList() }
+            def launch = [
+                executable: run.executable,
+                jvmArgs: effectiveJvmArgs,
+                classpath: run.classpath.asPath,
+                mainClass: run.mainClass.get(),
+                args: run.args + providerArgs,
+                environment: run.environment.findAll { key, value -> allowedEnvironment.contains(key) },
+                workingDirectory: run.workingDir.absolutePath
+            ]
+            def destination = rootProject.file(rootProject.property('launchOutput'))
+            destination.parentFile.mkdirs()
+            destination.text = JsonOutput.prettyPrint(JsonOutput.toJson(launch))
+        }
+    }
+}

@@ -1,0 +1,24 @@
+// NeoGradle 7.1.20 wires client assets/natives into the joined server runtime.
+// Opt in explicitly; these assets are unnecessary for dedicated/GameTest servers.
+def optedIn = gradle.startParameter.projectProperties['dragonlootHeadlessServer'] == 'true'
+if (!optedIn) { throw new GradleException('Supply -PdragonlootHeadlessServer=true for this server-only init script') }
+def launchTasks = gradle.startParameter.taskNames.collect { it.tokenize(':').last() }.findAll { it.startsWith('run') }
+if (launchTasks.isEmpty() || launchTasks.any { !(it in ['runServer', 'runGameTestServer']) }) {
+    throw new GradleException('Headless asset exclusion supports only runServer and runGameTestServer')
+}
+gradle.beforeProject { project ->
+    project.plugins.withId('net.neoforged.gradle.userdev') {
+        project.tasks.configureEach { task ->
+            if (task.name.endsWith('DownloadAssets') || task.name.endsWith('ExtractNatives')) {
+                task.enabled = false
+            }
+        }
+        project.afterEvaluate {
+            def maxHeap = project.findProperty('dragonlootServerMaxHeap')?.toString() ?: '2G'
+            if (!(maxHeap ==~ /[1-9][0-9]*[mMgG]/)) { throw new GradleException('Invalid dragonlootServerMaxHeap') }
+            project.runs.configureEach { run ->
+                if (run.name in ['server', 'gameTestServer']) { run.jvmArguments "-Xmx${maxHeap}" }
+            }
+        }
+    }
+}

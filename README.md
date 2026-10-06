@@ -33,9 +33,9 @@ dragonloot-forge/
 ## Quick Start
 
 ### Prerequisites
-- Java Development Kit (JDK) 8+ for 1.16.5
-- Java Development Kit (JDK) 17+ for 1.18.2-1.20.1
-- Java Development Kit (JDK) 21+ for 1.21.1
+- Java Development Kit (JDK) 8 for 1.16.5
+- Java Development Kit (JDK) 17 for 1.18.2-1.20.1
+- Java Development Kit (JDK) 21 for 1.21.1
 - Gradle (included via gradlew)
 
 ### Building a Version
@@ -71,8 +71,11 @@ The compiled mod will be available in `build/libs/`.
 ### Configuration
 Tune balance in `config/dragonloot-common.toml`:
 - Scale drop amounts and extra rolls per player
-- Armor and tool durability, damage, and enchantability
+- Armor and tool durability, damage, mining speed, and enchantability
 - Dragon Anvil level-cap behavior
+
+Gear and perk settings require a full game/server restart. Use matching gear
+settings on the server and clients; this COMMON config is not synchronized.
 
 ## Version-Specific Details
 
@@ -87,6 +90,21 @@ Latest version with:
 - Updated registrations and render hooks
 
 ## Development
+
+All five supported Minecraft versions receive equal maintenance attention:
+1.16.5, 1.18.2, 1.19.2, 1.20.1 and 1.21.1. Review each reported defect across the
+full matrix, implement fixes using each loader's available APIs, and track build
+and runtime validation separately for every version. A newer version is not the
+default boundary for fixes; document verified API or dependency limitations.
+
+The October 2026 feedback review and version-specific scope are documented in
+[docs/FEEDBACK-AUDIT.md](docs/FEEDBACK-AUDIT.md). For a low-memory build, resource
+checks, server regressions and version-specific Prism test archives, follow
+[docs/TESTING.md](docs/TESTING.md).
+The completed per-version checks, retained failures and tested-loader limitations
+are recorded in [docs/RUNTIME-RESULTS.md](docs/RUNTIME-RESULTS.md).
+The verified 1.1.16 release artifacts, reproduction commands and known limitation
+are documented in [docs/RELEASE-1.1.16.md](docs/RELEASE-1.1.16.md).
 
 ### Project Structure
 Each version follows the standard Minecraft mod development structure:
@@ -129,11 +147,11 @@ Contributions are welcome! Please consider:
 
 | Version | Modloader | Status | Java |
 |---------|-----------|--------|------|
-| 1.16.5  | Forge     | Active | 8+   |
-| 1.18.2  | Forge     | Active | 17+  |
-| 1.19.2  | Forge     | Active | 17+  |
-| 1.20.1  | Forge     | Active | 17+  |
-| 1.21.1  | NeoForge  | Active | 21+  |
+| 1.16.5  | Forge     | Active | 8    |
+| 1.18.2  | Forge     | Active | 17   |
+| 1.19.2  | Forge     | Active | 17   |
+| 1.20.1  | Forge     | Active | 17   |
+| 1.21.1  | NeoForge  | Active | 21   |
 ---
 
-**Last Updated**: January 2026
+**Last Updated**: October 2026

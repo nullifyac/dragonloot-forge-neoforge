@@ -71,9 +71,9 @@ public class DragonTridentEntity extends AbstractArrowEntity {
 			} else if (loyalty > 0) {
 				this.setNoPhysics(true);
 				Vector3d motion = new Vector3d(owner.getX() - this.getX(), owner.getEyeY() - this.getY(), owner.getZ() - this.getZ());
-				this.setPos(this.getX(), this.getY() + motion.y * 0.015D * loyalty, this.getZ());
+				this.setPosRaw(this.getX(), this.getY() + motion.y * 0.015D * loyalty, this.getZ());
 				if (this.level.isClientSide) {
-					this.yo = this.getY();
+					this.yOld = this.getY();
 				}
 				Vector3d velocity = this.getDeltaMovement().scale(0.95D).add(motion.normalize().scale(0.05D * loyalty));
 				this.setDeltaMovement(velocity);
@@ -177,6 +177,7 @@ public class DragonTridentEntity extends AbstractArrowEntity {
 		}
 		this.dealtDamage = tag.getBoolean("DealtDamage");
 		this.entityData.set(LOYALTY, (byte) EnchantmentHelper.getLoyalty(this.tridentStack));
+		this.entityData.set(ENCHANTED, this.tridentStack.hasFoil());
 	}
 
 	@Override

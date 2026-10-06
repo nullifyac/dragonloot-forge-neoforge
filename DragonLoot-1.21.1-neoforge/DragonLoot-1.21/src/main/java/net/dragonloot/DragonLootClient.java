@@ -8,10 +8,13 @@ import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterClientReloadListenersEvent;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 
 public final class DragonLootClient {
+
+    private static DragonTridentBewlr tridentRenderer;
 
     private DragonLootClient() {
     }
@@ -19,6 +22,7 @@ public final class DragonLootClient {
     public static void registerClientListeners(IEventBus modBus) {
         modBus.addListener(DragonLootClient::onClientSetup);
         modBus.addListener(DragonLootClient::registerClientExtensions);
+        modBus.addListener(DragonLootClient::registerReloadListeners);
         modBus.addListener(RenderInit::registerRenderers);
         modBus.addListener(RenderInit::registerLayerDefinitions);
     }
@@ -39,15 +43,21 @@ public final class DragonLootClient {
 
     public static void registerClientExtensions(RegisterClientExtensionsEvent event) {
         event.registerItem(new IClientItemExtensions() {
-            private BlockEntityWithoutLevelRenderer renderer;
-
             @Override
             public BlockEntityWithoutLevelRenderer getCustomRenderer() {
-                if (this.renderer == null) {
-                    this.renderer = new DragonTridentBewlr();
-                }
-                return this.renderer;
+                return getTridentRenderer();
             }
         }, ItemInit.DRAGON_TRIDENT_ITEM.get());
+    }
+
+    private static DragonTridentBewlr getTridentRenderer() {
+        if (tridentRenderer == null) {
+            tridentRenderer = new DragonTridentBewlr();
+        }
+        return tridentRenderer;
+    }
+
+    private static void registerReloadListeners(RegisterClientReloadListenersEvent event) {
+        event.registerReloadListener(getTridentRenderer());
     }
 }

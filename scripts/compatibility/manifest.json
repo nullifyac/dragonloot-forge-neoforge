@@ -1,0 +1,2456 @@
+{
+    "schemaVersion":  1,
+    "testDate":  "2026-10-06",
+    "generatedUtc":  "2026-10-06T14:19:02.0419091Z",
+    "targets":  [
+                    {
+                        "minecraft":  "1.16.5",
+                        "loader":  "forge",
+                        "loaderVersion":  "36.2.39"
+                    },
+                    {
+                        "minecraft":  "1.18.2",
+                        "loader":  "forge",
+                        "loaderVersion":  "40.2.17"
+                    },
+                    {
+                        "minecraft":  "1.19.2",
+                        "loader":  "forge",
+                        "loaderVersion":  "43.3.0"
+                    },
+                    {
+                        "minecraft":  "1.20.1",
+                        "loader":  "forge",
+                        "loaderVersion":  "47.3.0"
+                    },
+                    {
+                        "minecraft":  "1.21.1",
+                        "loader":  "neoforge",
+                        "loaderVersion":  "21.1.65"
+                    }
+                ],
+    "mods":  [
+                 {
+                     "minecraft":  "1.16.5",
+                     "loader":  "forge",
+                     "loaderVersion":  "36.2.39",
+                     "project":  "patchouli",
+                     "projectId":  "nU0bVIaL",
+                     "version":  "1.16.4-53.3-forge",
+                     "versionId":  "swxCEODj",
+                     "versionType":  "release",
+                     "modId":  "patchouli",
+                     "modVersion":  "1.16.4-53.3",
+                     "filename":  "Patchouli-1.16.4-53.3.jar",
+                     "relativePath":  "mods/1.16.5-forge/Patchouli-1.16.4-53.3.jar",
+                     "projectUrl":  "https://modrinth.com/mod/patchouli",
+                     "versionUrl":  "https://modrinth.com/mod/patchouli/version/swxCEODj",
+                     "sourceUrl":  "https://github.com/VazkiiMods/Patchouli/",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/nU0bVIaL/versions/1.16.4-53.3-forge/Patchouli-1.16.4-53.3.jar",
+                     "sha1":  "cf7c2efc013a0247be4c2ce3f3d6a553643e00f7",
+                     "sha512":  "761c1db33d3d81b077c5db9fadda57d213bd4b43e8e0a2678b3a8294ba0fbe5f45cef507c7d4b79d2dd165253925abddf837e7df2ff553d05987b97c4014e7bf",
+                     "sha256":  "691b66041157601d1b89e7ff66d1d7ab08b97a3f1163caf600bfaceef5a1cc88",
+                     "requiredVersionIds":  [
+
+                                            ],
+                     "apiDependencies":  [
+
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "[35.0.0,)",
+                                                          "modId":  "forge"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.20.1",
+                     "loader":  "forge",
+                     "loaderVersion":  "47.3.0",
+                     "project":  "better-combat",
+                     "projectId":  "5sy6g3kz",
+                     "version":  "1.9.0+1.20.1-forge",
+                     "versionId":  "rnhiaw3t",
+                     "versionType":  "release",
+                     "modId":  "bettercombat",
+                     "modVersion":  "1.9.0+1.20.1",
+                     "filename":  "bettercombat-forge-1.9.0+1.20.1.jar",
+                     "relativePath":  "mods/1.20.1-forge/bettercombat-forge-1.9.0+1.20.1.jar",
+                     "projectUrl":  "https://modrinth.com/mod/better-combat",
+                     "versionUrl":  "https://modrinth.com/mod/better-combat/version/rnhiaw3t",
+                     "sourceUrl":  "https://github.com/ZsoltMolnarrr/BetterCombat",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/5sy6g3kz/versions/rnhiaw3t/bettercombat-forge-1.9.0%2B1.20.1.jar",
+                     "sha1":  "ea7e7247132cb3acacadd96b2b6b635c4cc63a74",
+                     "sha512":  "0778902ce693ae56afd9a928e0629470095dff0324c6856fc45ee51a8efcfa622cc22edaa07ed40814d3b13851d62b27d144e9858e5209a6cf70fd3651f081e8",
+                     "sha256":  "49c69dccf2c641246b4e3deca81ebac21f0ee119e81fc713b838b8e33569eea1",
+                     "requiredVersionIds":  [
+                                                "t8TXrZvZ",
+                                                "xe2EVE6q"
+                                            ],
+                     "apiDependencies":  [
+                                             {
+                                                 "version_id":  null,
+                                                 "project_id":  "gedNE4y2",
+                                                 "file_name":  null,
+                                                 "dependency_type":  "required"
+                                             },
+                                             {
+                                                 "version_id":  null,
+                                                 "project_id":  "9s6osm5g",
+                                                 "file_name":  null,
+                                                 "dependency_type":  "required"
+                                             }
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "[47.1,)",
+                                                          "modId":  "forge"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.20,)",
+                                                          "modId":  "minecraft"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1,)",
+                                                          "modId":  "playeranimator"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[11.0.0,)",
+                                                          "modId":  "cloth_config"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.21.1",
+                     "loader":  "neoforge",
+                     "loaderVersion":  "21.1.65",
+                     "project":  "better-combat",
+                     "projectId":  "5sy6g3kz",
+                     "version":  "2.4.0+1.21.1-neoforge",
+                     "versionId":  "VhIOvcXP",
+                     "versionType":  "release",
+                     "modId":  "bettercombat",
+                     "modVersion":  "2.4.0+1.21.1",
+                     "filename":  "bettercombat-neoforge-2.4.0+1.21.1.jar",
+                     "relativePath":  "mods/1.21.1-neoforge/bettercombat-neoforge-2.4.0+1.21.1.jar",
+                     "projectUrl":  "https://modrinth.com/mod/better-combat",
+                     "versionUrl":  "https://modrinth.com/mod/better-combat/version/VhIOvcXP",
+                     "sourceUrl":  "https://github.com/ZsoltMolnarrr/BetterCombat",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/5sy6g3kz/versions/VhIOvcXP/bettercombat-neoforge-2.4.0%2B1.21.1.jar",
+                     "sha1":  "bacbc8c86671663e9998b141c5732250c1f4d4fb",
+                     "sha512":  "db24730a42ae7e2dd546ee031d2f5e0dd6f9896418417a529fa21a44121761ebb29c8b8299db8f20500f7497f7b60a7d793b66c93abf37a8ea0aa3edafd80eb6",
+                     "sha256":  "0446e9faa98b764ba010ac31e337d14ac96bbb2fbfeff9b599e1efd510dfde5a",
+                     "requiredVersionIds":  [
+                                                "HJZB6bmA",
+                                                "izKINKFg"
+                                            ],
+                     "apiDependencies":  [
+                                             {
+                                                 "version_id":  null,
+                                                 "project_id":  "gedNE4y2",
+                                                 "file_name":  null,
+                                                 "dependency_type":  "required"
+                                             },
+                                             {
+                                                 "version_id":  null,
+                                                 "project_id":  "9s6osm5g",
+                                                 "file_name":  null,
+                                                 "dependency_type":  "required"
+                                             }
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "[21.0,)",
+                                                          "modId":  "neoforge"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.21,)",
+                                                          "modId":  "minecraft"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1,)",
+                                                          "modId":  "playeranimator"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[15.0.0,)",
+                                                          "modId":  "cloth_config"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.18.2",
+                     "loader":  "forge",
+                     "loaderVersion":  "40.2.17",
+                     "project":  "caelus",
+                     "projectId":  "40FYwb4z",
+                     "version":  "1.18.1-3.0.0.2",
+                     "versionId":  "oGzi6gyV",
+                     "versionType":  "release",
+                     "modId":  "caelus",
+                     "modVersion":  "1.18.1-3.0.0.2",
+                     "filename":  "caelus-forge-1.18.1-3.0.0.2.jar",
+                     "relativePath":  "mods/1.18.2-forge/caelus-forge-1.18.1-3.0.0.2.jar",
+                     "projectUrl":  "https://modrinth.com/mod/caelus",
+                     "versionUrl":  "https://modrinth.com/mod/caelus/version/oGzi6gyV",
+                     "sourceUrl":  "https://github.com/TheIllusiveC4/Caelus",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/40FYwb4z/versions/oGzi6gyV/caelus-forge-1.18.1-3.0.0.2.jar",
+                     "sha1":  "befa3b8e7bd0f5fdf373be726e5ce2b7bdfa16b6",
+                     "sha512":  "1992be966193b8413ef9614e3b8fe445acbb45fdefc53cf06ce2c077006645c81d7998fb436dd651666b7181aa40c93f2eaaa2480d20cf48c76b1bb803cb53be",
+                     "sha256":  "41efaa71d1649ac777eac334419fa4f464570ea47ceb9710f9318cf1e9e2836c",
+                     "requiredVersionIds":  [
+
+                                            ],
+                     "apiDependencies":  [
+
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "[38,)",
+                                                          "modId":  "forge"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.18.1,1.19)",
+                                                          "modId":  "minecraft"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.20.1",
+                     "loader":  "forge",
+                     "loaderVersion":  "47.3.0",
+                     "project":  "cloth-config",
+                     "projectId":  "9s6osm5g",
+                     "version":  "11.1.136+forge",
+                     "versionId":  "t8TXrZvZ",
+                     "versionType":  "release",
+                     "modId":  "cloth_config",
+                     "modVersion":  "11.1.136",
+                     "filename":  "cloth-config-11.1.136-forge.jar",
+                     "relativePath":  "mods/1.20.1-forge/cloth-config-11.1.136-forge.jar",
+                     "projectUrl":  "https://modrinth.com/mod/cloth-config",
+                     "versionUrl":  "https://modrinth.com/mod/cloth-config/version/t8TXrZvZ",
+                     "sourceUrl":  "https://github.com/shedaniel/ClothConfig/",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/9s6osm5g/versions/t8TXrZvZ/cloth-config-11.1.136-forge.jar",
+                     "sha1":  "c65d07748acc57ceb45d53b3964368b84f34d54f",
+                     "sha512":  "137c4af99c53d77317cbfb1cc8c49fc2761708b49d1992f51fd846960df41dde3a83519c987e081508d4ed90c603566f3d5a6cb620ad9d85b8f4de59aa9115ef",
+                     "sha256":  "1e895e85cf5b1e1905ef3178ec155c8badfe22a1577b92c09143a5aa1f4ce0f2",
+                     "requiredVersionIds":  [
+
+                                            ],
+                     "apiDependencies":  [
+
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "[45,)",
+                                                          "modId":  "forge"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.21.1",
+                     "loader":  "neoforge",
+                     "loaderVersion":  "21.1.65",
+                     "project":  "caelus",
+                     "projectId":  "40FYwb4z",
+                     "version":  "7.0.1+1.21.1",
+                     "versionId":  "KsfI4QsR",
+                     "versionType":  "release",
+                     "modId":  "caelus",
+                     "modVersion":  "7.0.1+1.21.1",
+                     "filename":  "caelus-neoforge-7.0.1+1.21.1.jar",
+                     "relativePath":  "mods/1.21.1-neoforge/caelus-neoforge-7.0.1+1.21.1.jar",
+                     "projectUrl":  "https://modrinth.com/mod/caelus",
+                     "versionUrl":  "https://modrinth.com/mod/caelus/version/KsfI4QsR",
+                     "sourceUrl":  "https://github.com/TheIllusiveC4/Caelus",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/40FYwb4z/versions/KsfI4QsR/caelus-neoforge-7.0.1%2B1.21.1.jar",
+                     "sha1":  "e4c2e1af4e3082d68f7df75f7c8ce30116d71515",
+                     "sha512":  "3763f95304ade2bacb217828c74eeef7905a114f71d41537d56121af58c182c2685467a5afb7e03ddb3997ec3d7496bdfdf71a9946a9f33e3470393e7a13306d",
+                     "sha256":  "432a645557f29de159d9edde2fd109f8e3b32ff30895b4fede04ee5f1a1a682f",
+                     "requiredVersionIds":  [
+
+                                            ],
+                     "apiDependencies":  [
+
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "[21,)",
+                                                          "modId":  "neoforge"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.21, 1.22)",
+                                                          "modId":  "minecraft"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.19.2",
+                     "loader":  "forge",
+                     "loaderVersion":  "43.3.0",
+                     "project":  "enigmatic-legacy",
+                     "projectId":  "IpUWAlqM",
+                     "version":  "2.26.5",
+                     "versionId":  "9pdtGQb7",
+                     "versionType":  "release",
+                     "modId":  "enigmaticlegacy",
+                     "modVersion":  "2.26.5",
+                     "filename":  "EnigmaticLegacy-2.26.5.jar",
+                     "relativePath":  "mods/1.19.2-forge/EnigmaticLegacy-2.26.5.jar",
+                     "projectUrl":  "https://modrinth.com/mod/enigmatic-legacy",
+                     "versionUrl":  "https://modrinth.com/mod/enigmatic-legacy/version/9pdtGQb7",
+                     "sourceUrl":  "https://github.com/Aizistral-Studios/Enigmatic-Legacy",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/IpUWAlqM/versions/9pdtGQb7/EnigmaticLegacy-2.26.5.jar",
+                     "sha1":  "f1467614274adddc5487349991cf7f3383118539",
+                     "sha512":  "4b92ee9bb60ca6f8c0cb8b9143007ccbf216a9ac952808a734de25f7a1fbabe240462f0dd4fa0e09c0295c0989ea5c616424c7544f9fdfb34d0c65a44033aec5",
+                     "sha256":  "fdf65bae8d84297b0171f7e204cdb188cc1a933c2fd66c83104db3daa9390bf4",
+                     "requiredVersionIds":  [
+                                                "62ztr7HA",
+                                                "hmlQQjAc",
+                                                "uUAY30IE"
+                                            ],
+                     "apiDependencies":  [
+                                             {
+                                                 "version_id":  null,
+                                                 "project_id":  "nU0bVIaL",
+                                                 "file_name":  null,
+                                                 "dependency_type":  "required"
+                                             }
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "[43.1.0,)",
+                                                          "modId":  "forge"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.19,1.20)",
+                                                          "modId":  "minecraft"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.19.2-5.1.1.0,)",
+                                                          "modId":  "curios"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.19.2-77,)",
+                                                          "modId":  "patchouli"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.19.2-3.0.0.6,)",
+                                                          "modId":  "caelus"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.21.1",
+                     "loader":  "neoforge",
+                     "loaderVersion":  "21.1.65",
+                     "project":  "icarus",
+                     "projectId":  "Dw7M6XKW",
+                     "version":  "4.5.0+NeoForge",
+                     "versionId":  "3vQNzwIW",
+                     "versionType":  "release",
+                     "modId":  "icarus",
+                     "modVersion":  "4.5.0",
+                     "filename":  "Icarus-NeoForge-4.5.0.jar",
+                     "relativePath":  "mods/1.21.1-neoforge/Icarus-NeoForge-4.5.0.jar",
+                     "projectUrl":  "https://modrinth.com/mod/icarus",
+                     "versionUrl":  "https://modrinth.com/mod/icarus/version/3vQNzwIW",
+                     "sourceUrl":  "https://github.com/Up-Mods/Icarus",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/Dw7M6XKW/versions/3vQNzwIW/Icarus-NeoForge-4.5.0.jar",
+                     "sha1":  "257f7d3dac4aa6c38542806210cbddf7ddf88603",
+                     "sha512":  "247228f082bbadc01c977eb94e103bd2b5de61e0b41101520fca7aa7cfb780e01da009df641ccda53f03bb9c61d20c3d2da732b6ac9500c8bda8194edd46b9a1",
+                     "sha256":  "bc9a05a30d82789570f1c6f91f2f77d9816cb8fe7b0257a23b2d2e0082f0c7e8",
+                     "requiredVersionIds":  [
+                                                "KsfI4QsR",
+                                                "lSbyRD6v",
+                                                "pR7AeZk3",
+                                                "sZqK0P2T",
+                                                "yohfFbgD"
+                                            ],
+                     "apiDependencies":  [
+                                             {
+                                                 "version_id":  null,
+                                                 "project_id":  "vvuO3ImH",
+                                                 "file_name":  null,
+                                                 "dependency_type":  "required"
+                                             },
+                                             {
+                                                 "version_id":  null,
+                                                 "project_id":  "s9gIPDom",
+                                                 "file_name":  null,
+                                                 "dependency_type":  "optional"
+                                             },
+                                             {
+                                                 "version_id":  null,
+                                                 "project_id":  "nf68xfAw",
+                                                 "file_name":  null,
+                                                 "dependency_type":  "required"
+                                             },
+                                             {
+                                                 "version_id":  null,
+                                                 "project_id":  "40FYwb4z",
+                                                 "file_name":  null,
+                                                 "dependency_type":  "required"
+                                             },
+                                             {
+                                                 "version_id":  null,
+                                                 "project_id":  "M1953qlQ",
+                                                 "file_name":  null,
+                                                 "dependency_type":  "required"
+                                             },
+                                             {
+                                                 "version_id":  null,
+                                                 "project_id":  "HIuqnQpi",
+                                                 "file_name":  null,
+                                                 "dependency_type":  "required"
+                                             }
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "*",
+                                                          "modId":  "neoforge"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.21.1]",
+                                                          "modId":  "minecraft"
+                                                      },
+                                                      {
+                                                          "versionRange":  "*",
+                                                          "modId":  "caelus"
+                                                      },
+                                                      {
+                                                          "versionRange":  "*",
+                                                          "modId":  "commonnetworking"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[9.0.0,)",
+                                                          "modId":  "curios"
+                                                      },
+                                                      {
+                                                          "versionRange":  "*",
+                                                          "modId":  "resourcefulconfig"
+                                                      },
+                                                      {
+                                                          "versionRange":  "*",
+                                                          "modId":  "sparkweave"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.19.2",
+                     "loader":  "forge",
+                     "loaderVersion":  "43.3.0",
+                     "project":  "playeranimator",
+                     "projectId":  "gedNE4y2",
+                     "version":  "1.0.2-forge",
+                     "versionId":  "zYLNRVUQ",
+                     "versionType":  "release",
+                     "modId":  "playeranimator",
+                     "modVersion":  "1.0.2",
+                     "filename":  "player-animation-lib-forge-1.0.2.jar",
+                     "relativePath":  "mods/1.19.2-forge/player-animation-lib-forge-1.0.2.jar",
+                     "projectUrl":  "https://modrinth.com/mod/playeranimator",
+                     "versionUrl":  "https://modrinth.com/mod/playeranimator/version/zYLNRVUQ",
+                     "sourceUrl":  "https://github.com/KosmX/fabricPlayerAnimation",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/gedNE4y2/versions/zYLNRVUQ/player-animation-lib-forge-1.0.2.jar",
+                     "sha1":  "e5f209aaab789eade2ef2c1a7dc37d6b20faa038",
+                     "sha512":  "e43c31b3eb57b123ebbb3bb4929141507571211c769b1251c033c1dd1d272a08c11320e8f59e302c3559a87ce3a800b57cb047c1f7500c10382d9393d7baeffc",
+                     "sha256":  "80fb5397ce77981d63e56cb4d6953c5657ad3b96783152ec2048a90568431a76",
+                     "requiredVersionIds":  [
+
+                                            ],
+                     "apiDependencies":  [
+                                             {
+                                                 "version_id":  null,
+                                                 "project_id":  "aRnIEV0F",
+                                                 "file_name":  null,
+                                                 "dependency_type":  "optional"
+                                             }
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "[1.19,)",
+                                                          "modId":  "minecraft"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.19.2",
+                     "loader":  "forge",
+                     "loaderVersion":  "43.3.0",
+                     "project":  "caelus",
+                     "projectId":  "40FYwb4z",
+                     "version":  "1.19.2-3.0.0.6",
+                     "versionId":  "hmlQQjAc",
+                     "versionType":  "release",
+                     "modId":  "caelus",
+                     "modVersion":  "1.19.2-3.0.0.6",
+                     "filename":  "caelus-forge-1.19.2-3.0.0.6.jar",
+                     "relativePath":  "mods/1.19.2-forge/caelus-forge-1.19.2-3.0.0.6.jar",
+                     "projectUrl":  "https://modrinth.com/mod/caelus",
+                     "versionUrl":  "https://modrinth.com/mod/caelus/version/hmlQQjAc",
+                     "sourceUrl":  "https://github.com/TheIllusiveC4/Caelus",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/40FYwb4z/versions/hmlQQjAc/caelus-forge-1.19.2-3.0.0.6.jar",
+                     "sha1":  "bd9d920381a8e539c27492b3ebb77863fe3dd064",
+                     "sha512":  "11141abfb145983c207499bb89a3bd3673b0888b8b7d01a43e81c97586628ae5ca3ad0d2c9558c33ef0ddd80c15ca9b091c1752487ccf7eb70f37e2cc9c836b3",
+                     "sha256":  "4bbdb4378dd6e6832117fb79aa45386d33197fb88a69fcd2a775959e7e86718f",
+                     "requiredVersionIds":  [
+
+                                            ],
+                     "apiDependencies":  [
+
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "[41,)",
+                                                          "modId":  "forge"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.19,1.20)",
+                                                          "modId":  "minecraft"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.21.1",
+                     "loader":  "neoforge",
+                     "loaderVersion":  "21.1.65",
+                     "project":  "sparkweave",
+                     "projectId":  "nf68xfAw",
+                     "version":  "0.508.0",
+                     "versionId":  "sZqK0P2T",
+                     "versionType":  "beta",
+                     "modId":  "sparkweave",
+                     "modVersion":  "0.508.0",
+                     "filename":  "Sparkweave-NeoForge-0.508.0.jar",
+                     "relativePath":  "mods/1.21.1-neoforge/Sparkweave-NeoForge-0.508.0.jar",
+                     "projectUrl":  "https://modrinth.com/mod/sparkweave",
+                     "versionUrl":  "https://modrinth.com/mod/sparkweave/version/sZqK0P2T",
+                     "sourceUrl":  "https://github.com/Up-Mods/Sparkweave",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/nf68xfAw/versions/sZqK0P2T/Sparkweave-NeoForge-0.508.0.jar",
+                     "sha1":  "49b18b823ee60547cf32b802b7dda8aabefad8cd",
+                     "sha512":  "cbf6205b1ba15f45af49aadca1c7be4d5cc490313371935a215e9646c6be09cf42d5cac39b57ee915c2f7059de1565c90967e718d4c6cce9fbe42b2ea4fca3fe",
+                     "sha256":  "4d9ce529e3a357368d807e7fef85b02fe3f2a6184611d930242ceca5d7703bdc",
+                     "requiredVersionIds":  [
+
+                                            ],
+                     "apiDependencies":  [
+
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "*",
+                                                          "modId":  "neoforge"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.21.1]",
+                                                          "modId":  "minecraft"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.20.1",
+                     "loader":  "forge",
+                     "loaderVersion":  "47.3.0",
+                     "project":  "playeranimator",
+                     "projectId":  "gedNE4y2",
+                     "version":  "1.0.2-rc1+1.20-forge",
+                     "versionId":  "xe2EVE6q",
+                     "versionType":  "beta",
+                     "modId":  "playeranimator",
+                     "modVersion":  "1.0.2-rc1+1.20",
+                     "filename":  "player-animation-lib-forge-1.0.2-rc1+1.20.jar",
+                     "relativePath":  "mods/1.20.1-forge/player-animation-lib-forge-1.0.2-rc1+1.20.jar",
+                     "projectUrl":  "https://modrinth.com/mod/playeranimator",
+                     "versionUrl":  "https://modrinth.com/mod/playeranimator/version/xe2EVE6q",
+                     "sourceUrl":  "https://github.com/KosmX/fabricPlayerAnimation",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/gedNE4y2/versions/xe2EVE6q/player-animation-lib-forge-1.0.2-rc1%2B1.20.jar",
+                     "sha1":  "16808f94a41d45d8e986b4e4ea6b02ba57fa058a",
+                     "sha512":  "cb9f6a3aaa943823a85fdd716ddb3c7623af2b3520926c3a98d170c52d31908894808fb61c52bea39bae622dbab59d50b4bad56f7ca0533a9c3350d412c33729",
+                     "sha256":  "90d9965cb9efdbda29fdc5610be3914cf7008bf5c392ff34f7ab25f96a852691",
+                     "requiredVersionIds":  [
+
+                                            ],
+                     "apiDependencies":  [
+                                             {
+                                                 "version_id":  null,
+                                                 "project_id":  "aRnIEV0F",
+                                                 "file_name":  null,
+                                                 "dependency_type":  "optional"
+                                             }
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "[1.20,)",
+                                                          "modId":  "minecraft"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.18.2",
+                     "loader":  "forge",
+                     "loaderVersion":  "40.2.17",
+                     "project":  "playeranimator",
+                     "projectId":  "gedNE4y2",
+                     "version":  "1.0.2+1.18-forge",
+                     "versionId":  "CPJiW7pf",
+                     "versionType":  "release",
+                     "modId":  "playeranimator",
+                     "modVersion":  "1.0.2+1.18",
+                     "filename":  "player-animation-lib-forge-1.0.2+1.18.jar",
+                     "relativePath":  "mods/1.18.2-forge/player-animation-lib-forge-1.0.2+1.18.jar",
+                     "projectUrl":  "https://modrinth.com/mod/playeranimator",
+                     "versionUrl":  "https://modrinth.com/mod/playeranimator/version/CPJiW7pf",
+                     "sourceUrl":  "https://github.com/KosmX/fabricPlayerAnimation",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/gedNE4y2/versions/CPJiW7pf/player-animation-lib-forge-1.0.2%2B1.18.jar",
+                     "sha1":  "375fa743fea4ede5cbe6d8956ae93bfaeff741a6",
+                     "sha512":  "9d91dbcc55a32f0130fd324ce2384daf0f202b5cf88a6387595c89a88358a0dc4df3ed0e31a152ef8ec39db483632532b368fcb89ca8f3d2e2de597535cacd6b",
+                     "sha256":  "818b173358f6d8855217a43ee3701377a56d71a1c3d28b12d9238949f1610606",
+                     "requiredVersionIds":  [
+
+                                            ],
+                     "apiDependencies":  [
+                                             {
+                                                 "version_id":  null,
+                                                 "project_id":  "aRnIEV0F",
+                                                 "file_name":  null,
+                                                 "dependency_type":  "optional"
+                                             }
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "[1.18,)",
+                                                          "modId":  "minecraft"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.18.2",
+                     "loader":  "forge",
+                     "loaderVersion":  "40.2.17",
+                     "project":  "better-combat",
+                     "projectId":  "5sy6g3kz",
+                     "version":  "1.6.2+1.18.2-forge",
+                     "versionId":  "SsDWF33Q",
+                     "versionType":  "beta",
+                     "modId":  "bettercombat",
+                     "modVersion":  "1.6.2+1.18.2",
+                     "filename":  "bettercombat-forge-1.6.2+1.18.2.jar",
+                     "relativePath":  "mods/1.18.2-forge/bettercombat-forge-1.6.2+1.18.2.jar",
+                     "projectUrl":  "https://modrinth.com/mod/better-combat",
+                     "versionUrl":  "https://modrinth.com/mod/better-combat/version/SsDWF33Q",
+                     "sourceUrl":  "https://github.com/ZsoltMolnarrr/BetterCombat",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/5sy6g3kz/versions/SsDWF33Q/bettercombat-forge-1.6.2%2B1.18.2.jar",
+                     "sha1":  "58251feed528dc48da631805ef6af66df62ee5ea",
+                     "sha512":  "d9423dc0219de51426bb124890b30352fdd6465deac0b10c1e60e19c4f7f591ea4f7a912b7c76e52d46a895926ba46b3c580bdf695de6c799823218a733dc064",
+                     "sha256":  "1d76dd2b54978941200873e8bd897e27de0506504d95bc309296f5a9557c75b4",
+                     "requiredVersionIds":  [
+                                                "CPJiW7pf",
+                                                "ZbWG3eJW"
+                                            ],
+                     "apiDependencies":  [
+                                             {
+                                                 "version_id":  null,
+                                                 "project_id":  "gedNE4y2",
+                                                 "file_name":  null,
+                                                 "dependency_type":  "required"
+                                             },
+                                             {
+                                                 "version_id":  "ZbWG3eJW",
+                                                 "project_id":  "9s6osm5g",
+                                                 "file_name":  null,
+                                                 "dependency_type":  "required"
+                                             }
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "[39,)",
+                                                          "modId":  "forge"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.18,)",
+                                                          "modId":  "minecraft"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[0.9.9,)",
+                                                          "modId":  "playeranimator"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[6.0.0,)",
+                                                          "modId":  "cloth_config"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.20.1",
+                     "loader":  "forge",
+                     "loaderVersion":  "47.3.0",
+                     "project":  "icarus",
+                     "projectId":  "Dw7M6XKW",
+                     "version":  "2.14.1+NeoForge",
+                     "versionId":  "RXhgOzWN",
+                     "versionType":  "release",
+                     "modId":  "icarus",
+                     "modVersion":  "2.14.1",
+                     "filename":  "Icarus-Forge-2.14.1.jar",
+                     "relativePath":  "mods/1.20.1-forge/Icarus-Forge-2.14.1.jar",
+                     "projectUrl":  "https://modrinth.com/mod/icarus",
+                     "versionUrl":  "https://modrinth.com/mod/icarus/version/RXhgOzWN",
+                     "sourceUrl":  "https://github.com/Up-Mods/Icarus",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/Dw7M6XKW/versions/RXhgOzWN/Icarus-Forge-2.14.1.jar",
+                     "sha1":  "2d177af9b322eb78586e8761f2fdb128d908670e",
+                     "sha512":  "d4c13f8cd00c3d2fb2e1b3548a647d374e4c1f02a46828650f7e1b35c04c5804744c467ccaeed913a2424b07592017eaa5b71df150f9a42927793550b4e23ddc",
+                     "sha256":  "4557de34bf3f539f77783829367fb4e9c7fd4c6e7d5eab1f49307de1dcb83b34",
+                     "requiredVersionIds":  [
+                                                "DERs8u7v",
+                                                "IPQlZkz1",
+                                                "mRry0DgY",
+                                                "TkOARDQh"
+                                            ],
+                     "apiDependencies":  [
+                                             {
+                                                 "version_id":  null,
+                                                 "project_id":  "M1953qlQ",
+                                                 "file_name":  null,
+                                                 "dependency_type":  "required"
+                                             },
+                                             {
+                                                 "version_id":  null,
+                                                 "project_id":  "40FYwb4z",
+                                                 "file_name":  null,
+                                                 "dependency_type":  "required"
+                                             },
+                                             {
+                                                 "version_id":  null,
+                                                 "project_id":  "HIuqnQpi",
+                                                 "file_name":  null,
+                                                 "dependency_type":  "required"
+                                             },
+                                             {
+                                                 "version_id":  null,
+                                                 "project_id":  "s9gIPDom",
+                                                 "file_name":  null,
+                                                 "dependency_type":  "optional"
+                                             },
+                                             {
+                                                 "version_id":  null,
+                                                 "project_id":  "vvuO3ImH",
+                                                 "file_name":  null,
+                                                 "dependency_type":  "required"
+                                             }
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "*",
+                                                          "modId":  "forge"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.20.1]",
+                                                          "modId":  "minecraft"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[5.8.0,)",
+                                                          "modId":  "curios"
+                                                      },
+                                                      {
+                                                          "versionRange":  "*",
+                                                          "modId":  "caelus"
+                                                      },
+                                                      {
+                                                          "versionRange":  "*",
+                                                          "modId":  "resourcefulconfig"
+                                                      },
+                                                      {
+                                                          "versionRange":  "*",
+                                                          "modId":  "commonnetworking"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.19.2",
+                     "loader":  "forge",
+                     "loaderVersion":  "43.3.0",
+                     "project":  "patchouli",
+                     "projectId":  "nU0bVIaL",
+                     "version":  "1.19.2-77-forge",
+                     "versionId":  "62ztr7HA",
+                     "versionType":  "release",
+                     "modId":  "patchouli",
+                     "modVersion":  "1.19.2-77",
+                     "filename":  "Patchouli-1.19.2-77.jar",
+                     "relativePath":  "mods/1.19.2-forge/Patchouli-1.19.2-77.jar",
+                     "projectUrl":  "https://modrinth.com/mod/patchouli",
+                     "versionUrl":  "https://modrinth.com/mod/patchouli/version/62ztr7HA",
+                     "sourceUrl":  "https://github.com/VazkiiMods/Patchouli/",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/nU0bVIaL/versions/62ztr7HA/Patchouli-1.19.2-77.jar",
+                     "sha1":  "cfccf39046a5d375647c6b85d8191b76bbd5f9d6",
+                     "sha512":  "0be48af1a47b76beb5429740e380f8ae215193e1df95a9a87ff038c2fd820de9c5c01dac94618b624482fb1421698bfb8ec811401c252a0c168f1b07abaa9eb8",
+                     "sha256":  "ac3310decfc55493bd5b07da1ffb000f6be7a6cc24b3112088263d4cc64d100a",
+                     "requiredVersionIds":  [
+
+                                            ],
+                     "apiDependencies":  [
+
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "[43.0.11,)",
+                                                          "modId":  "forge"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.20.1",
+                     "loader":  "forge",
+                     "loaderVersion":  "47.3.0",
+                     "project":  "patchouli",
+                     "projectId":  "nU0bVIaL",
+                     "version":  "1.20.1-85-forge",
+                     "versionId":  "94dtOLgZ",
+                     "versionType":  "release",
+                     "modId":  "patchouli",
+                     "modVersion":  "1.20.1-85-FORGE",
+                     "filename":  "Patchouli-1.20.1-85-FORGE.jar",
+                     "relativePath":  "mods/1.20.1-forge/Patchouli-1.20.1-85-FORGE.jar",
+                     "projectUrl":  "https://modrinth.com/mod/patchouli",
+                     "versionUrl":  "https://modrinth.com/mod/patchouli/version/94dtOLgZ",
+                     "sourceUrl":  "https://github.com/VazkiiMods/Patchouli/",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/nU0bVIaL/versions/94dtOLgZ/Patchouli-1.20.1-85-FORGE.jar",
+                     "sha1":  "d4614507d6e4c7cb464bba5eca891978272062ef",
+                     "sha512":  "15aedda4efcc553d5e3c83aa867b62554bc2fab298b43f55ed324e10507a3605f0ec2c59c01476e6d80b2a49275ef080142e43a6e663f9463b62f520960fc203",
+                     "sha256":  "05f7b5d52f6b8f0fd7f8b4822fa07a192d1394d83a264309c9d221d6d4fd21c5",
+                     "requiredVersionIds":  [
+
+                                            ],
+                     "apiDependencies":  [
+
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "[47.1.3,)",
+                                                          "modId":  "forge"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.20.1,1.21)",
+                                                          "modId":  "minecraft"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.18.2",
+                     "loader":  "forge",
+                     "loaderVersion":  "40.2.17",
+                     "project":  "patchouli",
+                     "projectId":  "nU0bVIaL",
+                     "version":  "1.18.2-71.1-forge",
+                     "versionId":  "VReLlKMv",
+                     "versionType":  "release",
+                     "modId":  "patchouli",
+                     "modVersion":  "1.18.2-71.1",
+                     "filename":  "Patchouli-1.18.2-71.1.jar",
+                     "relativePath":  "mods/1.18.2-forge/Patchouli-1.18.2-71.1.jar",
+                     "projectUrl":  "https://modrinth.com/mod/patchouli",
+                     "versionUrl":  "https://modrinth.com/mod/patchouli/version/VReLlKMv",
+                     "sourceUrl":  "https://github.com/VazkiiMods/Patchouli/",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/nU0bVIaL/versions/1.18.2-71.1-forge/Patchouli-1.18.2-71.1.jar",
+                     "sha1":  "89e1aa7994794a3476ef6de31461eb1ce78da02d",
+                     "sha512":  "ff5ca0df84c42dc2334269b1faf2020270b1f5aed12fc3ef18c749068257f488918918b18f92d12ebd65fd32dc305a513019a5856395ab562db0daf9ef6d4f7a",
+                     "sha256":  "1bcd352f81124b24832b536b62c138663682527886d4aaced595e7baa50e3ebb",
+                     "requiredVersionIds":  [
+
+                                            ],
+                     "apiDependencies":  [
+
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "[40.1.51,)",
+                                                          "modId":  "forge"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.19.2",
+                     "loader":  "forge",
+                     "loaderVersion":  "43.3.0",
+                     "project":  "cloth-config",
+                     "projectId":  "9s6osm5g",
+                     "version":  "8.3.103+forge",
+                     "versionId":  "EUyHCmUW",
+                     "versionType":  "release",
+                     "modId":  "cloth_config",
+                     "modVersion":  "8.3.103",
+                     "filename":  "cloth-config-8.3.103-forge.jar",
+                     "relativePath":  "mods/1.19.2-forge/cloth-config-8.3.103-forge.jar",
+                     "projectUrl":  "https://modrinth.com/mod/cloth-config",
+                     "versionUrl":  "https://modrinth.com/mod/cloth-config/version/EUyHCmUW",
+                     "sourceUrl":  "https://github.com/shedaniel/ClothConfig/",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/9s6osm5g/versions/EUyHCmUW/cloth-config-8.3.103-forge.jar",
+                     "sha1":  "f328e96b7cbe94fa73e1421a72959296e7698c5d",
+                     "sha512":  "8a69e844d29dcfbddcc9ce07cbde84b2a147a9f368d075bcc01717af3b4aa77710c80835124e8fd508db2b9d326f7f157eb91d3fb308e2da9fd625d1fc617ffd",
+                     "sha256":  "46e6008ca40a1b76e07c3b474bd5b0ab26e8da301b61b2f9cb23a3ed70a1c634",
+                     "requiredVersionIds":  [
+
+                                            ],
+                     "apiDependencies":  [
+
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "[41.0.94,)",
+                                                          "modId":  "forge"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.20.1",
+                     "loader":  "forge",
+                     "loaderVersion":  "47.3.0",
+                     "project":  "caelus",
+                     "projectId":  "40FYwb4z",
+                     "version":  "3.2.0+1.20.1",
+                     "versionId":  "mRry0DgY",
+                     "versionType":  "release",
+                     "modId":  "caelus",
+                     "modVersion":  "3.2.0+1.20.1",
+                     "filename":  "caelus-forge-3.2.0+1.20.1.jar",
+                     "relativePath":  "mods/1.20.1-forge/caelus-forge-3.2.0+1.20.1.jar",
+                     "projectUrl":  "https://modrinth.com/mod/caelus",
+                     "versionUrl":  "https://modrinth.com/mod/caelus/version/mRry0DgY",
+                     "sourceUrl":  "https://github.com/TheIllusiveC4/Caelus",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/40FYwb4z/versions/mRry0DgY/caelus-forge-3.2.0%2B1.20.1.jar",
+                     "sha1":  "d14e8ee892d4d8764f523ad0e89bdcfc061fb007",
+                     "sha512":  "906baad404c33288d8daf8937bc6a85d3bcc03db67a4a68395b8f01eea57f773420ff97919aadb08a7618b62b0c6c3db72270f9c3af836b822385464f509cf78",
+                     "sha256":  "43cabe35f0618c0bd01af02e7568ca6f15fd32bb6a90d04c9898bb01e8dc1e81",
+                     "requiredVersionIds":  [
+
+                                            ],
+                     "apiDependencies":  [
+
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "[46,)",
+                                                          "modId":  "forge"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.20,1.21)",
+                                                          "modId":  "minecraft"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.20.1",
+                     "loader":  "forge",
+                     "loaderVersion":  "47.3.0",
+                     "project":  "advanced-netherite",
+                     "projectId":  "CFX9ftUJ",
+                     "version":  "forge-2.1.3-mc1.20.1",
+                     "versionId":  "DW4je0EN",
+                     "versionType":  "release",
+                     "modId":  "advancednetherite",
+                     "modVersion":  "2.1.3",
+                     "filename":  "advancednetherite-forge-2.1.3-1.20.1.jar",
+                     "relativePath":  "mods/1.20.1-forge/advancednetherite-forge-2.1.3-1.20.1.jar",
+                     "projectUrl":  "https://modrinth.com/mod/advanced-netherite",
+                     "versionUrl":  "https://modrinth.com/mod/advanced-netherite/version/DW4je0EN",
+                     "sourceUrl":  "https://github.com/Autovw/AdvancedNetherite",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/CFX9ftUJ/versions/DW4je0EN/advancednetherite-forge-2.1.3-1.20.1.jar",
+                     "sha1":  "2a4ee907bcdd37f133fa07a15cf1346871d1ec9a",
+                     "sha512":  "6cd1e7bbd99a1137b0a31439569fcbfbac2932c987307325db92018d91ebd38d9dd7a4b1064ecdcd5f60ee9278bb0c9da2265b1c20fdba8c73a365f88b025e2a",
+                     "sha256":  "ed5098d62b7af9205b2b326a96fd8c02c99a77c6a35dad641a7ecfaaccaa66ff",
+                     "requiredVersionIds":  [
+
+                                            ],
+                     "apiDependencies":  [
+
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "[47.0.0,)",
+                                                          "modId":  "forge"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.20.1]",
+                                                          "modId":  "minecraft"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.18.2",
+                     "loader":  "forge",
+                     "loaderVersion":  "40.2.17",
+                     "project":  "cloth-config",
+                     "projectId":  "9s6osm5g",
+                     "version":  "6.5.102",
+                     "versionId":  "ZbWG3eJW",
+                     "versionType":  "release",
+                     "modId":  "cloth_config",
+                     "modVersion":  "6.5.102",
+                     "filename":  "cloth-config-6.5.102-forge.jar",
+                     "relativePath":  "mods/1.18.2-forge/cloth-config-6.5.102-forge.jar",
+                     "projectUrl":  "https://modrinth.com/mod/cloth-config",
+                     "versionUrl":  "https://modrinth.com/mod/cloth-config/version/ZbWG3eJW",
+                     "sourceUrl":  "https://github.com/shedaniel/ClothConfig/",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/9s6osm5g/versions/ZbWG3eJW/cloth-config-6.5.102-forge.jar",
+                     "sha1":  "9e4f45433e80eeeb634cac50549619f183f6b3a8",
+                     "sha512":  "a278313471cd9563f716059cdab2fa3be11d002f44d1ffd57d025dfec336e3fe7dd2876501fb0ff5bc159c340e9ba5439a57d6d0607bcfda1a650f14e9852c4d",
+                     "sha256":  "aee2f4c2f184c0ae2d2517d65f4698a7dea6089dd8c7761a9247cf0bef942d48",
+                     "requiredVersionIds":  [
+
+                                            ],
+                     "apiDependencies":  [
+
+                                         ],
+                     "jarMandatoryDependencies":  [
+
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.21.1",
+                     "loader":  "neoforge",
+                     "loaderVersion":  "21.1.65",
+                     "project":  "cloth-config",
+                     "projectId":  "9s6osm5g",
+                     "version":  "15.0.140+neoforge",
+                     "versionId":  "izKINKFg",
+                     "versionType":  "release",
+                     "modId":  "cloth_config",
+                     "modVersion":  "15.0.140",
+                     "filename":  "cloth-config-15.0.140-neoforge.jar",
+                     "relativePath":  "mods/1.21.1-neoforge/cloth-config-15.0.140-neoforge.jar",
+                     "projectUrl":  "https://modrinth.com/mod/cloth-config",
+                     "versionUrl":  "https://modrinth.com/mod/cloth-config/version/izKINKFg",
+                     "sourceUrl":  "https://github.com/shedaniel/ClothConfig/",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/9s6osm5g/versions/izKINKFg/cloth-config-15.0.140-neoforge.jar",
+                     "sha1":  "c3e5733ba4503b102589a026000fd5ce0212f6f2",
+                     "sha512":  "aaf9b010955b8cd294e5a92f069985b18729fd5e2cf22d351f1dff9680f15488688803ec41e77e941cbde130ceb535014ca4c868047d80ab69c2d508e216654d",
+                     "sha256":  "65e722e0d98431a07c45f8bdd8d529a217cc8c175fde1740248bd5c1b4f3c0d4",
+                     "requiredVersionIds":  [
+
+                                            ],
+                     "apiDependencies":  [
+
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "[21.0.110-beta,)",
+                                                          "modId":  "neoforge"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.20.1",
+                     "loader":  "forge",
+                     "loaderVersion":  "47.3.0",
+                     "project":  "enigmatic-legacy",
+                     "projectId":  "IpUWAlqM",
+                     "version":  "2.30.1",
+                     "versionId":  "yUuDfmnk",
+                     "versionType":  "release",
+                     "modId":  "enigmaticlegacy",
+                     "modVersion":  "2.30.1",
+                     "filename":  "EnigmaticLegacy-2.30.1.jar",
+                     "relativePath":  "mods/1.20.1-forge/EnigmaticLegacy-2.30.1.jar",
+                     "projectUrl":  "https://modrinth.com/mod/enigmatic-legacy",
+                     "versionUrl":  "https://modrinth.com/mod/enigmatic-legacy/version/yUuDfmnk",
+                     "sourceUrl":  "https://github.com/Aizistral-Studios/Enigmatic-Legacy",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/IpUWAlqM/versions/yUuDfmnk/EnigmaticLegacy-2.30.1.jar",
+                     "sha1":  "8aa671114aee6d8ec1e3aac5c13dab84224bf2bb",
+                     "sha512":  "f9b8807349f6c65b7ca88fd58b229b11da4be1091f6cb364781babd3813b2649d4cf3f4904fd60328e4b82561ed14d1b1aae97eac40909f3d3914277a92b888b",
+                     "sha256":  "cf8488350ccb03fdc5e1f3508a30137234b6dc85ea258b9ee37ceaa485f34024",
+                     "requiredVersionIds":  [
+                                                "94dtOLgZ",
+                                                "IPQlZkz1",
+                                                "mRry0DgY"
+                                            ],
+                     "apiDependencies":  [
+                                             {
+                                                 "version_id":  null,
+                                                 "project_id":  "nU0bVIaL",
+                                                 "file_name":  null,
+                                                 "dependency_type":  "required"
+                                             },
+                                             {
+                                                 "version_id":  null,
+                                                 "project_id":  "40FYwb4z",
+                                                 "file_name":  null,
+                                                 "dependency_type":  "required"
+                                             },
+                                             {
+                                                 "version_id":  null,
+                                                 "project_id":  "vvuO3ImH",
+                                                 "file_name":  null,
+                                                 "dependency_type":  "required"
+                                             }
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "[43.1.0,)",
+                                                          "modId":  "forge"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.20,1.21)",
+                                                          "modId":  "minecraft"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.19.2-5.1.1.0,)",
+                                                          "modId":  "curios"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.19.2-77,)",
+                                                          "modId":  "patchouli"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.19.2-3.0.0.6,)",
+                                                          "modId":  "caelus"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.16.5",
+                     "loader":  "forge",
+                     "loaderVersion":  "36.2.39",
+                     "project":  "caelus",
+                     "projectId":  "40FYwb4z",
+                     "version":  "1.16.5-2.1.3.2",
+                     "versionId":  "mCcOcJC8",
+                     "versionType":  "release",
+                     "modId":  "caelus",
+                     "modVersion":  "1.16.5-2.1.3.2",
+                     "filename":  "caelus-forge-1.16.5-2.1.3.2.jar",
+                     "relativePath":  "mods/1.16.5-forge/caelus-forge-1.16.5-2.1.3.2.jar",
+                     "projectUrl":  "https://modrinth.com/mod/caelus",
+                     "versionUrl":  "https://modrinth.com/mod/caelus/version/mCcOcJC8",
+                     "sourceUrl":  "https://github.com/TheIllusiveC4/Caelus",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/40FYwb4z/versions/mCcOcJC8/caelus-forge-1.16.5-2.1.3.2.jar",
+                     "sha1":  "034f5163304a9e3d931faa0a03cb55d9446480b9",
+                     "sha512":  "ee8e06ca004f4c04a235fa63c78895ea9fbd252a3c17726a287023fdba969f5942520e3f4a5b8984c529a28eec906c901c9f3081847030f931fb14266dc3bc24",
+                     "sha256":  "f8536bca6f45ab90388fe49b37d8612f2d27d3213d1df6d0309830cb5f99da48",
+                     "requiredVersionIds":  [
+
+                                            ],
+                     "apiDependencies":  [
+
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "[35,)",
+                                                          "modId":  "forge"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.16.4,1.17)",
+                                                          "modId":  "minecraft"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.18.2",
+                     "loader":  "forge",
+                     "loaderVersion":  "40.2.17",
+                     "project":  "enigmatic-legacy",
+                     "projectId":  "IpUWAlqM",
+                     "version":  "2.25.0",
+                     "versionId":  "WxrW0zJe",
+                     "versionType":  "release",
+                     "modId":  "enigmaticlegacy",
+                     "modVersion":  "2.25.0",
+                     "filename":  "EnigmaticLegacy-2.25.0.jar",
+                     "relativePath":  "mods/1.18.2-forge/EnigmaticLegacy-2.25.0.jar",
+                     "projectUrl":  "https://modrinth.com/mod/enigmatic-legacy",
+                     "versionUrl":  "https://modrinth.com/mod/enigmatic-legacy/version/WxrW0zJe",
+                     "sourceUrl":  "https://github.com/Aizistral-Studios/Enigmatic-Legacy",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/IpUWAlqM/versions/WxrW0zJe/EnigmaticLegacy-2.25.0.jar",
+                     "sha1":  "1e94bb00eea23485e298ad428844923c0386a2a0",
+                     "sha512":  "0fc939366bb3478b1eb1c5a4f705eea1b692399ef114851372701bcdc65e2e40d9af64d5eb8debba6b7a1d549350af6c5e878ffda5bba367a15d1c94b95f3bd6",
+                     "sha256":  "84e4e1b697bd5827cde0401cb0dc45fc120d810ca33c960f5bae1d2aeaf31e39",
+                     "requiredVersionIds":  [
+                                                "oGzi6gyV",
+                                                "sVuCrC2E",
+                                                "VReLlKMv"
+                                            ],
+                     "apiDependencies":  [
+                                             {
+                                                 "version_id":  null,
+                                                 "project_id":  "nU0bVIaL",
+                                                 "file_name":  null,
+                                                 "dependency_type":  "required"
+                                             }
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "[33,)",
+                                                          "modId":  "forge"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.18,1.19)",
+                                                          "modId":  "minecraft"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.18.2-5.0.6.3,)",
+                                                          "modId":  "curios"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.18.2-71.1,)",
+                                                          "modId":  "patchouli"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.18.1-3.0.0.2,)",
+                                                          "modId":  "caelus"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.19.2",
+                     "loader":  "forge",
+                     "loaderVersion":  "43.3.0",
+                     "project":  "better-combat",
+                     "projectId":  "5sy6g3kz",
+                     "version":  "1.7.1+1.19-forge",
+                     "versionId":  "d51cgiPN",
+                     "versionType":  "beta",
+                     "modId":  "bettercombat",
+                     "modVersion":  "1.7.1+1.19",
+                     "filename":  "bettercombat-forge-1.7.1+1.19.jar",
+                     "relativePath":  "mods/1.19.2-forge/bettercombat-forge-1.7.1+1.19.jar",
+                     "projectUrl":  "https://modrinth.com/mod/better-combat",
+                     "versionUrl":  "https://modrinth.com/mod/better-combat/version/d51cgiPN",
+                     "sourceUrl":  "https://github.com/ZsoltMolnarrr/BetterCombat",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/5sy6g3kz/versions/d51cgiPN/bettercombat-forge-1.7.1%2B1.19.jar",
+                     "sha1":  "d56b38f8d809389b579f65dee51977037d313b60",
+                     "sha512":  "ee68d89032010533475c9dca02a249bb95c47bf4f157ee2d605caf36f24b9f1edeeb1acb54d6e39d062f04922828c914051c5addb9fef78155d4ad32d292e7cf",
+                     "sha256":  "a5f36a6bb3d8fb6c25439aa8e0c03248053f30e633c832a3ee29946580a5d72b",
+                     "requiredVersionIds":  [
+                                                "EUyHCmUW",
+                                                "zYLNRVUQ"
+                                            ],
+                     "apiDependencies":  [
+                                             {
+                                                 "version_id":  "EUyHCmUW",
+                                                 "project_id":  "9s6osm5g",
+                                                 "file_name":  null,
+                                                 "dependency_type":  "required"
+                                             },
+                                             {
+                                                 "version_id":  null,
+                                                 "project_id":  "gedNE4y2",
+                                                 "file_name":  null,
+                                                 "dependency_type":  "required"
+                                             }
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "[39,)",
+                                                          "modId":  "forge"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.19,)",
+                                                          "modId":  "minecraft"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[0.9.9,)",
+                                                          "modId":  "playeranimator"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[8.0.0,)",
+                                                          "modId":  "cloth_config"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.20.1",
+                     "loader":  "forge",
+                     "loaderVersion":  "47.3.0",
+                     "project":  "common-network",
+                     "projectId":  "HIuqnQpi",
+                     "version":  "1.0.6-1.20.1",
+                     "versionId":  "TkOARDQh",
+                     "versionType":  "release",
+                     "modId":  "commonnetworking",
+                     "modVersion":  "1.0.6-1.20.1",
+                     "filename":  "common-networking-forge-1.0.6-1.20.1.jar",
+                     "relativePath":  "mods/1.20.1-forge/common-networking-forge-1.0.6-1.20.1.jar",
+                     "projectUrl":  "https://modrinth.com/mod/common-network",
+                     "versionUrl":  "https://modrinth.com/mod/common-network/version/TkOARDQh",
+                     "sourceUrl":  "https://github.com/mysticdrew/common-networking",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/HIuqnQpi/versions/TkOARDQh/common-networking-forge-1.0.6-1.20.1.jar",
+                     "sha1":  "68dae58372f8332d7b8596e908f85433c0e0cb0d",
+                     "sha512":  "91395315ec984af809036fd1ca39d98d0f0dca76a4a6f76876f0a818725965bba22c41f6fcb1fb5d4151c51eaa41e682f4eaae05c99ba1e210fc0ec4030a32a6",
+                     "sha256":  "43633c5c2d57c399534ddfe3ff9cf68ad6d9ec118c083fca457466fcd884de97",
+                     "requiredVersionIds":  [
+
+                                            ],
+                     "apiDependencies":  [
+
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "[45,)",
+                                                          "modId":  "forge"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.19.4,)",
+                                                          "modId":  "minecraft"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.21.1",
+                     "loader":  "neoforge",
+                     "loaderVersion":  "21.1.65",
+                     "project":  "playeranimator",
+                     "projectId":  "gedNE4y2",
+                     "version":  "2.0.4+1.21.1-forge",
+                     "versionId":  "HJZB6bmA",
+                     "versionType":  "beta",
+                     "modId":  "playeranimator",
+                     "modVersion":  "2.0.4+1.21.1",
+                     "filename":  "player-animation-lib-forge-2.0.4+1.21.1.jar",
+                     "relativePath":  "mods/1.21.1-neoforge/player-animation-lib-forge-2.0.4+1.21.1.jar",
+                     "projectUrl":  "https://modrinth.com/mod/playeranimator",
+                     "versionUrl":  "https://modrinth.com/mod/playeranimator/version/HJZB6bmA",
+                     "sourceUrl":  "https://github.com/KosmX/fabricPlayerAnimation",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/gedNE4y2/versions/HJZB6bmA/player-animation-lib-forge-2.0.4%2B1.21.1.jar",
+                     "sha1":  "05be8ddcc78532b9a5520c718edc6c971cd0057c",
+                     "sha512":  "fc00450fb6c95ec1779021bdc726122dacb5915c6baddaacc981cd221b01b8db35f2a0dfde5d6fa6766d877266dc82f58854f571ea53cc5c4d468b80e1548a5f",
+                     "sha256":  "dbe5de45f5cd60c0e5e47af14e6d564534a98456e973cf670cb881f6938eee92",
+                     "requiredVersionIds":  [
+
+                                            ],
+                     "apiDependencies":  [
+                                             {
+                                                 "version_id":  null,
+                                                 "project_id":  "aRnIEV0F",
+                                                 "file_name":  null,
+                                                 "dependency_type":  "optional"
+                                             }
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "[1.21,1.21.2)",
+                                                          "modId":  "minecraft"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.21.1",
+                     "loader":  "neoforge",
+                     "loaderVersion":  "21.1.65",
+                     "project":  "resourceful-config",
+                     "projectId":  "M1953qlQ",
+                     "version":  "3.0.11",
+                     "versionId":  "lSbyRD6v",
+                     "versionType":  "release",
+                     "modId":  "resourcefulconfig",
+                     "modVersion":  "3.0.11",
+                     "filename":  "resourcefulconfig-neoforge-1.21-3.0.11.jar",
+                     "relativePath":  "mods/1.21.1-neoforge/resourcefulconfig-neoforge-1.21-3.0.11.jar",
+                     "projectUrl":  "https://modrinth.com/mod/resourceful-config",
+                     "versionUrl":  "https://modrinth.com/mod/resourceful-config/version/lSbyRD6v",
+                     "sourceUrl":  "https://github.com/Team-Resourceful/Resourceful-Config",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/M1953qlQ/versions/lSbyRD6v/resourcefulconfig-neoforge-1.21-3.0.11.jar",
+                     "sha1":  "6bf2b6ea9c071c00a2abcdc552667fb6f7d21031",
+                     "sha512":  "8e4ccc37732b3f5190e7e98df34dbc1339fe614494fcabf1aeaeab9ad8e5993522964b51be31882000c08c48a6d0096b5458364415bb81f2b2b775a7daf2eb87",
+                     "sha256":  "25b4f3502d25c535004acd4a9420272fff01d2f1e2df352239fec93fdab005d4",
+                     "requiredVersionIds":  [
+
+                                            ],
+                     "apiDependencies":  [
+
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "[20.5,)",
+                                                          "modId":  "neoforge"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.20.5,)",
+                                                          "modId":  "minecraft"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.21.1",
+                     "loader":  "neoforge",
+                     "loaderVersion":  "21.1.65",
+                     "project":  "common-network",
+                     "projectId":  "HIuqnQpi",
+                     "version":  "1.0.21-1.21.1",
+                     "versionId":  "pR7AeZk3",
+                     "versionType":  "release",
+                     "modId":  "commonnetworking",
+                     "modVersion":  "1.0.21-1.21.1",
+                     "filename":  "common-networking-neoforge-1.0.21-1.21.1.jar",
+                     "relativePath":  "mods/1.21.1-neoforge/common-networking-neoforge-1.0.21-1.21.1.jar",
+                     "projectUrl":  "https://modrinth.com/mod/common-network",
+                     "versionUrl":  "https://modrinth.com/mod/common-network/version/pR7AeZk3",
+                     "sourceUrl":  "https://github.com/mysticdrew/common-networking",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/HIuqnQpi/versions/pR7AeZk3/common-networking-neoforge-1.0.21-1.21.1.jar",
+                     "sha1":  "f55722a4278997e7ef278f4390a31e848f7beea7",
+                     "sha512":  "2797cb78554fb413276d700c1021c2c0b93c30a7cbd2c47fd6f88578a99788c37f1a5241165fafc61e114377ec328f9155db77fc8975c9c66416ff7081980f31",
+                     "sha256":  "289bce2316fa0584bd0867322751da8bcbc9ac3ab991a2deea4fa140a13e4f3e",
+                     "requiredVersionIds":  [
+
+                                            ],
+                     "apiDependencies":  [
+
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "[20.4.70-beta,)",
+                                                          "modId":  "neoforge"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.20.5,)",
+                                                          "modId":  "minecraft"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.19.2",
+                     "loader":  "forge",
+                     "loaderVersion":  "43.3.0",
+                     "project":  "curios",
+                     "projectId":  "vvuO3ImH",
+                     "version":  "1.19.2-5.1.6.4",
+                     "versionId":  "uUAY30IE",
+                     "versionType":  "release",
+                     "modId":  "curios",
+                     "modVersion":  "1.19.2-5.1.6.4",
+                     "filename":  "curios-forge-1.19.2-5.1.6.4.jar",
+                     "relativePath":  "mods/1.19.2-forge/curios-forge-1.19.2-5.1.6.4.jar",
+                     "projectUrl":  "https://modrinth.com/mod/curios",
+                     "versionUrl":  "https://modrinth.com/mod/curios/version/uUAY30IE",
+                     "sourceUrl":  "https://github.com/TheIllusiveC4/Curios",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/vvuO3ImH/versions/uUAY30IE/curios-forge-1.19.2-5.1.6.4.jar",
+                     "sha1":  "7593a8409f115ade3662c5827b3f76378896ae6a",
+                     "sha512":  "533ed2eb624b503721c99e804e1f1f0cf6adad417c13eab6a0d3330aa84238766ee6fd59b4ade8fadce920ee048ecce13d96461d5de64b10596ee9767bda40e1",
+                     "sha256":  "8f0d645f03f5472a823597a1fe8369aedca89b67058f1cfa9786a0a04767afc6",
+                     "requiredVersionIds":  [
+
+                                            ],
+                     "apiDependencies":  [
+
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "[41.0.94,)",
+                                                          "modId":  "forge"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.19,1.20)",
+                                                          "modId":  "minecraft"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.21.1",
+                     "loader":  "neoforge",
+                     "loaderVersion":  "21.1.65",
+                     "project":  "advanced-netherite",
+                     "projectId":  "CFX9ftUJ",
+                     "version":  "neoforge-2.3.1-mc1.21.1",
+                     "versionId":  "tsu9b2K9",
+                     "versionType":  "release",
+                     "modId":  "advancednetherite",
+                     "modVersion":  "2.3.1",
+                     "filename":  "advancednetherite-neoforge-2.3.1-1.21.1.jar",
+                     "relativePath":  "mods/1.21.1-neoforge/advancednetherite-neoforge-2.3.1-1.21.1.jar",
+                     "projectUrl":  "https://modrinth.com/mod/advanced-netherite",
+                     "versionUrl":  "https://modrinth.com/mod/advanced-netherite/version/tsu9b2K9",
+                     "sourceUrl":  "https://github.com/Autovw/AdvancedNetherite",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/CFX9ftUJ/versions/tsu9b2K9/advancednetherite-neoforge-2.3.1-1.21.1.jar",
+                     "sha1":  "99003aafa635f316bdcf2db4a70989890a4d944d",
+                     "sha512":  "e5750002f1780b6c7effd0258f6ca37d0f4a8db134c172b9ff54dcb9d0a83e6bd2452bd449ace8aefc9d425d178709376d2c82c7b424cb61b3a58e9952056f08",
+                     "sha256":  "ae0ec0a574d4ebd0644b37913c65a6f92ea20a0fe7e3d3799fd872cfe01a278a",
+                     "requiredVersionIds":  [
+
+                                            ],
+                     "apiDependencies":  [
+
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "[21.1.1,)",
+                                                          "modId":  "neoforge"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.21.1]",
+                                                          "modId":  "minecraft"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.16.5",
+                     "loader":  "forge",
+                     "loaderVersion":  "36.2.39",
+                     "project":  "enigmatic-legacy",
+                     "projectId":  "IpUWAlqM",
+                     "version":  "2.11.12",
+                     "versionId":  "MqtVLa6V",
+                     "versionType":  "release",
+                     "modId":  "enigmaticlegacy",
+                     "modVersion":  "2.11.12",
+                     "filename":  "EnigmaticLegacy-2.11.12.jar",
+                     "relativePath":  "mods/1.16.5-forge/EnigmaticLegacy-2.11.12.jar",
+                     "projectUrl":  "https://modrinth.com/mod/enigmatic-legacy",
+                     "versionUrl":  "https://modrinth.com/mod/enigmatic-legacy/version/MqtVLa6V",
+                     "sourceUrl":  "https://github.com/Aizistral-Studios/Enigmatic-Legacy",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/IpUWAlqM/versions/2.11.12/EnigmaticLegacy-2.11.12.jar",
+                     "sha1":  "71454ec586895fde296b594ced9c029833f27256",
+                     "sha512":  "d282ba502d6511705fabdd390ae9b0333a56dfa094f6e1f89fb71e54d2c22e8c44d6cb431769b358bf845170cfe8fb1febd14c8ccc501276b230f9c08a42a8f6",
+                     "sha256":  "6d831bd40f99b2112f42d168355da611389dfe48a1098c12f2302423b64d53e7",
+                     "requiredVersionIds":  [
+                                                "5qPuCFYD",
+                                                "swxCEODj"
+                                            ],
+                     "apiDependencies":  [
+                                             {
+                                                 "version_id":  "swxCEODj",
+                                                 "project_id":  "nU0bVIaL",
+                                                 "file_name":  null,
+                                                 "dependency_type":  "required"
+                                             }
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "[33,)",
+                                                          "modId":  "forge"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.16.2,1.17)",
+                                                          "modId":  "minecraft"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.16.3-4.0.2.0,)",
+                                                          "modId":  "curios"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.16-42,)",
+                                                          "modId":  "patchouli"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.21.1",
+                     "loader":  "neoforge",
+                     "loaderVersion":  "21.1.65",
+                     "project":  "curios",
+                     "projectId":  "vvuO3ImH",
+                     "version":  "9.5.1+1.21.1",
+                     "versionId":  "yohfFbgD",
+                     "versionType":  "release",
+                     "modId":  "curios",
+                     "modVersion":  "9.5.1+1.21.1",
+                     "filename":  "curios-neoforge-9.5.1+1.21.1.jar",
+                     "relativePath":  "mods/1.21.1-neoforge/curios-neoforge-9.5.1+1.21.1.jar",
+                     "projectUrl":  "https://modrinth.com/mod/curios",
+                     "versionUrl":  "https://modrinth.com/mod/curios/version/yohfFbgD",
+                     "sourceUrl":  "https://github.com/TheIllusiveC4/Curios",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/vvuO3ImH/versions/yohfFbgD/curios-neoforge-9.5.1%2B1.21.1.jar",
+                     "sha1":  "418fcd42e3a7844c9bdc71c9b6401fdb3894e0c4",
+                     "sha512":  "5981a267686b744e7e3c227f78cbcd5267c14ac6979a28e814695f4589273998563147207fef4a5cdb7cdbdc39797cd95d9e4abadb55869f18e02a38d0654ae5",
+                     "sha256":  "a45df2125c26219974aba7507ffc9afe7b83acc941a386af3faacb1cc0056fde",
+                     "requiredVersionIds":  [
+
+                                            ],
+                     "apiDependencies":  [
+
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "[21.1.60,)",
+                                                          "modId":  "neoforge"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.21, 1.22)",
+                                                          "modId":  "minecraft"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.18.2",
+                     "loader":  "forge",
+                     "loaderVersion":  "40.2.17",
+                     "project":  "curios",
+                     "projectId":  "vvuO3ImH",
+                     "version":  "1.18.2-5.0.9.2",
+                     "versionId":  "sVuCrC2E",
+                     "versionType":  "release",
+                     "modId":  "curios",
+                     "modVersion":  "1.18.2-5.0.9.2",
+                     "filename":  "curios-forge-1.18.2-5.0.9.2.jar",
+                     "relativePath":  "mods/1.18.2-forge/curios-forge-1.18.2-5.0.9.2.jar",
+                     "projectUrl":  "https://modrinth.com/mod/curios",
+                     "versionUrl":  "https://modrinth.com/mod/curios/version/sVuCrC2E",
+                     "sourceUrl":  "https://github.com/TheIllusiveC4/Curios",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/vvuO3ImH/versions/sVuCrC2E/curios-forge-1.18.2-5.0.9.2.jar",
+                     "sha1":  "80af44f216a7dd4787abb8309939325d07b1672b",
+                     "sha512":  "c171d7c1c27595dddd1c58f47bdc1f76a1d229d4e830b642cb3531b06281a74bc625deb1d77d5708b73bd04a760e5f3ba40ac087b2febb58be7559243f6a7439",
+                     "sha256":  "fdb905c7c24e2fe4326c3f4846d79b174687396fac904d822a806e13c9baa981",
+                     "requiredVersionIds":  [
+
+                                            ],
+                     "apiDependencies":  [
+
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "[40.0.18,)",
+                                                          "modId":  "forge"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.18.2,1.19)",
+                                                          "modId":  "minecraft"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.16.5",
+                     "loader":  "forge",
+                     "loaderVersion":  "36.2.39",
+                     "project":  "advanced-netherite",
+                     "projectId":  "CFX9ftUJ",
+                     "version":  "forge-1.12.4-1.16.5",
+                     "versionId":  "Bi7nYNRv",
+                     "versionType":  "release",
+                     "modId":  "advancednetherite",
+                     "modVersion":  "1.12.4",
+                     "filename":  "advancednetherite-1.12.4-1.16.5.jar",
+                     "relativePath":  "mods/1.16.5-forge/advancednetherite-1.12.4-1.16.5.jar",
+                     "projectUrl":  "https://modrinth.com/mod/advanced-netherite",
+                     "versionUrl":  "https://modrinth.com/mod/advanced-netherite/version/Bi7nYNRv",
+                     "sourceUrl":  "https://github.com/Autovw/AdvancedNetherite",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/CFX9ftUJ/versions/forge-1.12.4-1.16.5/advancednetherite-1.12.4-1.16.5.jar",
+                     "sha1":  "242794780adcc8fb1c325aa91b200624a85b28ad",
+                     "sha512":  "536604ecfa22c674f7eb46cece7f7c79559e017f26a27af987beb7ec866723cd94718d22e19721ec386780fcddb91a4d35ab1f70a8431d9cf4a8fe59d7eee4a3",
+                     "sha256":  "8eb89b618f9eee8efa9547bcb4516b86c82413be98c47a1764323b2225b0c36f",
+                     "requiredVersionIds":  [
+
+                                            ],
+                     "apiDependencies":  [
+
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "[36,)",
+                                                          "modId":  "forge"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.16.5,1.17)",
+                                                          "modId":  "minecraft"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.19.2",
+                     "loader":  "forge",
+                     "loaderVersion":  "43.3.0",
+                     "project":  "advanced-netherite",
+                     "projectId":  "CFX9ftUJ",
+                     "version":  "forge-1.14.7-mc1.19.2",
+                     "versionId":  "VoNMv3pI",
+                     "versionType":  "release",
+                     "modId":  "advancednetherite",
+                     "modVersion":  "1.14.7",
+                     "filename":  "advancednetherite-1.14.7-1.19.2.jar",
+                     "relativePath":  "mods/1.19.2-forge/advancednetherite-1.14.7-1.19.2.jar",
+                     "projectUrl":  "https://modrinth.com/mod/advanced-netherite",
+                     "versionUrl":  "https://modrinth.com/mod/advanced-netherite/version/VoNMv3pI",
+                     "sourceUrl":  "https://github.com/Autovw/AdvancedNetherite",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/CFX9ftUJ/versions/VoNMv3pI/advancednetherite-1.14.7-1.19.2.jar",
+                     "sha1":  "f69b6631bcd490a48b8ade016225db25320d3c23",
+                     "sha512":  "ca2f907a6085bafd7c97d8903563d0cca9311241cce9ac3ab80df38312c0a2efaf6e3def201c48ad2c7ec4585d822bbc0141d112d21a742812f04b4882175b15",
+                     "sha256":  "ee976e6f07524e67d5c894f5cb11702eb384f0bf63d78b921936ec73b6caa998",
+                     "requiredVersionIds":  [
+
+                                            ],
+                     "apiDependencies":  [
+
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "[43.1.8,)",
+                                                          "modId":  "forge"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.19.2,1.20)",
+                                                          "modId":  "minecraft"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.18.2",
+                     "loader":  "forge",
+                     "loaderVersion":  "40.2.17",
+                     "project":  "advanced-netherite",
+                     "projectId":  "CFX9ftUJ",
+                     "version":  "forge-1.14.7-mc1.18.2",
+                     "versionId":  "hncu429t",
+                     "versionType":  "release",
+                     "modId":  "advancednetherite",
+                     "modVersion":  "1.14.7",
+                     "filename":  "advancednetherite-1.14.7-1.18.2.jar",
+                     "relativePath":  "mods/1.18.2-forge/advancednetherite-1.14.7-1.18.2.jar",
+                     "projectUrl":  "https://modrinth.com/mod/advanced-netherite",
+                     "versionUrl":  "https://modrinth.com/mod/advanced-netherite/version/hncu429t",
+                     "sourceUrl":  "https://github.com/Autovw/AdvancedNetherite",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/CFX9ftUJ/versions/hncu429t/advancednetherite-1.14.7-1.18.2.jar",
+                     "sha1":  "b169311570343affe39e26856d726130186668dc",
+                     "sha512":  "d6573e3e6e93095f6d95c42a724b9eaab7614392f1e7a87f14d4d596497683664b1475d8415b6bc756d54fe9d9bdf42b28706f1c83ab24684ae9b1bb7fff70fe",
+                     "sha256":  "93ded2934ae4e9cf1e3581cc540cdcceb9feeac4fa735ee063c2e7375f019add",
+                     "requiredVersionIds":  [
+
+                                            ],
+                     "apiDependencies":  [
+
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "[40.1.84,)",
+                                                          "modId":  "forge"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.18.2,1.19)",
+                                                          "modId":  "minecraft"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.20.1",
+                     "loader":  "forge",
+                     "loaderVersion":  "47.3.0",
+                     "project":  "curios",
+                     "projectId":  "vvuO3ImH",
+                     "version":  "5.14.1+1.20.1",
+                     "versionId":  "IPQlZkz1",
+                     "versionType":  "release",
+                     "modId":  "curios",
+                     "modVersion":  "5.14.1+1.20.1",
+                     "filename":  "curios-forge-5.14.1+1.20.1.jar",
+                     "relativePath":  "mods/1.20.1-forge/curios-forge-5.14.1+1.20.1.jar",
+                     "projectUrl":  "https://modrinth.com/mod/curios",
+                     "versionUrl":  "https://modrinth.com/mod/curios/version/IPQlZkz1",
+                     "sourceUrl":  "https://github.com/TheIllusiveC4/Curios",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/vvuO3ImH/versions/IPQlZkz1/curios-forge-5.14.1%2B1.20.1.jar",
+                     "sha1":  "452175b95ad3db6ff58bb8968f6bf7a9d1e0f480",
+                     "sha512":  "1373f95fd111c977db2f6adcef8e4eb486a2d926a3e17374692dee4ac3d65857de6446c16922b531aa5ace2c23c666a7fcc28c720b2917c1e04808d15648ba87",
+                     "sha256":  "1e817919a35b37cf30524aaec73f0ca5130452f23f168f844854df282eb8e51f",
+                     "requiredVersionIds":  [
+
+                                            ],
+                     "apiDependencies":  [
+
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "[46,)",
+                                                          "modId":  "forge"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.20,1.21)",
+                                                          "modId":  "minecraft"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.20.1",
+                     "loader":  "forge",
+                     "loaderVersion":  "47.3.0",
+                     "project":  "resourceful-config",
+                     "projectId":  "M1953qlQ",
+                     "version":  "2.1.3",
+                     "versionId":  "DERs8u7v",
+                     "versionType":  "release",
+                     "modId":  "resourcefulconfig",
+                     "modVersion":  "2.1.3",
+                     "filename":  "resourcefulconfig-forge-1.20.1-2.1.3.jar",
+                     "relativePath":  "mods/1.20.1-forge/resourcefulconfig-forge-1.20.1-2.1.3.jar",
+                     "projectUrl":  "https://modrinth.com/mod/resourceful-config",
+                     "versionUrl":  "https://modrinth.com/mod/resourceful-config/version/DERs8u7v",
+                     "sourceUrl":  "https://github.com/Team-Resourceful/Resourceful-Config",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/M1953qlQ/versions/DERs8u7v/resourcefulconfig-forge-1.20.1-2.1.3.jar",
+                     "sha1":  "597d40920dcc935f963842c817dcc4901862ab14",
+                     "sha512":  "2e05fe27529d00d7808a83dbe0c475a0fb96a20ebfd5c9767f4cc8dcd9a865e20a18de41fb9ed710e5cd2e0211c30303b43c1f22702af1d50ee7212ad83a54d3",
+                     "sha256":  "c404b9e5cf8595427a72d4ca6ee5730289168762b463f169be3ae5dfe3727ded",
+                     "requiredVersionIds":  [
+
+                                            ],
+                     "apiDependencies":  [
+
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "[46,)",
+                                                          "modId":  "forge"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.20,)",
+                                                          "modId":  "minecraft"
+                                                      }
+                                                  ]
+                 },
+                 {
+                     "minecraft":  "1.16.5",
+                     "loader":  "forge",
+                     "loaderVersion":  "36.2.39",
+                     "project":  "curios",
+                     "projectId":  "vvuO3ImH",
+                     "version":  "1.16.5-4.1.0.0",
+                     "versionId":  "5qPuCFYD",
+                     "versionType":  "release",
+                     "modId":  "curios",
+                     "modVersion":  "1.16.5-4.1.0.0",
+                     "filename":  "curios-forge-1.16.5-4.1.0.0.jar",
+                     "relativePath":  "mods/1.16.5-forge/curios-forge-1.16.5-4.1.0.0.jar",
+                     "projectUrl":  "https://modrinth.com/mod/curios",
+                     "versionUrl":  "https://modrinth.com/mod/curios/version/5qPuCFYD",
+                     "sourceUrl":  "https://github.com/TheIllusiveC4/Curios",
+                     "downloadUrl":  "https://cdn.modrinth.com/data/vvuO3ImH/versions/5qPuCFYD/curios-forge-1.16.5-4.1.0.0.jar",
+                     "sha1":  "5e2259e45877f3102a581b4b97a65355a0f9b36c",
+                     "sha512":  "05adb1e0a1ae2a8b904577aa7432019c45a39aee0fc06a73eb091a6e852ec4a40d1416140344c9c106a1919d305d99f783296ccec2c20d8b7ccb5f020ad70d33",
+                     "sha256":  "952a276d7a2c8fdef29794711b73bfa308e7fd96ec1e2d51750523456d9f892b",
+                     "requiredVersionIds":  [
+
+                                            ],
+                     "apiDependencies":  [
+
+                                         ],
+                     "jarMandatoryDependencies":  [
+                                                      {
+                                                          "versionRange":  "[34,)",
+                                                          "modId":  "forge"
+                                                      },
+                                                      {
+                                                          "versionRange":  "[1.16.3,1.17)",
+                                                          "modId":  "minecraft"
+                                                      }
+                                                  ]
+                 }
+             ],
+    "profiles":  [
+                     {
+                         "minecraft":  "1.16.5",
+                         "loader":  "forge",
+                         "loaderVersion":  "36.2.39",
+                         "profile":  "caelus",
+                         "mods":  [
+                                      "mCcOcJC8"
+                                  ]
+                     },
+                     {
+                         "minecraft":  "1.16.5",
+                         "loader":  "forge",
+                         "loaderVersion":  "36.2.39",
+                         "profile":  "advanced-netherite",
+                         "mods":  [
+                                      "Bi7nYNRv"
+                                  ]
+                     },
+                     {
+                         "minecraft":  "1.16.5",
+                         "loader":  "forge",
+                         "loaderVersion":  "36.2.39",
+                         "profile":  "enigmatic-legacy",
+                         "mods":  [
+                                      "5qPuCFYD",
+                                      "MqtVLa6V",
+                                      "swxCEODj"
+                                  ]
+                     },
+                     {
+                         "minecraft":  "1.16.5",
+                         "loader":  "forge",
+                         "loaderVersion":  "36.2.39",
+                         "profile":  "all",
+                         "mods":  [
+                                      "mCcOcJC8",
+                                      "MqtVLa6V",
+                                      "swxCEODj",
+                                      "Bi7nYNRv",
+                                      "5qPuCFYD"
+                                  ]
+                     },
+                     {
+                         "minecraft":  "1.18.2",
+                         "loader":  "forge",
+                         "loaderVersion":  "40.2.17",
+                         "profile":  "better-combat",
+                         "mods":  [
+                                      "CPJiW7pf",
+                                      "SsDWF33Q",
+                                      "ZbWG3eJW"
+                                  ]
+                     },
+                     {
+                         "minecraft":  "1.18.2",
+                         "loader":  "forge",
+                         "loaderVersion":  "40.2.17",
+                         "profile":  "caelus",
+                         "mods":  [
+                                      "oGzi6gyV"
+                                  ]
+                     },
+                     {
+                         "minecraft":  "1.18.2",
+                         "loader":  "forge",
+                         "loaderVersion":  "40.2.17",
+                         "profile":  "advanced-netherite",
+                         "mods":  [
+                                      "hncu429t"
+                                  ]
+                     },
+                     {
+                         "minecraft":  "1.18.2",
+                         "loader":  "forge",
+                         "loaderVersion":  "40.2.17",
+                         "profile":  "enigmatic-legacy",
+                         "mods":  [
+                                      "oGzi6gyV",
+                                      "sVuCrC2E",
+                                      "VReLlKMv",
+                                      "WxrW0zJe"
+                                  ]
+                     },
+                     {
+                         "minecraft":  "1.18.2",
+                         "loader":  "forge",
+                         "loaderVersion":  "40.2.17",
+                         "profile":  "all",
+                         "mods":  [
+                                      "WxrW0zJe",
+                                      "hncu429t",
+                                      "SsDWF33Q",
+                                      "oGzi6gyV",
+                                      "ZbWG3eJW",
+                                      "sVuCrC2E",
+                                      "VReLlKMv",
+                                      "CPJiW7pf"
+                                  ]
+                     },
+                     {
+                         "minecraft":  "1.19.2",
+                         "loader":  "forge",
+                         "loaderVersion":  "43.3.0",
+                         "profile":  "better-combat",
+                         "mods":  [
+                                      "d51cgiPN",
+                                      "EUyHCmUW",
+                                      "zYLNRVUQ"
+                                  ]
+                     },
+                     {
+                         "minecraft":  "1.19.2",
+                         "loader":  "forge",
+                         "loaderVersion":  "43.3.0",
+                         "profile":  "caelus",
+                         "mods":  [
+                                      "hmlQQjAc"
+                                  ]
+                     },
+                     {
+                         "minecraft":  "1.19.2",
+                         "loader":  "forge",
+                         "loaderVersion":  "43.3.0",
+                         "profile":  "advanced-netherite",
+                         "mods":  [
+                                      "VoNMv3pI"
+                                  ]
+                     },
+                     {
+                         "minecraft":  "1.19.2",
+                         "loader":  "forge",
+                         "loaderVersion":  "43.3.0",
+                         "profile":  "enigmatic-legacy",
+                         "mods":  [
+                                      "62ztr7HA",
+                                      "9pdtGQb7",
+                                      "hmlQQjAc",
+                                      "uUAY30IE"
+                                  ]
+                     },
+                     {
+                         "minecraft":  "1.19.2",
+                         "loader":  "forge",
+                         "loaderVersion":  "43.3.0",
+                         "profile":  "all",
+                         "mods":  [
+                                      "9pdtGQb7",
+                                      "d51cgiPN",
+                                      "VoNMv3pI",
+                                      "EUyHCmUW",
+                                      "62ztr7HA",
+                                      "zYLNRVUQ",
+                                      "uUAY30IE",
+                                      "hmlQQjAc"
+                                  ]
+                     },
+                     {
+                         "minecraft":  "1.20.1",
+                         "loader":  "forge",
+                         "loaderVersion":  "47.3.0",
+                         "profile":  "better-combat",
+                         "mods":  [
+                                      "rnhiaw3t",
+                                      "t8TXrZvZ",
+                                      "xe2EVE6q"
+                                  ]
+                     },
+                     {
+                         "minecraft":  "1.20.1",
+                         "loader":  "forge",
+                         "loaderVersion":  "47.3.0",
+                         "profile":  "caelus",
+                         "mods":  [
+                                      "mRry0DgY"
+                                  ]
+                     },
+                     {
+                         "minecraft":  "1.20.1",
+                         "loader":  "forge",
+                         "loaderVersion":  "47.3.0",
+                         "profile":  "advanced-netherite",
+                         "mods":  [
+                                      "DW4je0EN"
+                                  ]
+                     },
+                     {
+                         "minecraft":  "1.20.1",
+                         "loader":  "forge",
+                         "loaderVersion":  "47.3.0",
+                         "profile":  "icarus",
+                         "mods":  [
+                                      "DERs8u7v",
+                                      "IPQlZkz1",
+                                      "mRry0DgY",
+                                      "RXhgOzWN",
+                                      "TkOARDQh"
+                                  ]
+                     },
+                     {
+                         "minecraft":  "1.20.1",
+                         "loader":  "forge",
+                         "loaderVersion":  "47.3.0",
+                         "profile":  "enigmatic-legacy",
+                         "mods":  [
+                                      "94dtOLgZ",
+                                      "IPQlZkz1",
+                                      "mRry0DgY",
+                                      "yUuDfmnk"
+                                  ]
+                     },
+                     {
+                         "minecraft":  "1.20.1",
+                         "loader":  "forge",
+                         "loaderVersion":  "47.3.0",
+                         "profile":  "all",
+                         "mods":  [
+                                      "DW4je0EN",
+                                      "94dtOLgZ",
+                                      "mRry0DgY",
+                                      "RXhgOzWN",
+                                      "xe2EVE6q",
+                                      "t8TXrZvZ",
+                                      "yUuDfmnk",
+                                      "TkOARDQh",
+                                      "IPQlZkz1",
+                                      "rnhiaw3t",
+                                      "DERs8u7v"
+                                  ]
+                     },
+                     {
+                         "minecraft":  "1.21.1",
+                         "loader":  "neoforge",
+                         "loaderVersion":  "21.1.65",
+                         "profile":  "better-combat",
+                         "mods":  [
+                                      "HJZB6bmA",
+                                      "izKINKFg",
+                                      "VhIOvcXP"
+                                  ]
+                     },
+                     {
+                         "minecraft":  "1.21.1",
+                         "loader":  "neoforge",
+                         "loaderVersion":  "21.1.65",
+                         "profile":  "caelus",
+                         "mods":  [
+                                      "KsfI4QsR"
+                                  ]
+                     },
+                     {
+                         "minecraft":  "1.21.1",
+                         "loader":  "neoforge",
+                         "loaderVersion":  "21.1.65",
+                         "profile":  "advanced-netherite",
+                         "mods":  [
+                                      "tsu9b2K9"
+                                  ]
+                     },
+                     {
+                         "minecraft":  "1.21.1",
+                         "loader":  "neoforge",
+                         "loaderVersion":  "21.1.65",
+                         "profile":  "icarus",
+                         "mods":  [
+                                      "3vQNzwIW",
+                                      "KsfI4QsR",
+                                      "lSbyRD6v",
+                                      "pR7AeZk3",
+                                      "sZqK0P2T",
+                                      "yohfFbgD"
+                                  ]
+                     },
+                     {
+                         "minecraft":  "1.21.1",
+                         "loader":  "neoforge",
+                         "loaderVersion":  "21.1.65",
+                         "profile":  "all",
+                         "mods":  [
+                                      "KsfI4QsR",
+                                      "yohfFbgD",
+                                      "3vQNzwIW",
+                                      "sZqK0P2T",
+                                      "VhIOvcXP",
+                                      "pR7AeZk3",
+                                      "HJZB6bmA",
+                                      "lSbyRD6v",
+                                      "tsu9b2K9",
+                                      "izKINKFg"
+                                  ]
+                     }
+                 ],
+    "unavailable":  [
+                        {
+                            "minecraft":  "1.16.5",
+                            "loader":  "forge",
+                            "project":  "better-combat",
+                            "reason":  "No official matching game/loader version with compatible declared loader range"
+                        },
+                        {
+                            "minecraft":  "1.16.5",
+                            "loader":  "forge",
+                            "project":  "icarus",
+                            "reason":  "No official matching game/loader version with compatible declared loader range"
+                        },
+                        {
+                            "minecraft":  "1.18.2",
+                            "loader":  "forge",
+                            "project":  "icarus",
+                            "reason":  "No official matching game/loader version with compatible declared loader range"
+                        },
+                        {
+                            "minecraft":  "1.19.2",
+                            "loader":  "forge",
+                            "project":  "icarus",
+                            "reason":  "No official matching game/loader version with compatible declared loader range"
+                        },
+                        {
+                            "minecraft":  "1.21.1",
+                            "loader":  "neoforge",
+                            "project":  "enigmatic-legacy",
+                            "reason":  "No official matching game/loader version with compatible declared loader range"
+                        }
+                    ],
+    "rejectedCandidates":  [
+                               {
+                                   "version":  "4.7.8+NeoForge",
+                                   "file":  "Icarus-NeoForge-4.7.8.jar",
+                                   "constraints":  [
+                                                       {
+                                                           "versionRange":  "[21.1.215,)",
+                                                           "modId":  "neoforge"
+                                                       }
+                                                   ],
+                                   "reason":  "Declared loader/game range excludes the pinned target",
+                                   "minecraft":  "1.21.1",
+                                   "project":  "icarus"
+                               },
+                               {
+                                   "version":  "4.7.7+NeoForge",
+                                   "file":  "Icarus-NeoForge-4.7.7.jar",
+                                   "constraints":  [
+                                                       {
+                                                           "versionRange":  "[21.1.215,)",
+                                                           "modId":  "neoforge"
+                                                       }
+                                                   ],
+                                   "reason":  "Declared loader/game range excludes the pinned target",
+                                   "minecraft":  "1.21.1",
+                                   "project":  "icarus"
+                               },
+                               {
+                                   "version":  "4.7.6+NeoForge",
+                                   "file":  "Icarus-NeoForge-4.7.6.jar",
+                                   "constraints":  [
+                                                       {
+                                                           "versionRange":  "[21.1.215,)",
+                                                           "modId":  "neoforge"
+                                                       }
+                                                   ],
+                                   "reason":  "Declared loader/game range excludes the pinned target",
+                                   "minecraft":  "1.21.1",
+                                   "project":  "icarus"
+                               },
+                               {
+                                   "version":  "4.7.5+NeoForge",
+                                   "file":  "Icarus-NeoForge-4.7.5.jar",
+                                   "constraints":  [
+                                                       {
+                                                           "versionRange":  "[21.1.215,)",
+                                                           "modId":  "neoforge"
+                                                       }
+                                                   ],
+                                   "reason":  "Declared loader/game range excludes the pinned target",
+                                   "minecraft":  "1.21.1",
+                                   "project":  "icarus"
+                               },
+                               {
+                                   "version":  "4.7.4+NeoForge",
+                                   "file":  "Icarus-NeoForge-4.7.4.jar",
+                                   "constraints":  [
+                                                       {
+                                                           "versionRange":  "[21.1.215,)",
+                                                           "modId":  "neoforge"
+                                                       }
+                                                   ],
+                                   "reason":  "Declared loader/game range excludes the pinned target",
+                                   "minecraft":  "1.21.1",
+                                   "project":  "icarus"
+                               },
+                               {
+                                   "version":  "4.7.3+NeoForge",
+                                   "file":  "Icarus-NeoForge-4.7.3.jar",
+                                   "constraints":  [
+                                                       {
+                                                           "versionRange":  "[21.1.215,)",
+                                                           "modId":  "neoforge"
+                                                       }
+                                                   ],
+                                   "reason":  "Declared loader/game range excludes the pinned target",
+                                   "minecraft":  "1.21.1",
+                                   "project":  "icarus"
+                               },
+                               {
+                                   "version":  "4.7.2+NeoForge",
+                                   "file":  "Icarus-NeoForge-4.7.2.jar",
+                                   "constraints":  [
+                                                       {
+                                                           "versionRange":  "[21.1.215,)",
+                                                           "modId":  "neoforge"
+                                                       }
+                                                   ],
+                                   "reason":  "Declared loader/game range excludes the pinned target",
+                                   "minecraft":  "1.21.1",
+                                   "project":  "icarus"
+                               },
+                               {
+                                   "version":  "4.7.1+NeoForge",
+                                   "file":  "Icarus-NeoForge-4.7.1.jar",
+                                   "constraints":  [
+                                                       {
+                                                           "versionRange":  "[21.1.215,)",
+                                                           "modId":  "neoforge"
+                                                       }
+                                                   ],
+                                   "reason":  "Declared loader/game range excludes the pinned target",
+                                   "minecraft":  "1.21.1",
+                                   "project":  "icarus"
+                               },
+                               {
+                                   "version":  "4.7.0+NeoForge",
+                                   "file":  "Icarus-NeoForge-4.7.0.jar",
+                                   "constraints":  [
+                                                       {
+                                                           "versionRange":  "[21.1.215,)",
+                                                           "modId":  "neoforge"
+                                                       }
+                                                   ],
+                                   "reason":  "Declared loader/game range excludes the pinned target",
+                                   "minecraft":  "1.21.1",
+                                   "project":  "icarus"
+                               },
+                               {
+                                   "version":  "4.6.4+NeoForge",
+                                   "file":  "Icarus-NeoForge-4.6.4.jar",
+                                   "constraints":  [
+                                                       {
+                                                           "versionRange":  "[21.1.215,)",
+                                                           "modId":  "neoforge"
+                                                       }
+                                                   ],
+                                   "reason":  "Declared loader/game range excludes the pinned target",
+                                   "minecraft":  "1.21.1",
+                                   "project":  "icarus"
+                               },
+                               {
+                                   "version":  "4.6.3+NeoForge",
+                                   "file":  "Icarus-NeoForge-4.6.3.jar",
+                                   "constraints":  [
+                                                       {
+                                                           "versionRange":  "[21.1.215,)",
+                                                           "modId":  "neoforge"
+                                                       }
+                                                   ],
+                                   "reason":  "Declared loader/game range excludes the pinned target",
+                                   "minecraft":  "1.21.1",
+                                   "project":  "icarus"
+                               },
+                               {
+                                   "version":  "4.6.2+NeoForge",
+                                   "file":  "Icarus-NeoForge-4.6.2.jar",
+                                   "constraints":  [
+                                                       {
+                                                           "versionRange":  "[21.1.215,)",
+                                                           "modId":  "neoforge"
+                                                       }
+                                                   ],
+                                   "reason":  "Declared loader/game range excludes the pinned target",
+                                   "minecraft":  "1.21.1",
+                                   "project":  "icarus"
+                               },
+                               {
+                                   "version":  "4.6.1+NeoForge",
+                                   "file":  "Icarus-NeoForge-4.6.1.jar",
+                                   "constraints":  [
+                                                       {
+                                                           "versionRange":  "[21.1.215,)",
+                                                           "modId":  "neoforge"
+                                                       }
+                                                   ],
+                                   "reason":  "Declared loader/game range excludes the pinned target",
+                                   "minecraft":  "1.21.1",
+                                   "project":  "icarus"
+                               },
+                               {
+                                   "version":  "4.6.0+NeoForge",
+                                   "file":  "Icarus-NeoForge-4.6.0.jar",
+                                   "constraints":  [
+                                                       {
+                                                           "versionRange":  "[21.1.215,)",
+                                                           "modId":  "neoforge"
+                                                       }
+                                                   ],
+                                   "reason":  "Declared loader/game range excludes the pinned target",
+                                   "minecraft":  "1.21.1",
+                                   "project":  "icarus"
+                               },
+                               {
+                                   "version":  "4.5.1+NeoForge",
+                                   "file":  "Icarus-NeoForge-4.5.1.jar",
+                                   "constraints":  [
+                                                       {
+                                                           "versionRange":  "[21.1.172,)",
+                                                           "modId":  "neoforge"
+                                                       }
+                                                   ],
+                                   "reason":  "Declared loader/game range excludes the pinned target",
+                                   "minecraft":  "1.21.1",
+                                   "project":  "icarus"
+                               },
+                               {
+                                   "version":  "0.510.0+NeoForge",
+                                   "file":  "Sparkweave-NeoForge-0.510.0.jar",
+                                   "constraints":  [
+                                                       {
+                                                           "versionRange":  "[21.1.129,)",
+                                                           "modId":  "neoforge"
+                                                       }
+                                                   ],
+                                   "reason":  "Declared loader/game range excludes the pinned target",
+                                   "minecraft":  "1.21.1",
+                                   "project":  "sparkweave"
+                               },
+                               {
+                                   "version":  "0.509.3+NeoForge",
+                                   "file":  "Sparkweave-NeoForge-0.509.3.jar",
+                                   "constraints":  [
+                                                       {
+                                                           "versionRange":  "[21.1.129,)",
+                                                           "modId":  "neoforge"
+                                                       }
+                                                   ],
+                                   "reason":  "Declared loader/game range excludes the pinned target",
+                                   "minecraft":  "1.21.1",
+                                   "project":  "sparkweave"
+                               },
+                               {
+                                   "version":  "0.509.2+NeoForge",
+                                   "file":  "Sparkweave-NeoForge-0.509.2.jar",
+                                   "constraints":  [
+                                                       {
+                                                           "versionRange":  "[21.1.129,)",
+                                                           "modId":  "neoforge"
+                                                       }
+                                                   ],
+                                   "reason":  "Declared loader/game range excludes the pinned target",
+                                   "minecraft":  "1.21.1",
+                                   "project":  "sparkweave"
+                               },
+                               {
+                                   "version":  "0.509.1+NeoForge",
+                                   "file":  "Sparkweave-NeoForge-0.509.1.jar",
+                                   "constraints":  [
+                                                       {
+                                                           "versionRange":  "[21.1.129,)",
+                                                           "modId":  "neoforge"
+                                                       }
+                                                   ],
+                                   "reason":  "Declared loader/game range excludes the pinned target",
+                                   "minecraft":  "1.21.1",
+                                   "project":  "sparkweave"
+                               },
+                               {
+                                   "version":  "0.508.4+NeoForge",
+                                   "file":  "Sparkweave-NeoForge-0.508.4.jar",
+                                   "constraints":  [
+                                                       {
+                                                           "versionRange":  "[21.1.129,)",
+                                                           "modId":  "neoforge"
+                                                       }
+                                                   ],
+                                   "reason":  "Declared loader/game range excludes the pinned target",
+                                   "minecraft":  "1.21.1",
+                                   "project":  "sparkweave"
+                               },
+                               {
+                                   "version":  "0.508.3+NeoForge",
+                                   "file":  "Sparkweave-NeoForge-0.508.3.jar",
+                                   "constraints":  [
+                                                       {
+                                                           "versionRange":  "[21.1.129,)",
+                                                           "modId":  "neoforge"
+                                                       }
+                                                   ],
+                                   "reason":  "Declared loader/game range excludes the pinned target",
+                                   "minecraft":  "1.21.1",
+                                   "project":  "sparkweave"
+                               },
+                               {
+                                   "version":  "0.508.2+NeoForge",
+                                   "file":  "Sparkweave-NeoForge-0.508.2.jar",
+                                   "constraints":  [
+                                                       {
+                                                           "versionRange":  "[21.1.129,)",
+                                                           "modId":  "neoforge"
+                                                       }
+                                                   ],
+                                   "reason":  "Declared loader/game range excludes the pinned target",
+                                   "minecraft":  "1.21.1",
+                                   "project":  "sparkweave"
+                               },
+                               {
+                                   "version":  "0.508.1+NeoForge",
+                                   "file":  "Sparkweave-NeoForge-0.508.1.jar",
+                                   "constraints":  [
+                                                       {
+                                                           "versionRange":  "[21.1.129,)",
+                                                           "modId":  "neoforge"
+                                                       }
+                                                   ],
+                                   "reason":  "Declared loader/game range excludes the pinned target",
+                                   "minecraft":  "1.21.1",
+                                   "project":  "sparkweave"
+                               }
+                           ]
+}

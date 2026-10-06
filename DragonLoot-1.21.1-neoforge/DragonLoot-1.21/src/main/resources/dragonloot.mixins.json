@@ -3,20 +3,16 @@
   "minVersion": "0.8",
   "package": "net.dragonloot.mixin",
   "compatibilityLevel": "JAVA_21",
-  "refmap": "dragonloot.refmap.json",
   "mixins": [
     "AnvilBlockMixin",
     "AnvilScreenHandlerMixin",
     "EnderManPacifyMixin",
     "ItemEntityMixin",
-    "LivingEntityMixin",
     "PhantomPacifyMixin",
     "PiglinPacifyMixin",
-    "PlayerEntityMixin",
     "RecipeManagerMixin"
   ],
   "client": [
-    "client.ClientPlayerEntityMixin",
     "client.ElytraFeatureRendererMixin",
     "client.HeadFeatureRendererMixin",
     "client.PlayerEntityRendererMixin",

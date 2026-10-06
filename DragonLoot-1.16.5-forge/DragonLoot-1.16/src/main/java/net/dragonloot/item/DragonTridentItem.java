@@ -60,6 +60,9 @@ public class DragonTridentItem extends TridentItem {
             PlayerEntity player = (PlayerEntity) living;
             int elapsed = this.getUseDuration(stack) - timeLeft;
             if (elapsed >= 10) {
+                if (stack.getDamageValue() >= stack.getMaxDamage() - 1) {
+                    return;
+                }
                 int riptideLevel = EnchantmentHelper.getRiptide(stack);
                 if (riptideLevel <= 0 || player.isInWaterRainOrBubble() || player.isInLava()) {
                     if (!level.isClientSide) {

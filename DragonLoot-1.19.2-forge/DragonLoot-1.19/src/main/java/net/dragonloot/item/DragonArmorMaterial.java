@@ -24,7 +24,7 @@ public class DragonArmorMaterial implements ArmorMaterial {
 
     private static final int[] BASE_DURABILITY = new int[] { 28, 32, 35, 26 };
 
-    // Advanced Netherite's top tier uses a 47 durability multiplier.
+    // Preserve the existing opt-in floor; this does not read Advanced Netherite's configuration.
     private static final int ADVANCED_NETHERITE_COMPAT_MIN_ARMOR_DURABILITY_MULTIPLIER = 47;
 
     @Override
@@ -38,8 +38,7 @@ public class DragonArmorMaterial implements ArmorMaterial {
 
     @Override
     public int getDefenseForSlot(EquipmentSlot slot) {
-        // Do not cache config-driven values in static fields. The config is loaded/baked after
-        // classloading, and caching would permanently lock in the defaults.
+        // Read the baked startup snapshot shared with item attributes and durability.
         switch (slot) {
             case FEET:
                 return ConfigInit.CONFIG.dragon_armor_protection_boots;

@@ -1,0 +1,74 @@
+import groovy.json.JsonOutput
+
+// Opt-in dedicated GameTest launch export; it does not alter normal builds/runs.
+if (gradle.startParameter.projectProperties['dragonlootGearProfiles'] != 'true') {
+    throw new GradleException('Supply -PdragonlootGearProfiles=true for this server-only init script')
+}
+if (gradle.startParameter.taskNames.any { it.tokenize(':').last() != 'writeGearProfileLaunch' }) {
+    throw new GradleException('Use this init script only with writeGearProfileLaunch')
+}
+gradle.beforeProject { project ->
+    project.tasks.configureEach { task ->
+        if (task.name.endsWith('DownloadAssets') || task.name.endsWith('ExtractNatives')) {
+            task.enabled = false
+        }
+    }
+}
+gradle.projectsEvaluated {
+    def project = rootProject
+    project.tasks.register('writeGearProfileLaunch') {
+        // ForgeGradle registers run tasks in its own late configuration callback.
+        dependsOn {
+            def run = project.tasks.named('runGameTestServer').get()
+            run.taskDependencies.getDependencies(run)
+        }
+        doLast {
+            def run = project.tasks.named('runGameTestServer').get()
+            // ForgeGradle 6 MinecraftRunTask assembles these values inside exec().
+            // Reuse its own token generator while exporting, without starting a JVM.
+            if (run.hasProperty('runConfig')) {
+                def config = run.runConfig.get()
+                def generator = Class.forName('net.minecraftforge.gradle.common.util.runs.RunConfigGenerator',
+                                              false, run.class.classLoader)
+                def invokeGenerator = { String name, Object[] arguments ->
+                    def method = generator.declaredMethods.find {
+                        it.name == name && it.parameterCount == arguments.length
+                    }
+                    if (method == null) throw new GradleException("ForgeGradle export API missing: $name")
+                    method.accessible = true // ForgeGradle marks its shared token helpers protected.
+                    method.invoke(null, arguments)
+                }
+                def modClasses = invokeGenerator('mapModClassesToGradle', [project, config] as Object[])
+                def tokens = invokeGenerator('configureTokensLazy',
+                    [project, config, modClasses, run.minecraftArtifacts, run.runtimeClasspathArtifacts] as Object[])
+                def programArgs = invokeGenerator('getArgsStream', [config, tokens, false] as Object[])
+                run.args(programArgs.toArray())
+                config.jvmArgs.each { argument -> run.jvmArgs(config.replace(tokens, argument)) }
+                config.environment.each { key, value -> run.environment(key, config.replace(tokens, value)) }
+                config.properties.each { key, value -> run.systemProperty(key, config.replace(tokens, value)) }
+                config.allSources.each { source -> run.classpath(source.runtimeClasspath) }
+            }
+            run.workingDir = project.file(project.property('gearRunDirectory'))
+            // Gradle 8.14 applies the lazy jvmArguments list inside JavaExec.exec();
+            // allJvmArgs queried before that action omits NeoGradle's module flags.
+            def lazyJvmArgs = run.hasProperty('jvmArguments') ? run.jvmArguments.getOrElse([]) : []
+            // allJvmArgs already expands JVM argument providers; program providers are separate.
+            def providerArgs = run.argumentProviders.collectMany { provider -> provider.asArguments().toList() }
+            def allowedEnvironment = ['MOD_CLASSES', 'target', 'MCP_VERSION', 'MC_VERSION',
+                                      'FORGE_GROUP', 'FORGE_VERSION', 'assetDirectory',
+                                      'assetIndex', 'nativesDirectory'] as Set
+            def launch = [
+                executable: run.executable,
+                jvmArgs: run.allJvmArgs + lazyJvmArgs + ['-Xmx2G', '-XX:ActiveProcessorCount=2'],
+                classpath: run.classpath.asPath,
+                mainClass: run.mainClass.get(),
+                args: run.args + providerArgs,
+                environment: run.environment.findAll { key, value -> allowedEnvironment.contains(key) },
+                workingDirectory: run.workingDir.absolutePath
+            ]
+            def destination = project.file(project.property('gearLaunchOutput'))
+            destination.parentFile.mkdirs()
+            destination.text = JsonOutput.prettyPrint(JsonOutput.toJson(launch))
+        }
+    }
+}

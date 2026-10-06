@@ -10,9 +10,8 @@ public class DragonToolMaterial implements Tier {
     private DragonToolMaterial() {
     }
 
-    // When Advanced Netherite compat/perks are enabled, Advanced Netherite's top-tier tools are
-    // significantly more durable than vanilla netherite. This minimum keeps Dragon gear as a
-    // sensible "next step" without forcing pack authors to edit configs.
+    // Preserve the existing opt-in durability floor. Other balance settings are explicit
+    // Dragon Loot config values; this does not read Advanced Netherite's configuration.
     private static final int ADVANCED_NETHERITE_COMPAT_MIN_DURABILITY_MULTIPLIER = 47;
 
     private static DragonToolMaterial INSTANCE = null;
@@ -35,7 +34,7 @@ public class DragonToolMaterial implements Tier {
 
     @Override
     public float getSpeed() {
-        return 12.0F;
+        return ConfigInit.CONFIG.dragon_tool_mining_speed;
     }
 
     @Override

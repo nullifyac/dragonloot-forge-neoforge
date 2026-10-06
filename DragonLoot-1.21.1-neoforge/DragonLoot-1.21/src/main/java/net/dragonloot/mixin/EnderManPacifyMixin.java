@@ -19,7 +19,7 @@ public abstract class EnderManPacifyMixin extends Monster implements NeutralMob 
         super(entityType, level);
     }
 
-    @Inject(method = {"isBeingStaredBy", "isLookingAtMe"}, at = @At("RETURN"), cancellable = true)
+    @Inject(method = "isLookingAtMe(Lnet/minecraft/world/entity/player/Player;)Z", at = @At("RETURN"), cancellable = true)
     private void dragonloot$pacifyEnderman(Player player, CallbackInfoReturnable<Boolean> cir) {
         if (cir.getReturnValue() && AdvancedNetheriteCompat.isWearingPacifyingArmor(player)) {
             cir.setReturnValue(false);

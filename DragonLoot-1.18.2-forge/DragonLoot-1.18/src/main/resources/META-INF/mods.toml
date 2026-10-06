@@ -6,7 +6,7 @@ license="GPL-3.0-or-later"
 modId="dragonloot"
 version="${version}"
 displayName="DragonLoot"
-displayURL="https://www.curseforge.com/minecraft/mc-mods/dragonloot"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/enderdragon-loot"
 authors="Pois1x, Globox_Z"
 description='''Adds loot for the Ender Dragon.'''
 

@@ -65,6 +65,9 @@ public class DragonTridentItem extends TridentItem {
         if (living instanceof Player player) {
             int elapsed = this.getUseDuration(stack) - timeLeft;
             if (elapsed >= 10) {
+                if (stack.getDamageValue() >= stack.getMaxDamage() - 1) {
+                    return;
+                }
                 int riptideLevel = EnchantmentHelper.getRiptide(stack);
                 if (riptideLevel <= 0 || player.isInWaterRainOrBubble() || player.isInLava()) {
                     if (!level.isClientSide) {
@@ -138,14 +141,9 @@ public class DragonTridentItem extends TridentItem {
     @OnlyIn(Dist.CLIENT)
     public void initializeClient(Consumer<IItemRenderProperties> consumer) {
         consumer.accept(new IItemRenderProperties() {
-            private BlockEntityWithoutLevelRenderer renderer;
-
             @Override
             public BlockEntityWithoutLevelRenderer getItemStackRenderer() {
-                if (this.renderer == null) {
-                    this.renderer = new DragonTridentBewlr();
-                }
-                return this.renderer;
+                return DragonTridentBewlr.getInstance();
             }
         });
     }

@@ -24,6 +24,7 @@ public final class DragonArmorMaterial {
         defenseValues.put(ArmorItem.Type.LEGGINGS, ConfigInit.CONFIG.dragon_armor_protection_leggings);
         defenseValues.put(ArmorItem.Type.CHESTPLATE, ConfigInit.CONFIG.dragon_armor_protection_chest);
         defenseValues.put(ArmorItem.Type.HELMET, ConfigInit.CONFIG.dragon_armor_protection_helmet);
+        defenseValues.put(ArmorItem.Type.BODY, ConfigInit.CONFIG.dragon_armor_protection_horse);
 
         return new ArmorMaterial(
             defenseValues,

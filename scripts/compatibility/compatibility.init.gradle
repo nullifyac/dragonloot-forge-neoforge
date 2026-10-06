@@ -1,0 +1,89 @@
+import groovy.json.JsonSlurper
+import java.security.MessageDigest
+
+// Opt-in runtime dependencies only. This script never changes a project's build file.
+gradle.beforeProject { project ->
+    project.afterEvaluate {
+        def profileName = project.findProperty('dragonlootCompatProfile')
+        if (!profileName) {
+            throw new GradleException('Supply -PdragonlootCompatProfile=caelus|better-combat|advanced-netherite|icarus|enigmatic-legacy|all')
+        }
+        def defaultRoot = new File(project.rootDir.parentFile.parentFile, 'release/test-results/2026-10-06/compatibility')
+        def assetRoot = project.file(project.findProperty('dragonlootCompatRoot') ?: defaultRoot)
+        def manifestFile = new File(assetRoot, 'manifest.json')
+        if (!manifestFile.isFile()) {
+            throw new GradleException("Prepare compatibility assets first: ${manifestFile}")
+        }
+        // Windows PowerShell writes a UTF-8 BOM; strip it before Groovy JSON parsing.
+        def manifest = new JsonSlurper().parseText(manifestFile.getText('UTF-8').replaceFirst('^\uFEFF', ''))
+        def minecraftVersion = project.findProperty('minecraft_version')?.toString()
+        def loader = project.plugins.hasPlugin('net.neoforged.gradle.userdev') ? 'neoforge' : 'forge'
+        def loaderVersion = project.findProperty(loader == 'neoforge' ? 'neo_version' : 'forge_version')?.toString()
+        def profile = manifest.profiles.find {
+            it.minecraft == minecraftVersion && it.loader == loader && it.profile == profileName.toString()
+        }
+        if (!profile || profile.loaderVersion != loaderVersion) {
+            throw new GradleException("No pinned compatibility profile ${profileName} for ${minecraftVersion}/${loader}/${loaderVersion}")
+        }
+        def mods = profile.mods.collect { id ->
+            def mod = manifest.mods.find { it.versionId == id && it.minecraft == minecraftVersion && it.loader == loader }
+            if (!mod) { throw new GradleException("Missing manifest entry ${id}") }
+            def jarFile = new File(assetRoot, mod.relativePath)
+            if (!jarFile.isFile()) { throw new GradleException("Missing pinned jar ${jarFile}") }
+            def digest = MessageDigest.getInstance('SHA-256')
+            jarFile.withInputStream { input ->
+                byte[] buffer = new byte[65536]
+                int count
+                while ((count = input.read(buffer)) != -1) { digest.update(buffer, 0, count) }
+            }
+            if (digest.digest().encodeHex().toString() != mod.sha256) {
+                throw new GradleException("Pinned jar hash changed: ${jarFile}")
+            }
+            mod
+        }
+        def maxHeap = project.findProperty('dragonlootCompatMaxHeap')?.toString() ?: '2G'
+        if (!(maxHeap ==~ /[1-9][0-9]*[mMgG]/)) { throw new GradleException('Invalid dragonlootCompatMaxHeap') }
+        def expectedMods = mods.collect { mod ->
+            if (mod.modId && mod.modVersion) { return "${mod.modId}=${mod.modVersion}" }
+            def toml = mod.rawJarMetadata['META-INF/neoforge.mods.toml'] ?: mod.rawJarMetadata['META-INF/mods.toml']
+            def idMatch = toml =~ /(?m)^\s*modId\s*=\s*["']([^"']+)["']/
+            def versionMatch = toml =~ /(?m)^\s*version\s*=\s*["']([^"']+)["']/
+            if (!idMatch.find() || !versionMatch.find()) { throw new GradleException("Missing mod identity for ${mod.filename}") }
+            def id = idMatch.group(1)
+            def version = versionMatch.group(1)
+            if (version == '${file.jarVersion}') {
+                def manifestVersion = mod.rawJarMetadata['META-INF/MANIFEST.MF'] =~ /(?m)^Implementation-Version:\s*([^\r\n]+)/
+                if (!manifestVersion.find()) { throw new GradleException("Missing manifest version for ${mod.filename}") }
+                version = manifestVersion.group(1).trim()
+            }
+            "${id}=${version}"
+        }.join(',')
+        def runId = project.findProperty('dragonlootCompatRunId')?.toString()
+        if (runId && !(runId ==~ /[A-Za-z0-9_-]+/)) { throw new GradleException('Invalid dragonlootCompatRunId') }
+        def profileDirectory = "runs/${minecraftVersion}-${loader}/${profileName}" + (runId ? "/${runId}" : '')
+        if (loader == 'forge') {
+            project.repositories.flatDir { dirs new File(assetRoot, 'maven-artifacts') }
+            mods.each { mod ->
+                project.dependencies.add('runtimeOnly', project.fg.deobf("dragonloot.testmods:${mod.projectId}:${mod.versionId}"))
+            }
+            project.minecraft.runs.all { run ->
+                run.workingDirectory new File(assetRoot, "${profileDirectory}/${run.name}")
+                run.jvmArg "-Xmx${maxHeap}"
+                run.property 'dragonloot.compat.profile', profileName.toString()
+                run.property 'dragonloot.compat.expectedMods', expectedMods
+                // Distributed upstream mixins use SRG refs; map them to the dev names.
+                run.property 'mixin.env.disableRefMap', 'false'
+                run.property 'mixin.env.remapRefMap', 'true'
+                run.property 'mixin.env.refMapRemappingFile', new File(project.buildDir, 'createSrgToMcp/output.srg').absolutePath
+            }
+        } else {
+            mods.each { mod -> project.dependencies.add('runtimeOnly', project.files(new File(assetRoot, mod.relativePath))) }
+            project.runs.configureEach { run ->
+                run.workingDirectory new File(assetRoot, "${profileDirectory}/${run.name}")
+                run.jvmArguments "-Xmx${maxHeap}"
+                run.systemProperties 'dragonloot.compat.profile': profileName.toString(), 'dragonloot.compat.expectedMods': expectedMods
+            }
+        }
+        project.logger.lifecycle("Pinned compatibility profile ${profileName}: ${mods.collect { it.project + '@' + it.version }.join(', ')}")
+    }
+}

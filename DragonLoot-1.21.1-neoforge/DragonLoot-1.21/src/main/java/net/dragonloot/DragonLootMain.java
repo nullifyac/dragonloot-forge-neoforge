@@ -10,6 +10,7 @@ import net.dragonloot.init.ItemInit;
 import net.dragonloot.init.NetworkInit;
 import net.dragonloot.init.TagInit;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.DispenserBlock;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModLoadingContext;
@@ -44,6 +45,7 @@ public class DragonLootMain {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
+            DispenserBlock.registerProjectileBehavior(ItemInit.DRAGON_TRIDENT_ITEM.get());
             CompatRecipes.loadRecipes();
             RecipeGenerator.addRecipes();
         });

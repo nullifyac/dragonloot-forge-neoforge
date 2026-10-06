@@ -2,11 +2,8 @@ package net.dragonloot.item;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
-import java.util.List;
 import java.util.Map;
-import net.dragonloot.compat.AdvancedNetheriteCompat;
 import net.dragonloot.init.ConfigInit;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -15,9 +12,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
 public class DragonSwordItem extends SwordItem {
 
@@ -45,11 +39,5 @@ public class DragonSwordItem extends SwordItem {
             }
         }
         return builder.build();
-    }
-
-    @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
-        super.appendHoverText(stack, level, tooltip, flag);
-        AdvancedNetheriteCompat.appendSwordPerkTooltips(stack, tooltip);
     }
 }

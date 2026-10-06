@@ -10,15 +10,12 @@
     "CrossbowItemMixin",
     "EnderManPacifyMixin",
     "ItemEntityMixin",
-    "LivingEntityMixin",
     "PhantomPacifyMixin",
     "PiglinPacifyMixin",
-    "PlayerEntityMixin",
     "PlayerInventoryMixin",
     "RecipeManagerMixin"
   ],
   "client": [
-    "client.ClientPlayerEntityMixin",
     "client.ElytraFeatureRendererMixin",
     "client.HeadFeatureRendererMixin",
     "client.PlayerEntityRendererMixin",

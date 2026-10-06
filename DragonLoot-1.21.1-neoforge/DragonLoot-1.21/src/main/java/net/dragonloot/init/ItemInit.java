@@ -13,6 +13,7 @@ import net.dragonloot.item.DragonShovelItem;
 import net.dragonloot.item.DragonSwordItem;
 import net.dragonloot.item.DragonToolMaterial;
 import net.dragonloot.item.DragonTridentItem;
+import net.dragonloot.item.DragonWingedArmorItem;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -55,7 +56,7 @@ public final class ItemInit {
     public static final DeferredHolder<Item, Item> DRAGON_CHESTPLATE = ITEMS.register("dragon_chestplate", () -> new DragonArmorItem(DRAGON_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, armorProperties(ArmorItem.Type.CHESTPLATE)));
     public static final DeferredHolder<Item, Item> DRAGON_LEGGINGS = ITEMS.register("dragon_leggings", () -> new DragonArmorItem(DRAGON_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, armorProperties(ArmorItem.Type.LEGGINGS)));
     public static final DeferredHolder<Item, Item> DRAGON_BOOTS = ITEMS.register("dragon_boots", () -> new DragonArmorItem(DRAGON_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, armorProperties(ArmorItem.Type.BOOTS)));
-    public static final DeferredHolder<Item, Item> UPGRADED_DRAGON_CHESTPLATE = ITEMS.register("upgraded_dragon_chestplate", () -> new DragonArmorItem(DRAGON_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, armorProperties(ArmorItem.Type.CHESTPLATE).fireResistant()));
+    public static final DeferredHolder<Item, Item> UPGRADED_DRAGON_CHESTPLATE = ITEMS.register("upgraded_dragon_chestplate", () -> new DragonWingedArmorItem(DRAGON_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, armorProperties(ArmorItem.Type.CHESTPLATE).fireResistant()));
 
     public static final DeferredHolder<Item, Item> DRAGON_PICKAXE_ITEM = ITEMS.register("dragon_pickaxe", () -> {
         Tier tier = DragonToolMaterial.getInstance();

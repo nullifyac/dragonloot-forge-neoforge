@@ -11,6 +11,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -22,6 +23,8 @@ import net.minecraft.world.entity.projectile.AbstractArrow.Pickup;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 
@@ -72,9 +75,9 @@ public class DragonTridentEntity extends AbstractArrow {
 			} else if (loyalty > 0) {
 				this.setNoPhysics(true);
 				Vec3 motion = new Vec3(owner.getX() - this.getX(), owner.getEyeY() - this.getY(), owner.getZ() - this.getZ());
-				this.setPos(this.getX(), this.getY() + motion.y * 0.015D * loyalty, this.getZ());
+				this.setPosRaw(this.getX(), this.getY() + motion.y * 0.015D * loyalty, this.getZ());
 				if (this.level().isClientSide) {
-					this.yo = this.getY();
+					this.yOld = this.getY();
 				}
 				Vec3 velocity = this.getDeltaMovement().scale(0.95D).add(motion.normalize().scale(0.05D * loyalty));
 				this.setDeltaMovement(velocity);
@@ -151,6 +154,32 @@ public class DragonTridentEntity extends AbstractArrow {
 	}
 
 	@Override
+	protected void onHitBlock(BlockHitResult result) {
+		super.onHitBlock(result);
+		// LightningRodBlock recognizes only vanilla ThrownTrident instances.
+		if (this.level() instanceof ServerLevel serverLevel && serverLevel.isThundering()
+				&& EnchantmentHelper.hasChanneling(this.tridentStack)) {
+			BlockPos pos = result.getBlockPos();
+			if (serverLevel.getBlockState(pos).is(Blocks.LIGHTNING_ROD) && serverLevel.canSeeSky(pos)) {
+				LightningBolt lightning = EntityType.LIGHTNING_BOLT.create(serverLevel);
+				if (lightning != null) {
+					lightning.moveTo(Vec3.atBottomCenterOf(pos.above()));
+					Entity owner = this.getOwner();
+					lightning.setCause(owner instanceof ServerPlayer ? (ServerPlayer) owner : null);
+					serverLevel.addFreshEntity(lightning);
+				}
+				serverLevel.playSound(null, pos, SoundEvents.TRIDENT_THUNDER, SoundSource.WEATHER, 5.0F, 1.0F);
+			}
+		}
+	}
+
+	@Override
+	protected boolean tryPickup(Player player) {
+		return super.tryPickup(player)
+			|| this.isNoPhysics() && this.ownedBy(player) && player.getInventory().add(this.getPickupItem());
+	}
+
+	@Override
 	protected SoundEvent getDefaultHitGroundSoundEvent() {
 		return SoundEvents.TRIDENT_HIT_GROUND;
 	}
@@ -171,6 +200,7 @@ public class DragonTridentEntity extends AbstractArrow {
 		}
 		this.dealtDamage = tag.getBoolean("DealtDamage");
 		this.entityData.set(LOYALTY, (byte) EnchantmentHelper.getLoyalty(this.tridentStack));
+		this.entityData.set(ENCHANTED, this.tridentStack.hasFoil());
 	}
 
 	@Override

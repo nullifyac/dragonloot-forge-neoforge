@@ -18,7 +18,7 @@ public abstract class EnderManPacifyMixin extends MonsterEntity {
         super(entityType, level);
     }
 
-    @Inject(method = {"isBeingStaredBy", "isLookingAtMe"}, at = @At("RETURN"), cancellable = true)
+    @Inject(method = "isLookingAtMe(Lnet/minecraft/entity/player/PlayerEntity;)Z", at = @At("RETURN"), cancellable = true)
     private void dragonloot$pacifyEnderman(PlayerEntity player, CallbackInfoReturnable<Boolean> cir) {
         if (cir.getReturnValue() && AdvancedNetheriteCompat.isWearingPacifyingArmor(player)) {
             cir.setReturnValue(false);

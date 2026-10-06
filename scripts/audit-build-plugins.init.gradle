@@ -1,0 +1,30 @@
+import groovy.json.JsonOutput
+import java.security.MessageDigest
+
+// Read-only build-tool evidence; invoke auditLoadedBuildPlugins explicitly.
+gradle.projectsEvaluated {
+    rootProject.tasks.register('auditLoadedBuildPlugins') {
+        doLast {
+            def pluginGroups = ['net.minecraftforge.gradle', 'net.neoforged.gradle',
+                                'org.spongepowered', 'org.spongepowered.mixin'] as Set
+            def artifacts = rootProject.buildscript.configurations.classpath.resolvedConfiguration.resolvedArtifacts
+                .findAll { artifact -> pluginGroups.contains(artifact.moduleVersion.id.group) }
+                .collect { artifact ->
+                    def digest = MessageDigest.getInstance('SHA-256').digest(artifact.file.bytes)
+                    [coordinate: artifact.moduleVersion.id.toString(), file: artifact.file.absolutePath,
+                     sha256: digest.encodeHex().toString()]
+                }
+            def plugins = ['net.minecraftforge.gradle', 'org.spongepowered.mixin', 'net.neoforged.gradle.userdev']
+                .collect { id ->
+                    def plugin = rootProject.plugins.findPlugin(id)
+                    plugin == null ? null : [id: id, implementation: plugin.class.name,
+                        codeSource: plugin.class.protectionDomain.codeSource?.location?.toString()]
+                }.findAll { it != null }
+            def result = [project: rootProject.name, gradle: gradle.gradleVersion, plugins: plugins, artifacts: artifacts]
+            def output = rootProject.file(rootProject.property('pluginAuditOutput'))
+            output.parentFile.mkdirs()
+            output.text = JsonOutput.prettyPrint(JsonOutput.toJson(result))
+            println "Build plugin evidence: ${output.absolutePath}"
+        }
+    }
+}

@@ -22,6 +22,11 @@
 
   "itemGroup.dragonloot.dragonloot": "Dragon Loot",
 
+  "tooltip.dragonloot.armor.press_shift_key": "Hold %s for armor perks",
+  "tooltip.dragonloot.armor.enderman_passive": "Endermen ignore your gaze",
+  "tooltip.dragonloot.armor.piglin_passive": "Piglins treat this armor like gold",
+  "tooltip.dragonloot.armor.phantom_passive": "Phantoms avoid you unless attacked",
+
   "text.autoconfig.dragonloot.title": "DragonLoot Config",
   "text.autoconfig.dragonloot.option.scale_minimum_drop_amount": "Scale minimum drop amount",
   "text.autoconfig.dragonloot.option.additional_scales_per_player": "Additional scales per player",

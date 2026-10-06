@@ -42,66 +42,10 @@ public final class AdvancedNetheriteCompat {
             return;
         }
 
-        boolean hasEnderman = true;
-        boolean hasPiglin = true;
-        boolean hasPhantom = true;
-
-        if (!(hasEnderman || hasPiglin || hasPhantom)) {
-            return;
-        }
-
         if (shouldShowDetailedTooltips()) {
-            if (hasEnderman) {
-                tooltip.add(pacifyEndermenLine());
-            }
-            if (hasPiglin) {
-                tooltip.add(pacifyPiglinsLine());
-            }
-            if (hasPhantom) {
-                tooltip.add(pacifyPhantomsLine());
-            }
-        } else {
-            tooltip.add(pressShiftLine());
-        }
-    }
-
-    public static void appendPickaxePerkTooltips(ItemStack stack, List<Component> tooltip) {
-        if (!ConfigInit.CONFIG.advanced_netherite_gear_perks_enabled || !isDragonPickaxe(stack.getItem())) {
-            return;
-        }
-
-        if (shouldShowDetailedTooltips()) {
-            tooltip.add(pickaxeIronLine());
-            tooltip.add(pickaxeGoldLine());
-            tooltip.add(pickaxeEmeraldLine());
-            tooltip.add(pickaxeDiamondLine());
-        } else {
-            tooltip.add(pressShiftLine());
-        }
-    }
-
-    public static void appendHoePerkTooltips(ItemStack stack, List<Component> tooltip) {
-        if (!ConfigInit.CONFIG.advanced_netherite_gear_perks_enabled || !isDragonHoe(stack.getItem())) {
-            return;
-        }
-
-        if (shouldShowDetailedTooltips()) {
-            tooltip.add(hoeAdditionalCropsLine());
-        } else {
-            tooltip.add(pressShiftLine());
-        }
-    }
-
-    public static void appendSwordPerkTooltips(ItemStack stack, List<Component> tooltip) {
-        if (!ConfigInit.CONFIG.advanced_netherite_gear_perks_enabled || !isDragonSword(stack.getItem())) {
-            return;
-        }
-
-        if (shouldShowDetailedTooltips()) {
-            tooltip.add(swordEndermanLine());
-            tooltip.add(swordPiglinLine());
-            tooltip.add(swordZombifiedPiglinLine());
-            tooltip.add(swordPhantomLine());
+            tooltip.add(new TranslatableComponent("tooltip.dragonloot.armor.enderman_passive").withStyle(ChatFormatting.DARK_GREEN));
+            tooltip.add(new TranslatableComponent("tooltip.dragonloot.armor.piglin_passive").withStyle(ChatFormatting.GOLD));
+            tooltip.add(new TranslatableComponent("tooltip.dragonloot.armor.phantom_passive").withStyle(ChatFormatting.GRAY));
         } else {
             tooltip.add(pressShiftLine());
         }
@@ -123,18 +67,6 @@ public final class AdvancedNetheriteCompat {
             || item == ItemInit.UPGRADED_DRAGON_CHESTPLATE.get();
     }
 
-    private static boolean isDragonPickaxe(Item item) {
-        return item == ItemInit.DRAGON_PICKAXE_ITEM.get();
-    }
-
-    private static boolean isDragonHoe(Item item) {
-        return item == ItemInit.DRAGON_HOE_ITEM.get();
-    }
-
-    private static boolean isDragonSword(Item item) {
-        return item == ItemInit.DRAGON_SWORD_ITEM.get();
-    }
-
     private static boolean shouldShowDetailedTooltips() {
         if (FMLEnvironment.dist != Dist.CLIENT) {
             return false;
@@ -147,60 +79,8 @@ public final class AdvancedNetheriteCompat {
         return Screen.hasShiftDown();
     }
 
-    private static Component plusComponent() {
-        return new TranslatableComponent("tooltip.advancednetherite.misc.plus").withStyle(ChatFormatting.GREEN, ChatFormatting.BOLD);
-    }
-
     private static Component pressShiftLine() {
-        Component shiftKey = new TranslatableComponent("tooltip.advancednetherite.misc.shift").withStyle(ChatFormatting.YELLOW);
-        return new TranslatableComponent("tooltip.advancednetherite.misc.press_shift_key", shiftKey);
-    }
-
-    private static Component pacifyEndermenLine() {
-        return new TranslatableComponent("tooltip.advancednetherite.armor.enderman_passive", plusComponent()).withStyle(ChatFormatting.DARK_GREEN);
-    }
-
-    private static Component pacifyPiglinsLine() {
-        return new TranslatableComponent("tooltip.advancednetherite.armor.piglin_passive", plusComponent()).withStyle(ChatFormatting.GOLD);
-    }
-
-    private static Component pacifyPhantomsLine() {
-        return new TranslatableComponent("tooltip.advancednetherite.armor.phantom_passive", plusComponent()).withStyle(ChatFormatting.GRAY);
-    }
-
-    private static Component hoeAdditionalCropsLine() {
-        return new TranslatableComponent("tooltip.advancednetherite.hoe.additional_crop_drops", plusComponent());
-    }
-
-    private static Component pickaxeIronLine() {
-        return new TranslatableComponent("tooltip.advancednetherite.pickaxe.additional_iron_drop", plusComponent()).withStyle(ChatFormatting.GRAY);
-    }
-
-    private static Component pickaxeGoldLine() {
-        return new TranslatableComponent("tooltip.advancednetherite.pickaxe.additional_gold_drop", plusComponent()).withStyle(ChatFormatting.GOLD);
-    }
-
-    private static Component pickaxeEmeraldLine() {
-        return new TranslatableComponent("tooltip.advancednetherite.pickaxe.additional_emerald_drop", plusComponent()).withStyle(ChatFormatting.DARK_GREEN);
-    }
-
-    private static Component pickaxeDiamondLine() {
-        return new TranslatableComponent("tooltip.advancednetherite.pickaxe.additional_diamond_drop", plusComponent()).withStyle(ChatFormatting.AQUA);
-    }
-
-    private static Component swordEndermanLine() {
-        return new TranslatableComponent("tooltip.advancednetherite.sword.additional_enderman_mob_drop", plusComponent()).withStyle(ChatFormatting.DARK_GREEN);
-    }
-
-    private static Component swordPiglinLine() {
-        return new TranslatableComponent("tooltip.advancednetherite.sword.additional_piglin_mob_drop", plusComponent()).withStyle(ChatFormatting.GOLD);
-    }
-
-    private static Component swordZombifiedPiglinLine() {
-        return new TranslatableComponent("tooltip.advancednetherite.sword.additional_zombified_piglin_mob_drop", plusComponent()).withStyle(ChatFormatting.GOLD);
-    }
-
-    private static Component swordPhantomLine() {
-        return new TranslatableComponent("tooltip.advancednetherite.sword.additional_phantom_mob_drop", plusComponent()).withStyle(ChatFormatting.GRAY);
+        Component shiftKey = new TranslatableComponent("key.keyboard.left.shift").withStyle(ChatFormatting.YELLOW);
+        return new TranslatableComponent("tooltip.dragonloot.armor.press_shift_key", shiftKey);
     }
 }

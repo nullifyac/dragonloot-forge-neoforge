@@ -13,7 +13,15 @@ import net.minecraft.world.item.ItemStack;
 
 public class DragonTridentBewlr extends BlockEntityWithoutLevelRenderer {
 
+    private static DragonTridentBewlr instance;
     private TridentModel model;
+
+    public static DragonTridentBewlr getInstance() {
+        if (instance == null) {
+            instance = new DragonTridentBewlr();
+        }
+        return instance;
+    }
 
     public DragonTridentBewlr() {
         super(null, null);

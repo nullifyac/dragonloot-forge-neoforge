@@ -1,0 +1,16 @@
+modLoader="javafml"
+loaderVersion="[36,)"
+license="GPL-3.0-or-later"
+
+[[mods]]
+modId="dragonloot_smoketest"
+version="1"
+displayName="Dragon Loot development smoke tests"
+description='''Isolated dedicated-server assertions. Never packaged with Dragon Loot.'''
+
+[[dependencies.dragonloot_smoketest]]
+modId="dragonloot"
+mandatory=true
+versionRange="[0,)"
+ordering="AFTER"
+side="SERVER"
