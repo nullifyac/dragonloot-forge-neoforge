@@ -11,7 +11,9 @@ Other loader versions have not been confirmed through equivalent gameplay tests.
 The affected movement check can mistake continued descent for hovering and kick
 the player after roughly four seconds. Short falls can end before the timeout.
 Active Elytra-style gliding, including the winged Dragon chestplate, is exempt
-from this check.
+from this check. Wearing the winged chestplate does not start gliding
+automatically. A long ordinary fall before starting a glide, or after gliding
+stops, can still trigger the issue.
 
 Singleplayer and dedicated servers configured with `allow-flight=true` bypass
 this kick path. That server setting also changes general flight enforcement;
