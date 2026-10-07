@@ -5,6 +5,10 @@ upgraded to 16 GB RAM. Each supported port uses its own pinned loader and Java
 version. This is the completed-evidence record; [TESTING.md](TESTING.md) is the
 broader checklist. Every version has its own results and applicable limitations.
 
+The later 1.1.17 movement correction has separate dated results in
+[NETWORK-CONTROLS.md](NETWORK-CONTROLS.md). The records here describe the earlier
+1.1.16 gameplay and integration runs, with their original flight settings.
+
 Final `1.1.16` release assemblies and packaged-server checks were subsequently
 verified. Gameplay classes/resources match these tested builds exactly; only
 version metadata differs. See [RELEASE-1.1.16.md](RELEASE-1.1.16.md) for that

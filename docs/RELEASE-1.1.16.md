@@ -35,6 +35,11 @@ configurable; Advanced Netherite's settings are not copied automatically.
 
 ## Known limitation
 
+This is the historical scope at the 1.1.16 release. The subsequent investigation
+confirmed the loader defect on all five pinned versions and added the targeted
+correction in [1.1.17](RELEASE-1.1.17.md). Current results are in
+[NETWORK-CONTROLS.md](NETWORK-CONTROLS.md).
+
 The pinned NeoForge 21.1.65 server reproduced floating kicks during long ordinary
 falls with `allow-flight=false`, including empty-equipment and vanilla Elytra
 controls. Final loader bytecode contains a movement regression candidate

@@ -123,6 +123,12 @@ tasks.withType(JavaCompile).configureEach {
 	options.encoding = 'UTF-8'
 }
 
+// Mixin's refmap and shadow mappings cover the whole main source set. Under
+// ForgeGradle 4, a partial compile can replace them with only changed mixins.
+tasks.named('compileJava') {
+	options.incremental = false
+}
+
 // Also expose the same Forge-generated launch setup for a standalone JVM. This
 // makes runtime exit status independent of Gradle's attached Windows console.
 tasks.register('writeSmokeTestLaunch') {
@@ -168,6 +174,12 @@ jar {
 }
 
 jar.finalizedBy('reobfJar')
+
+tasks.named('sourcesJar') {
+	from('LICENSE') {
+		rename { "LICENSE_${project.archives_base_name}" }
+	}
+}
 
 publishing {
 	publications {

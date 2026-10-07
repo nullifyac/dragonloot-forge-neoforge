@@ -103,8 +103,10 @@ checks, server regressions and version-specific Prism test archives, follow
 [docs/TESTING.md](docs/TESTING.md).
 The completed per-version checks, retained failures and tested-loader limitations
 are recorded in [docs/RUNTIME-RESULTS.md](docs/RUNTIME-RESULTS.md).
-The verified 1.1.16 release artifacts, reproduction commands and known limitation
-are documented in [docs/RELEASE-1.1.16.md](docs/RELEASE-1.1.16.md).
+The 1.1.17 server movement fix, verification scope and builds are documented in
+[docs/RELEASE-1.1.17.md](docs/RELEASE-1.1.17.md). The loader bug and earlier behavior
+are explained in [docs/NETWORK-CONTROLS.md](docs/NETWORK-CONTROLS.md).
+The previous release record remains in [docs/RELEASE-1.1.16.md](docs/RELEASE-1.1.16.md).
 
 ### Project Structure
 Each version follows the standard Minecraft mod development structure:

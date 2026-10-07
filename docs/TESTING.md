@@ -135,6 +135,7 @@ Neither harness is packaged in the release or source JARs. See:
 - [Projectile suites and direct launch fallback](PROJECTILE-TESTS.md).
 - [First-run config and full process restart profiles](CONFIG-PROFILE-TESTS.md).
 - [Pinned optional mods and compatibility reproduction](COMPATIBILITY-TESTS.md).
+- [Movement handler regressions and real flight-disabled server controls](NETWORK-CONTROLS.md).
 - [Minecraft 1.16.5 smoke tests](../DragonLoot-1.16.5-forge/DragonLoot-1.16/SMOKE-TESTS.md).
 
 A normal GameTest invocation is:

@@ -65,6 +65,11 @@ public final class DragonLootSmokeTest {
     private void onServerStarted(FMLServerStartedEvent event) {
         MinecraftServer server = event.getServer();
         try {
+            if ("network-flight".equals(System.getProperty("dragonloot.smoke.case"))) {
+                world = server.getLevel(World.OVERWORLD);
+                run("network-flight", () -> NetworkFlightSmokeTests.run(world));
+                return;
+            }
             Path expectationFile = Paths.get("smoke-expectations.properties");
             if (!Files.isRegularFile(expectationFile)) {
                 throw new IllegalStateException("Prepare smoke-expectations.properties before running this harness");

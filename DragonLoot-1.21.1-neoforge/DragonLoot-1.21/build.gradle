@@ -105,6 +105,12 @@ jar {
 	}
 }
 
+tasks.named('sourcesJar') {
+	from('LICENSE') {
+		rename { "LICENSE_${project.archives_base_name}" }
+	}
+}
+
 publishing {
 	publications {
 		mavenJava(MavenPublication) {

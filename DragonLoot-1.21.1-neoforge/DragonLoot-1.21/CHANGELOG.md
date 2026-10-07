@@ -1,3 +1,7 @@
+## 1.1.17 (2026-10-07)
+
+- Fixed incorrect flying kicks during long falls and Slow Falling on dedicated servers.
+
 ## 1.1.16 (2026-10-07)
 
 - Fixed Dragon Trident throwing, hit damage, Loyalty pickup, enchantment behavior and offhand durability.
