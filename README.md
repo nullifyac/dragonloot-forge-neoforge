@@ -103,10 +103,16 @@ checks, server regressions and version-specific Prism test archives, follow
 [docs/TESTING.md](docs/TESTING.md).
 The completed per-version checks, retained failures and tested-loader limitations
 are recorded in [docs/RUNTIME-RESULTS.md](docs/RUNTIME-RESULTS.md).
-The 1.1.17 server movement fix, verification scope and builds are documented in
-[docs/RELEASE-1.1.17.md](docs/RELEASE-1.1.17.md). The loader bug and earlier behavior
-are explained in [docs/NETWORK-CONTROLS.md](docs/NETWORK-CONTROLS.md).
-The previous release record remains in [docs/RELEASE-1.1.16.md](docs/RELEASE-1.1.16.md).
+The published 1.1.16 builds and verification are documented in
+[docs/RELEASE-1.1.16.md](docs/RELEASE-1.1.16.md).
+Known issue: affected Forge/NeoForge servers can kick players during long falls
+with `allow-flight=false`, including without Dragon Loot installed. This is an
+upstream loader issue; [details and tested scope](docs/NETWORK-CONTROLS.md).
+
+Keep maintenance scoped to Dragon Loot's items, configuration and integrations.
+Record independent upstream defects as known issues rather than adding general
+loader workarounds. The unrelated movement patch was withdrawn before CurseForge
+publication; [the 1.1.17 record](docs/RELEASE-1.1.17.md) explains its status.
 
 ### Project Structure
 Each version follows the standard Minecraft mod development structure:

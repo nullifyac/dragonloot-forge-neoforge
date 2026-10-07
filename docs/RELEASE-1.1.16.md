@@ -8,11 +8,14 @@ in its module. Published files are listed on the
 ## Release verification
 
 All five final assemblies exited 0 using the repository's pinned loaders and
-matching JDKs. The ten production/source JARs passed resource, model, mixin,
-refmap, Java target, license and regression-harness exclusion checks. Production
+matching JDKs. The production JARs passed resource, model, mixin, refmap, Java
+target, license and regression-harness exclusion checks; source JARs passed
+source-payload and regression-harness exclusion checks. Production
 payloads differ from the tested `1.1.16-dev` JARs only by replacing the version in
 the manifest and expanded loader metadata. All other entry bytes, including
-gameplay classes and resources, are identical. Source payloads are identical.
+gameplay classes and resources, are identical. The original source payloads are
+identical to their tested development archives. Current source builds additionally
+include the module's license; the original published archives remain unchanged.
 
 All five final production JARs then passed fresh packaged dedicated-server checks
 with the frozen optional-mod profiles: correct Minecraft/loader/mod versions,
@@ -35,19 +38,13 @@ configurable; Advanced Netherite's settings are not copied automatically.
 
 ## Known limitation
 
-This is the historical scope at the 1.1.16 release. The subsequent investigation
-confirmed the loader defect on all five pinned versions and added the targeted
-correction in [1.1.17](RELEASE-1.1.17.md). Current results are in
-[NETWORK-CONTROLS.md](NETWORK-CONTROLS.md).
-
-The pinned NeoForge 21.1.65 server reproduced floating kicks during long ordinary
-falls with `allow-flight=false`, including empty-equipment and vanilla Elytra
-controls. Final loader bytecode contains a movement regression candidate
-consistent with those observations. The explicit `allow-flight=true` network
-retry passed, but does not resolve default enforcement. A loader-only network
-run and a verified fixed newer release are not claimed. Details and exact scope
-are in [NETWORK-CONTROLS.md](NETWORK-CONTROLS.md). The complete reported BMC5 v51
-pack remains untested.
+Known issue: affected Forge/NeoForge servers can kick players during long falls
+with `allow-flight=false`. This was reproduced without Dragon Loot installed on
+NeoForge 21.1.65 and Forge 47.3.0, so it is an upstream loader issue rather than a
+Dragon Loot defect. [Details and tested scope](NETWORK-CONTROLS.md).
+The unrelated 1.1.17 workaround was withdrawn before CurseForge publication;
+1.1.16 remains the published release. The complete reported BMC5 v51 pack remains
+untested.
 
 ## Reproduction and local evidence
 

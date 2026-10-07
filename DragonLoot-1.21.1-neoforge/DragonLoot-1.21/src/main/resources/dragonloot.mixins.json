@@ -10,8 +10,7 @@
     "ItemEntityMixin",
     "PhantomPacifyMixin",
     "PiglinPacifyMixin",
-    "RecipeManagerMixin",
-    "ServerGamePacketListenerMixin"
+    "RecipeManagerMixin"
   ],
   "client": [
     "client.ElytraFeatureRendererMixin",

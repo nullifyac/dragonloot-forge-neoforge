@@ -13,7 +13,7 @@ runtime pass.
 | All five mod assemblies | Passed sequentially with each pinned loader, Gradle wrapper and matching JDK. |
 | Isolated server regressions | Executed against actual Minecraft servers; expanded projectile, gear and optional integration suites are documented below. |
 | All five ports' resource trees | Passed: 437 JSON resources, metadata, mixin class declarations and local model/texture references. |
-| Five development JARs and source JARs | Passed: current resources/source, declared mixins, Forge refmaps/manifest registration, correct Java targets, licenses and no game regression classes. |
+| Five development JARs and source JARs | Passed: resources/source and no game regression classes; production JARs also passed declared mixins, Forge refmaps/manifest registration, Java targets and license checks. Current source builds additionally include the module license. |
 | Five Prism archives | Prepared with each pinned loader, current JAR, SHA-256 checksum and this test plan. |
 | Runtime / visuals / integration | Per-version results and exact coverage are recorded in [RUNTIME-RESULTS.md](RUNTIME-RESULTS.md). |
 
@@ -135,7 +135,7 @@ Neither harness is packaged in the release or source JARs. See:
 - [Projectile suites and direct launch fallback](PROJECTILE-TESTS.md).
 - [First-run config and full process restart profiles](CONFIG-PROFILE-TESTS.md).
 - [Pinned optional mods and compatibility reproduction](COMPATIBILITY-TESTS.md).
-- [Movement handler regressions and real flight-disabled server controls](NETWORK-CONTROLS.md).
+- [Known upstream long-fall issue and tested scope](NETWORK-CONTROLS.md).
 - [Minecraft 1.16.5 smoke tests](../DragonLoot-1.16.5-forge/DragonLoot-1.16/SMOKE-TESTS.md).
 
 A normal GameTest invocation is:

@@ -5,9 +5,10 @@ upgraded to 16 GB RAM. Each supported port uses its own pinned loader and Java
 version. This is the completed-evidence record; [TESTING.md](TESTING.md) is the
 broader checklist. Every version has its own results and applicable limitations.
 
-The later 1.1.17 movement correction has separate dated results in
-[NETWORK-CONTROLS.md](NETWORK-CONTROLS.md). The records here describe the earlier
-1.1.16 gameplay and integration runs, with their original flight settings.
+The independent loader issue affecting long falls is documented as a known
+limitation in [NETWORK-CONTROLS.md](NETWORK-CONTROLS.md). The unrelated 1.1.17
+workaround was withdrawn. These records describe the published 1.1.16 gameplay
+and integration runs, with their original flight settings.
 
 Final `1.1.16` release assemblies and packaged-server checks were subsequently
 verified. Gameplay classes/resources match these tested builds exactly; only
@@ -206,10 +207,11 @@ That is a concrete loader regression candidate consistent with the no-equipment
 and vanilla-removal controls; these checks do not establish the behavior of
 every other loader release. DragonLoot's native flight exemptions were preserved.
 The inspected NeoForm decompile stage loses the original-delta copy before
-NeoForge's source patches. The class hashes, actual overlay order, upstream
-sources and cached newer-release comparison are in
-[NETWORK-CONTROLS.md](NETWORK-CONTROLS.md); that comparison was static, and no
-loader-only network run or verified fixed-release claim is made.
+NeoForge's source patches. Detailed historical class captures remain in the
+local evidence directories listed above. Later loader-only reproductions on
+NeoForge 21.1.65 and Forge 47.3.0 confirmed the independent issue; their scope is
+recorded in [NETWORK-CONTROLS.md](NETWORK-CONTROLS.md). No verified fixed loader
+release is claimed.
 The flight-enabled retry passed its gameplay checks, but changing server flight
 permission is not presented as resolving default-setting enforcement. Both fresh
 follow-up servers saved and exited native Java 0; all failed/interrupted attempts
