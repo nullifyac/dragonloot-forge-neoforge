@@ -1,191 +1,111 @@
-# DragonLoot testing
+# Testing Dragon Loot
 
-Updated October 6, 2026 after the memory upgrade. Real server regressions,
-configuration profiles and Prism client verification cover all five supported
-versions. Recorded results and remaining cases are in
-[RUNTIME-RESULTS.md](RUNTIME-RESULTS.md); compilation alone does not count as a
-runtime pass.
+Build and test each supported port with its own loader and JDK. The repository's
+PowerShell helpers target Windows; the module Gradle wrappers can also be used
+with the matching JDK on other systems.
 
-## Preparation results
+| Minecraft | Loader pin | JDK | Development server tests |
+| --- | --- | --- | --- |
+| 1.16.5 | Forge 36.2.39 | 8 | Separate smoke-test mod |
+| 1.18.2 | Forge 40.2.17 | 17 | GameTest |
+| 1.19.2 | Forge 43.3.0 | 17 | GameTest |
+| 1.20.1 | Forge 47.3.0 | 17 | GameTest |
+| 1.21.1 | NeoForge 21.1.65 | 21 | GameTest |
 
-| Check | Result |
-| --- | --- |
-| All five mod assemblies | Passed sequentially with each pinned loader, Gradle wrapper and matching JDK. |
-| Isolated server regressions | Executed against actual Minecraft servers; expanded projectile, gear and optional integration suites are documented below. |
-| All five ports' resource trees | Passed: 437 JSON resources, metadata, mixin class declarations and local model/texture references. |
-| Five development JARs and source JARs | Passed: resources/source and no game regression classes; production JARs also passed declared mixins, Forge refmaps/manifest registration, Java targets and license checks. Current source builds additionally include the module license. |
-| Five Prism archives | Prepared with each pinned loader, current JAR, SHA-256 checksum and this test plan. |
-| Runtime / visuals / integration | Per-version results and exact coverage are recorded in [RUNTIME-RESULTS.md](RUNTIME-RESULTS.md). |
+## Build and validate
 
-Every supported port receives the same review and release gate, using its own
-Minecraft APIs. Availability of a framework or dependency determines applicable
-tests, rather than a preference for the newest version.
-
-| Minecraft | Pinned loader | Gradle | Build JDK | Assembly / GameTest compilation |
-| --- | --- | --- | --- | --- |
-| 1.16.5 | Forge 36.2.39 | 6.8.3 | 8 | Passed / framework unavailable |
-| 1.18.2 | Forge 40.2.17 | 7.6.2 | 17 | Passed / passed |
-| 1.19.2 | Forge 43.3.0 | 7.6.2 | 17 | Passed / passed |
-| 1.20.1 | Forge 47.3.0 | 8.1.1 | 17 | Passed / passed |
-| 1.21.1 | NeoForge 21.1.65 | 8.14 | 21 | Passed / passed |
-
-The recorded October 6 gameplay checks use the local version `1.1.16-dev`.
-The source release version is now `1.1.16`; final artifacts and their verified
-relationship to those tested builds are described in
-[RELEASE-1.1.16.md](RELEASE-1.1.16.md).
-Development artifacts are retained in the ignored `release/` directory, named
-`dragonloot-1.1.16-dev-<minecraft>-<loader>.jar`, with corresponding
-`-sources.jar` and `-prism.zip` files. `SHA256SUMS.txt` covers these local artifacts.
-
-## Build and validate without starting Minecraft
-
-From the repository root on Windows (JDKs 8, 17 and 21, plus Python 3.11+):
+From the repository root, with the required JDKs and Python 3.11+ installed:
 
 ```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\build-low-memory.ps1 -AllVersions -ModVersion 1.1.16-dev
-foreach ($version in @('1.18.2','1.19.2','1.20.1','1.21.1')) {
-    powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\build-low-memory.ps1 -MinecraftVersion $version -ModVersion 1.1.16-dev -Tasks compileGametestJava
-}
-py scripts/validate_resources.py
-py scripts/validate_resources.py --version 1.21.1 --jar DragonLoot-1.21.1-neoforge/DragonLoot-1.21/build/libs/dragonloot-1.1.16-dev.jar --prism-output release/dragonloot-1.1.16-dev-1.21.1-neoforge-prism.zip
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ./scripts/build-low-memory.ps1 -AllVersions -ModVersion 1.1.16-dev
+py -3 scripts/validate_resources.py
+py -3 scripts/validate_resources.py --version 1.21.1 --jar DragonLoot-1.21.1-neoforge/DragonLoot-1.21/build/libs/dragonloot-1.1.16-dev.jar
 ```
 
-The build helper selects the appropriate installed JDK, limits Gradle to one worker
-and a 1 GB heap, and stops its daemon after the build. Its default version is
-NeoForge 1.21.1; `-MinecraftVersion 1.20.1` selects Forge. Use `-JavaHome` to choose
-a JDK explicitly and `-Offline` after dependencies have been cached. Minecraft
-source preparation may launch additional Java processes, so the heap option is
-not a limit on the total memory used by all build tools.
+The helper defaults to `assemble`, selects installed matching JDKs, uses one
+Gradle worker and a 1 GB Gradle heap, and builds ports sequentially. Use
+`-MinecraftVersion` for one port, `-JavaHome` to select its JDK, or `-Offline` once
+dependencies are cached. Replace the development version when testing another
+version. Source preparation can start additional Java processes.
 
-The helper defaults to `assemble`, which packages the mod without runtime work.
-`-AllVersions` builds sequentially and reports any failing versions after trying
-the entire matrix. The second command compiles the isolated game regressions;
-1.16.5 predates Minecraft's GameTest framework and uses its isolated development
-smoke mod plus Prism client checks instead.
-These commands use a new
-PowerShell process because this machine's default policy disables `.ps1` files;
-it does not change the saved execution policy. Plain Gradle `build` also schedules
-NeoGradle's JUnit setup, including game assets/native downloads, so it is not the
-preparation command used here.
+The validator checks resource JSON, metadata, local asset references and declared
+Mixin classes. With `--jar`, it also checks packaged resources, Java targets,
+Mixin registration/refmaps, license inclusion and exclusion of test harnesses.
+These checks do not execute Mixins or verify gameplay or rendering. Forge builds
+use refmaps; NeoForge 1.21.1 uses official names.
 
-Use `--version` and `--jar` for each port's own built JAR. `--prism-output` stages
-that port with its pinned loader; it refuses to overwrite an existing archive.
-The validator checks JSON syntax/duplicate keys, mod metadata, declared mixin
-classes, local model/texture references, and optionally the actual JAR resources,
-Java target, mixin packaging and license. Forge ports require their declared
-refmaps; NeoForge 1.21.1 uses official names and has no refmap declaration.
-These checks cannot verify injected methods,
-model rendering, networking or other mods' runtime behavior.
+## Development server suites
 
-## Prism baseline
-
-Import the prepared ZIP using **Add Instance → Import** in Prism. The archive
-contains only the locally built DragonLoot mod, an instance manifest and this test
-plan. Each version has a separate archive with the repository's pinned loader,
-a 512 MB minimum and 2 GB maximum game heap, and automatic Java selection.
-Confirm Prism chooses Java 8 for 1.16.5, 17 for 1.18.2–1.20.1 or 21 for 1.21.1.
-It still needs Minecraft/loader downloads and your normal launcher login. No
-existing instance, account settings or save is modified by preparing the ZIP.
-
-Use a fresh creative world, default resource packs and no shaders. Close the build
-before launching the game. Keep the baseline instance and duplicate it separately
-for each compatibility case. Run one instance at a time; defer the full BMC5 pack
-until the machine has enough memory. Record exact mod/loader versions and retain
-`logs/latest.log` and any crash report.
-
-## Runtime matrix
-
-This is the regression checklist, not a claim that every row has passed.
-Consult [RUNTIME-RESULTS.md](RUNTIME-RESULTS.md) for completed checks and limits.
-Repeat applicable rows on every port. Lightning
-rods exist from 1.17 onward, so their Channeling case is unavailable on 1.16.5.
-Better Combat has no matching 1.16.5 release; its integration row applies to
-1.18.2–1.21.1. The dispenser integration added here uses the 1.21.1 projectile
-item API and applies only to that port.
-
-| Case | Steps and expected result |
-| --- | --- |
-| Startup / reload | Launch standalone. No mixin errors; `/reload` succeeds and recipes are present. |
-| Trident throw | Give yourself `dragonloot:dragon_trident`, switch to survival, hold use for at least 10 ticks and release. One projectile spawns, one item leaves inventory, one durability is consumed, and the target takes damage. Repeat from offhand. |
-| Trident creative | Throw in creative and walk through the projectile. Inventory stays unchanged; the creative projectile cannot yield a duplicate survival item. |
-| Pickup / save | Throw a named, damaged, enchanted trident into a block; save/quit/reopen, then pick it up. Name, damage and enchantments remain intact; it stays a Dragon trident. |
-| Loyalty | Enchant with Loyalty III and throw at a block and a mob. It returns to the owner and is picked up once; other players cannot steal it. Repeat with a full inventory, owner death and a relog. |
-| Impaling / Channeling | Compare damage against a valid aquatic target with/without Impaling. In a thunderstorm under open sky, Channeling strikes a mob and lightning rod; covered/dry-weather cases do not create lightning. Vanilla tridents must still work. |
-| Riptide | In rain/water Riptide launches the player without spawning a projectile. The existing lava allowance also works; it cannot activate while dry outside lava. Repeat from offhand and verify durability goes to the correct hand. |
-| Dispenser (1.21.1) | Dispense Dragon tridents; projectiles retain Dragon item identity and effects and can be recovered normally. |
-| Trident rendering | Inspect inventory, dropped item, item frame, first/third person and both hands. Inventory/frame/ground use the sprite; held and charging states use the textured 3D model. Reload resources and inspect enchantment glint, including after projectile save/reload. |
-| Winged armor | Equipped upgraded chestplate starts and sustains flight; normal Dragon chestplate does not. Landing/water/levitation stops flight normally. Nearly broken armor cannot start flight. Rockets work; wings render correctly. Existing behavior has no passive flight durability drain. |
-| Caelus | Add the Minecraft/loader-matching Caelus API. Repeat winged armor tests, Caelus-granted flight and flight denial; then test Icarus and Enigmatic Legacy individually with their dependencies. Record evidence if a crash persists. |
-| Better Combat | Add a matching Better Combat build and required dependencies. Sword, axe and trident inherit the standard corresponding attack presets; trident throw/Riptide still work. Verify without fallback name matching if practical. Repeat with custom combat resource packs to check priority. |
-| Config startup | In the instance's `config/dragonloot-common.toml`, set mining speed to 39, material damage above the old 20 cap, toughness to 4 and a distinct armor durability. Fully restart; tool behavior, item attributes and armor durability use the edited values. Defaults remain the original balance. |
-| Config first run | In a fresh Forge instance, supply a valid `defaultconfigs/dragonloot-common.toml` before first launch. Both the initial gear and generated config use those settings. Existing user config takes priority. |
-| Config reload | Change gear settings while running, reload config, and verify gear stays consistent until process restart. Drop chance/anvil settings can reload. Use matching configs on dedicated server and clients; no automatic synchronization is provided. |
-| Horse armor | Dragon horse armor grants 18 armor by default; changing `dragon_armor_protection_horse` and restarting changes its defense. |
-| Optional perks | With perks off, no pacification or bonus tooltips. With perks on and after restart, Dragon armor pacifies gazing Endermen, Piglins and Phantoms as documented. No tooltip promises bonus tool drops; tooltips translate with Advanced Netherite absent. |
-| Advanced Netherite | Add a matching build. Compare actual effective-block mining speed, damage, durability and protection before/after upgrading. Configure Dragon stats explicitly to suit the pack; Advanced Netherite config and bonus drops are not inherited. Test datapack recipes separately. |
-| Dedicated server | Start a separate test server with matching configs and connect. Repeat throwing/pickup, anvil sync, flight and save/reload. Check that client rendering classes are not loaded on the server. |
-| BMC5 1.21.1 v51 | After minimal cases pass and memory permits, reproduce the reported pack case. Record its actual loader/mod versions rather than assuming they match current standalone versions. |
-
-## Automated server regressions
-
-The `gametest` source set on 1.18.2-1.21.1 is included only in the dedicated
-`gameTestServer` run. Minecraft 1.16.5 has a separate `smokeTest` development mod.
-Neither harness is packaged in the release or source JARs. See:
-
-- [Projectile suites and direct launch fallback](PROJECTILE-TESTS.md).
-- [First-run config and full process restart profiles](CONFIG-PROFILE-TESTS.md).
-- [Pinned optional mods and compatibility reproduction](COMPATIBILITY-TESTS.md).
-- [Known upstream long-fall issue and tested scope](NETWORK-CONTROLS.md).
-- [Minecraft 1.16.5 smoke tests](../DragonLoot-1.16.5-forge/DragonLoot-1.16/SMOKE-TESTS.md).
-
-A normal GameTest invocation is:
+Run a selected 1.18.2+ suite, or use `-Tasks compileGametestJava` to compile it
+without starting Minecraft:
 
 ```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\build-low-memory.ps1 -MinecraftVersion 1.20.1 -Tasks runGameTestServer
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ./scripts/build-low-memory.ps1 -MinecraftVersion 1.20.1 -ModVersion 1.1.16-dev -Tasks runGameTestServer
 ```
 
-Each game server has a 2 GB maximum heap. Run versions sequentially on constrained
-machines and retain actual test results, logs and process exit codes. On this
-machine, ForgeGradle 5/Gradle 7.6.2 can report a disappearing daemon after a clean
-1.18/1.19 server shutdown. An exported direct Java launch distinguishes this build
-wrapper failure from gameplay failure; it must still assert all required tests
-and exit successfully.
+GameTest and smoke-test sources are excluded from production and sources JARs.
+Test JVMs use a 2 GB heap cap. Require a passing assertion report and a successful
+native Java exit; compilation or server startup alone is insufficient.
 
-NeoGradle's client asset download HEAD request stalled on this network. The
-opt-in headless initializer skips client assets/natives for server runs only;
-Prism client testing still downloads and uses the real assets. This distinction
-is documented in the compatibility instructions.
+- [Projectile coverage and direct launch](PROJECTILE-TESTS.md).
+- [Configuration first-run and restart profiles](CONFIG-PROFILE-TESTS.md).
+- [Pinned optional integrations](COMPATIBILITY-TESTS.md).
+- [1.16.5 smoke tests](../DragonLoot-1.16.5-forge/DragonLoot-1.16/SMOKE-TESTS.md).
 
 ## Packaged dedicated servers
 
-These checks use the production JARs in `release/`, official pinned loader
-installers and the frozen optional-mod profiles. From the repository root:
+Test production JARs separately to catch reobfuscation, side stripping and
+packaging failures. The helper expects filenames of the form
+`dragonloot-<modversion>-<minecraft>-<loader>.jar`. For example, after building
+1.20.1 from the command above with `-Tasks assemble`:
 
 ```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/compatibility/Prepare-CompatibilityMods.ps1
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/compatibility/Prepare-ServerInstallers.ps1
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/compatibility/Test-PackagedServers.ps1
+New-Item -ItemType Directory -Force ./release/server-jars | Out-Null
+Copy-Item ./DragonLoot-1.20.1-forge/DragonLoot-1.20/build/libs/dragonloot-1.1.16-dev.jar ./release/server-jars/dragonloot-1.1.16-dev-1.20.1-forge.jar
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/compatibility/Prepare-ServerInstallers.ps1 -AssetRoot ./release/test-assets
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/compatibility/Test-PackagedServers.ps1 -Versions 1.20.1 -Profile dragonloot -ModVersion 1.1.16-dev -ProductionDirectory ./release/server-jars -AssetRoot ./release/test-assets -ResultsDirectory ./release/test-results/packaged-server -Java17Home 'C:/path/to/jdk17'
 ```
 
-The default selects `1.1.16-dev` JARs from `release/`. To check staged final
-release JARs, add `-ModVersion 1.1.16 -ProductionDirectory ./release/1.1.16`.
-When using separate `-Phase Prepare` and `-Phase Run` commands, retain those same
-values and the exact `-ResultsDirectory` for both phases.
-The runner creates isolated servers for all five versions, binds them to loopback,
-checks the loaded versions and `Done` message, requests datapack/player listings,
-then stops and saves each server. It records native exit codes and JAR hashes.
-`-Profile dragonloot` selects a standalone mod server; `-Java8Home`, `-Java17Home`
-and `-Java21Home` override the local JDK defaults. Startup and shutdown checks
-have a separate scope from an actual connected client's gameplay; see
-[RUNTIME-RESULTS.md](RUNTIME-RESULTS.md) for both outcomes. The recorded NeoForge
-default-flight control failure and loader investigation are in
-[NETWORK-CONTROLS.md](NETWORK-CONTROLS.md).
+Replace the JDK placeholder. Use `-Java8Home` or `-Java21Home` for those ports.
+The helper verifies official installer/library hashes, creates an isolated
+loopback server, checks loaded versions and `Done`, requests console listings,
+then stops and saves it. It reads existing build/launcher caches when preparing
+server libraries. Split preparation and execution with `-Phase Prepare` and
+`-Phase Run`; keep the same paths and version for both phases.
 
-## Release gate
+For optional mods, prepare the [compatibility assets](COMPATIBILITY-TESTS.md) and
+use `-Profile all` with the same asset root. Startup/shutdown reports establish
+packaging and lifecycle behavior, not connected-client gameplay.
 
-Mark each applicable row with exact versions and observations. Only publish a
-release after baseline, changed functionality and dedicated-server cases pass.
-Keep a separate result for every supported version; a newer port passing does not
-clear the older ports for release. Runtime testing uses separate dated instances and generated test worlds.
-Preserve existing launcher accounts, instances and saves. Testing does not
-publish a release.
+To connect a client, select one version and add `-HoldReady -ServerPort 25621
+-OperatorName TestPlayer`, replacing `TestPlayer` with the player's actual name.
+Join `127.0.0.1:25621` with a matching fresh test client;
+append console commands, including `stop` when finished, to the generated
+`server-commands.txt`. This mode uses an offline profile in the disposable world.
+
+## Client checks
+
+Use a fresh instance with the pinned loader, default resource packs and no
+shaders. To create a Prism import ZIP, add
+`--prism-output release/dragonloot-1.21.1-prism.zip` to the validator's JAR command;
+it refuses to overwrite an existing ZIP. Import it in Prism and select the JDK
+from the table. Minecraft assets, loader downloads and launcher authentication
+remain normal launcher requirements.
+
+Check the following on every applicable port:
+
+- Trident use in survival and creative, both hands, short-charge rejection,
+  pickup, save/reload, Loyalty, Impaling, Channeling and wet/dry Riptide.
+- Trident inventory sprite, held/charging 3D model, projectile rendering and glint
+  in first and third person, including after resource reload.
+- Native winged-chestplate eligibility, rockets, landing, water, levitation,
+  almost-broken armor and absence of passive flight wear. Ordinary Dragon chest
+  armor must not grant flight by itself.
+- Configured gear after a full process restart, runtime scale/anvil settings,
+  horse protection, recipes, anvil synchronization and optional armor perks.
+- Applicable optional integrations and a connected dedicated-server session.
+
+Lightning rods are unavailable on 1.16.5. Better Combat profiles start at 1.18.2;
+custom projectile dispensing applies only to 1.21.1. Follow the detailed guides
+for those boundaries. Keep exact versions, assertion reports, native exits and
+logs for each run; each port needs its own validation.

@@ -151,14 +151,13 @@ def stage_prism(output, jar, module, mod_version):
         archive.writestr('instance.cfg', config)
         archive.write(jar, '.minecraft/mods/' + mod_name)
         archive.writestr('SHA256.txt', hashlib.sha256(jar.read_bytes()).hexdigest() + '  ' + mod_name + '\n')
-        for document in ('TESTING.md', 'RUNTIME-RESULTS.md', 'PROJECTILE-TESTS.md',
+        for document in ('TESTING.md', 'PROJECTILE-TESTS.md',
                          'CONFIG-PROFILE-TESTS.md', 'COMPATIBILITY-TESTS.md',
-                         'BUILD-REPRODUCIBILITY.md', 'NETWORK-CONTROLS.md',
-                         'FEEDBACK-AUDIT.md'):
+                         'BUILD-REPRODUCIBILITY.md', 'NETWORK-CONTROLS.md'):
             path = ROOT / 'docs' / document
             if path.is_file():
                 archive.write(path, document)
-    print(f'Prepared Prism import archive: {output} (see bundled runtime results and remaining checks)')
+    print(f'Prepared Prism import archive: {output} (includes contributor testing guides)')
 
 
 def main():

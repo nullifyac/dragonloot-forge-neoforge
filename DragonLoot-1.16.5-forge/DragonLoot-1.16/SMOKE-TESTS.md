@@ -1,42 +1,36 @@
 # Dedicated-server smoke tests
 
-The `smokeTest` source set supplies a separate development mod. It is loaded only
-by `runSmokeTest`; neither its classes nor its metadata enter the release JAR or
-sources JAR. Minecraft/Forge versions and the production mod version are unchanged.
+Minecraft 1.16.5 has no native GameTest framework. The `smokeTest` source set
+provides a separate development mod loaded by `runSmokeTest`; its classes and
+metadata are excluded from production and sources JARs.
 
-Run from this module with a Java 8 JDK:
+From the repository root, replace the Java 8 JDK placeholder:
 
 ```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File ./run-smoke-tests.ps1 -Java8Home 'C:/path/to/java8'
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ./DragonLoot-1.16.5-forge/DragonLoot-1.16/run-smoke-tests.ps1 -Java8Home 'C:/path/to/jdk8' -ResultsDirectory ./release/test-results/smoke-1.16.5
 ```
 
-The runner creates fresh isolated server directories under `run/smokeTest`, binds
-to localhost on an ephemeral port, and starts a real Forge 36.2.39 dedicated
-server with a 2 GB heap and two worker CPUs. It prepares the Forge launch through
-Gradle, then starts that JVM separately to capture its actual exit status. This
-captures the native process exit directly. Some older attached Gradle runs lost
-their daemon after tests completed; the cause remains unproven. No
-existing client/server worlds are used. The generated test directories include
-an EULA acceptance for these local Minecraft test launches.
+The runner prepares Forge's launch through Gradle, then starts Java independently
+to capture its native exit. It creates isolated servers under `run/smokeTest`,
+binds to loopback on an ephemeral port and uses a 2 GB heap with two worker CPUs.
+Generated test servers include EULA acceptance and do not reuse gameplay worlds.
 
-Each of three profiles checks registered mining speed, sword attributes, tool
-and armor durability, armor toughness/protection, horse protection and
-enchantability. It exercises actual trident release, collision damage,
-save/load, Loyalty acceleration, owner inventory pickup and the durability
-guard. Native player flight checks cover ground, water, levitation, almost-broken
-armor, ordinary chest armor and passive wear during real player ticks. Config
-API reload checks verify live scale settings and frozen gear settings.
+Three profiles exercise production defaults, a custom first-run `defaultconfigs`
+file, and an edited managed config after a full process restart. Each runs six
+core cases covering registered mining/damage/armor/horse/enchantability values;
+actual trident release, damage, persistence, Loyalty, owner pickup and durability
+guards; native flight eligibility and passive wear; and live scale reloads while
+gear values stay frozen. Flight cases include ground, water, levitation,
+almost-broken armor and ordinary chest armor.
 
-The profiles use defaults, custom first-run `defaultconfigs`, and an edited
-existing configuration after restarting the same test server. Custom attack
-damage/enchantability values exceed the former limits. JSON assertions, expected
-values, actual config, Minecraft logs and JVM exit codes are preserved under
-`release/test-results/2026-10-06/1.16.5` by default. Override `-ResultsDirectory`
-to retain another run separately. Every profile must pass all six core cases,
-exit with code 0 and preserve the original default config. Prior results are
-archived before reruns; prior runtime logs/reports are moved aside before each
-launch, and a separate runner report begins pending. Prepare/runtime output and
-exit codes remain available if a launch fails.
+Success requires every core case, native Java exit 0 and preservation of the
+original default config. Inspect `smoke-report.json` and the runner summary:
+server shutdown can return 0 even when an assertion fails. Expected values,
+actual configs, Minecraft logs and preparation/runtime exits are retained in the
+selected results directory. Previous results are archived before reruns and
+stale reports are moved aside before each launch.
 
-These are server checks. They do not establish client rendering or compatibility
-with optional mods; those require their own client/integration runs.
+These are server assertions, not rendering or networked-client checks. See
+[projectile limitations](../../docs/PROJECTILE-TESTS.md),
+[optional integrations](../../docs/COMPATIBILITY-TESTS.md) and the
+[client checklist](../../docs/TESTING.md) for complementary coverage.

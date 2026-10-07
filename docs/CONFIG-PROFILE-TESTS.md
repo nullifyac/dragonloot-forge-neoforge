@@ -1,34 +1,41 @@
 # Configuration startup and restart tests
 
-These development runs start real dedicated GameTest servers for Forge 1.18.2,
-1.19.2 and 1.20.1, and NeoForge 1.21.1. The separate gear tests check actual
-registered item attributes, durability, stone mining speed, horse protection,
-enchantability, native flight gates, continuous flight without passive wear,
-and runtime scale reloads while gear remains frozen.
+The gear regressions use registered item attributes and real Minecraft server
+APIs. They cover mining speed, sword damage, tool/armor durability, toughness,
+protection, horse armor, enchantability, native flight gates and passive wear.
+Reload assertions check that runtime scale settings change while startup gear
+values remain frozen until a process restart.
 
-From the repository root:
+## Run the profiles
+
+From the repository root, replace the JDK placeholders:
 
 ```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/test-gear-config-profiles.ps1
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/test-gear-config-profiles.ps1 -Java17Home 'C:/path/to/jdk17' -Java21Home 'C:/path/to/jdk21' -ResultsDirectory ./release/test-results/config-profiles
 ```
 
-Pass `-Versions 1.18.2` to select one version. Use `-Java17Home` and `-Java21Home`
-when the installed JDKs differ from the local defaults. Coordinate with any other
-test process compiling the same module. Runs are sequential, limited to a 2 GB
-server heap and two worker CPUs; preparation uses one Gradle worker and a 768 MB
-heap. The server-only launch-export init script is explicitly opt-in and leaves
-normal builds and client runs unchanged.
+This selects Forge 1.18.2, 1.19.2 and 1.20.1, and NeoForge 1.21.1. Pass
+`-Versions 1.20.1` to select one port. Runs are sequential and use a 2 GB server
+heap and two worker CPUs; Gradle preparation uses one worker and a 768 MB heap.
+Avoid concurrent builds of the same module. The server-only launch exporter is
+opt-in and leaves ordinary builds/client launches unchanged.
 
-Each version starts in a fresh directory under its ignored `run` folder. The
-first launch supplies only `defaultconfigs/dragonloot-common.toml`, with the
-managed config absent. The second launch edits the managed config and restarts
-the same isolated configuration directory, retaining the original default config.
-Each launch uses a fresh GameTest world so saved test structures cannot block
-later sky-access fixtures. Matching
-`gear-expectations.properties` files contain explicit expected outcomes, rather
-than deriving expectations from the mod's config/material getters.
+Forge 1.16.5 predates GameTest. Its corresponding three-profile harness is
+documented in [SMOKE-TESTS.md](../DragonLoot-1.16.5-forge/DragonLoot-1.16/SMOKE-TESTS.md).
 
-| Setting / registered outcome | First run | Full restart |
+## Profile behavior
+
+Each version gets an isolated generated configuration directory. The first
+launch provides only `defaultconfigs/dragonloot-common.toml`, with the managed
+config absent. The next launch edits the generated managed config and restarts
+that configuration directory while preserving the original default file.
+Each launch uses a fresh GameTest world so earlier structures cannot contaminate
+sky-access fixtures.
+
+`gear-expectations.properties` contains explicit expected outcomes independent
+of the mod's config/material getters. Representative runner inputs are:
+
+| Setting or registered outcome | First launch | Edited config after restart |
 | --- | --- | --- |
 | Mining speed | 41 | 43 |
 | Material attack damage | 25 | 29 |
@@ -42,30 +49,24 @@ than deriving expectations from the mod's config/material getters.
 | Tool enchantability | 70 | 80 |
 | Minimum scale drops | 5 | 6 |
 
-The selected damage and enchantability values exceed the previous upper bounds.
-These are test inputs; production defaults remain unchanged.
+These are test inputs, not production defaults. The damage/enchantability inputs
+also exercise values above the former configuration limits.
 
-The runner exports the exact Forge/NeoForge-generated Java launch and starts it
-independently to capture its native exit status. Java argument files avoid
-Windows command-line limits; only loader-related environment entries are
-exported. A successful profile requires exit code 0 and the GameTest server's
-all-required-tests-passed summary, required output artifacts and preservation of
-the original default config. Prior logs are moved out of the run directory so a
-later launch cannot reuse an earlier success summary. New attempts begin with a
-pending report, and prepare/runtime exit codes are retained even on failure.
-Expected values, actual config, launch
-metadata, logs, source hash and JSON reports/manifests are retained beneath
-`release/test-results/2026-10-06/config-profiles`. `-ResultsDirectory` can preserve
-a separate run. Previous profile logs are copied to `history` before a rerun.
-Existing client/server worlds are never used.
+## Result checks and scope
 
-The exporter accounts for the tested build tools' deferred launch configuration:
-[ForgeGradle 6 assembles the RunConfig inside its execution action](https://github.com/MinecraftForge/ForgeGradle/blob/FG_6.0/src/common/java/net/minecraftforge/gradle/common/util/runs/MinecraftRunTask.java),
-and [Gradle 8.14 applies lazy JVM arguments at execution](https://github.com/gradle/gradle/blob/v8.14.0/platforms/jvm/language-java/src/main/java/org/gradle/api/tasks/JavaExec.java).
-It reuses ForgeGradle's token generator and includes the resolved lazy argument
-list; it exports only the dedicated server run.
+The runner exports the build tool's prepared Java launch and executes it directly
+to record the native exit status. Java argument files handle Windows command-line
+limits; exported environment entries are limited to loader configuration.
+Success requires Java exit 0, all required GameTests passing, expected output
+artifacts and preservation of the original default config. Logs/reports are
+moved aside before each launch so stale success messages cannot pass a rerun.
 
-Forge 1.16.5 has no native GameTest engine. Its corresponding real-server harness
-and three-profile runner are documented in
-[SMOKE-TESTS.md](../DragonLoot-1.16.5-forge/DragonLoot-1.16/SMOKE-TESTS.md).
-Graphical rendering and optional compatibility mods require their own checks.
+The selected results directory contains expected values, actual configuration,
+launch metadata, logs, source hashes and JSON summaries. Failed preparation and
+runtime exits remain available; previous reports are retained in `history`.
+The isolated generated worlds are independent of existing gameplay worlds.
+
+These tests establish server configuration lifecycle and gear behavior. They do
+not establish client rendering, automatic client/server config synchronization,
+or optional-mod compatibility. Use [integration tests](COMPATIBILITY-TESTS.md)
+and the [client checklist](TESTING.md) for those cases.

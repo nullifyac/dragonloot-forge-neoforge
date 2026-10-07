@@ -91,28 +91,17 @@ Latest version with:
 
 ## Development
 
-All five supported Minecraft versions receive equal maintenance attention:
-1.16.5, 1.18.2, 1.19.2, 1.20.1 and 1.21.1. Review each reported defect across the
-full matrix, implement fixes using each loader's available APIs, and track build
-and runtime validation separately for every version. A newer version is not the
-default boundary for fixes; document verified API or dependency limitations.
+All five supported Minecraft versions are actively maintained. Check changes
+against each applicable port's APIs and document version-specific limitations.
+See the [testing guide](docs/TESTING.md) for build validation and regression
+commands, [optional integration tests](docs/COMPATIBILITY-TESTS.md) for dependency
+profiles, and [build reproducibility](docs/BUILD-REPRODUCIBILITY.md) for tool pins.
+Player-facing changes are listed in the module changelogs and
+[1.1.16 release notes](docs/RELEASE-1.1.16.md).
 
-The October 2026 feedback review and version-specific scope are documented in
-[docs/FEEDBACK-AUDIT.md](docs/FEEDBACK-AUDIT.md). For a low-memory build, resource
-checks, server regressions and version-specific Prism test archives, follow
-[docs/TESTING.md](docs/TESTING.md).
-The completed per-version checks, retained failures and tested-loader limitations
-are recorded in [docs/RUNTIME-RESULTS.md](docs/RUNTIME-RESULTS.md).
-The published 1.1.16 builds and verification are documented in
-[docs/RELEASE-1.1.16.md](docs/RELEASE-1.1.16.md).
 Known issue: affected Forge/NeoForge servers can kick players during long falls
 with `allow-flight=false`, including without Dragon Loot installed. This is an
 upstream loader issue; [details and tested scope](docs/NETWORK-CONTROLS.md).
-
-Keep maintenance scoped to Dragon Loot's items, configuration and integrations.
-Record independent upstream defects as known issues rather than adding general
-loader workarounds. The unrelated movement patch was withdrawn before CurseForge
-publication; [the 1.1.17 record](docs/RELEASE-1.1.17.md) explains its status.
 
 ### Project Structure
 Each version follows the standard Minecraft mod development structure:

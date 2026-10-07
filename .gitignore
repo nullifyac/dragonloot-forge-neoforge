@@ -50,4 +50,6 @@ iron-spells-n-spellbooks
 **/debug/
 .venv
 /release/
+/.local-notes/
+build_errors.txt
 __pycache__/
