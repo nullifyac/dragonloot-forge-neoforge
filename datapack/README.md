@@ -7,6 +7,10 @@ from Advanced Netherite's diamond-netherite tier using a Dragon Scale. Minecraft
 Choose the pack matching your Minecraft version and loader. Both mods and their
 required dependencies must be installed.
 
+The Fabric packs are currently available as source; release ZIP downloads will
+follow. To build a pack from source, zip the contents of its `DLxAN_*` folder so
+`pack.mcmeta` is at the root of the ZIP.
+
 | Loader | Minecraft versions | DragonLoot mod |
 | --- | --- | --- |
 | Forge | 1.16.5, 1.18.2, 1.19.2, 1.20.1 | [Enderdragon Loot](https://www.curseforge.com/minecraft/mc-mods/enderdragon-loot) |
