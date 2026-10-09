@@ -4,7 +4,7 @@ Original mod (Fabric): [DragonLoot by Pois1x](https://github.com/GitPois1x/Drago
 
 **DragonLoot** adds Ender Dragon loot and dragon-scale upgrades to Minecraft. This repository contains implementations for **Forge** (1.16.5, 1.18.2, 1.19.2, 1.20.1) and **NeoForge** (1.21.1).
 
-[Advanced Netherite compatibility pack sources](datapack/README.md) are also
+[Advanced Netherite compatibility packs](datapack/README.md) are also
 available for these ports and the original Fabric mod. Choose the pack matching
 your Minecraft version and loader.
 

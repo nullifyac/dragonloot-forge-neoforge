@@ -7,8 +7,7 @@ from Advanced Netherite's diamond-netherite tier using a Dragon Scale. Minecraft
 Choose the pack matching your Minecraft version and loader. Both mods and their
 required dependencies must be installed.
 
-The Fabric packs are currently available as source; release ZIP downloads will
-follow. To build a pack from source, zip the contents of its `DLxAN_*` folder so
+To build a pack from source, zip the contents of its `DLxAN_*` folder so
 `pack.mcmeta` is at the root of the ZIP.
 
 | Loader | Minecraft versions | DragonLoot mod |
