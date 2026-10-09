@@ -1,0 +1,19 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.dragonloot.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [
+    "AnvilBlockMixin",
+    "AnvilScreenHandlerMixin",
+    "EnderManPacifyMixin",
+    "ItemEntityMixin",
+    "PhantomPacifyMixin",
+    "PiglinPacifyMixin",
+    "WingedArmorFlightMixin"
+  ],
+  "client": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

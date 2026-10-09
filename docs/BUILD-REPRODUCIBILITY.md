@@ -10,6 +10,7 @@ are pinned to these versions:
 | 1.19.2 | Forge 43.3.0 | 17 | 7.6.2 | ForgeGradle 5.1.77 | 0.7.38 |
 | 1.20.1 | Forge 47.3.0 | 17 | 8.1.1 | ForgeGradle 6.0.54 | 0.7.38 |
 | 1.21.1 | NeoForge 21.1.65 | 21 | 8.14 | NeoGradle 7.1.20 | Not applied |
+| 26.1.2 | NeoForge 26.1.2.114 | 25 | 9.2.1 | ModDevGradle 2.0.148 | Not applied |
 
 Set `JAVA_HOME` to the appropriate JDK and run from the chosen module:
 
@@ -18,7 +19,7 @@ Set `JAVA_HOME` to the appropriate JDK and run from the chosen module:
 ```
 
 On Windows, use `gradlew.bat`. The repository's PowerShell helper selects the
-matching installed JDK and builds all five modules sequentially with one worker
+matching installed JDK and builds all six modules sequentially with one worker
 and a 1 GB Gradle heap:
 
 ```powershell

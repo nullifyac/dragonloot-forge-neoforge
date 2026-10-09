@@ -1,0 +1,36 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "dragonloot:dragon_anvil",
+      "dragonloot:dragon_axe",
+      "dragonloot:dragon_boots",
+      "dragonloot:dragon_chestplate",
+      "dragonloot:dragon_helmet",
+      "dragonloot:dragon_hoe",
+      "dragonloot:dragon_leggings",
+      "dragonloot:dragon_pickaxe",
+      "dragonloot:dragon_shovel",
+      "dragonloot:dragon_sword",
+      "dragonloot:dragon_horse_armor",
+      "dragonloot:dragon_trident",
+      "dragonloot:dragon_bow",
+      "dragonloot:dragon_crossbow",
+      "dragonloot:upgraded_dragon_chestplate"
+    ]
+  },
+  "criteria": {
+    "dragon_recipes": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dragonloot:dragon_scale"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "base": "dragonloot:dragon_chestplate",
+  "addition": "minecraft:elytra",
+  "template": "minecraft:netherite_upgrade_smithing_template",
+  "result": {
+    "id": "dragonloot:upgraded_dragon_chestplate"
+  }
+}

@@ -1,5 +1,5 @@
 param(
-    [ValidateSet('1.16.5', '1.18.2', '1.19.2', '1.20.1', '1.21.1')]
+    [ValidateSet('1.16.5', '1.18.2', '1.19.2', '1.20.1', '1.21.1', '26.1.2')]
     [string]$MinecraftVersion = '1.21.1',
     [string]$JavaHome,
     [string]$ModVersion,
@@ -15,11 +15,12 @@ $projects = @{
     '1.19.2' = @('DragonLoot-1.19.2-forge/DragonLoot-1.19', 17)
     '1.20.1' = @('DragonLoot-1.20.1-forge/DragonLoot-1.20', 17)
     '1.21.1' = @('DragonLoot-1.21.1-neoforge/DragonLoot-1.21', 21)
+    '26.1.2' = @('DragonLoot-26.1.2-neoforge/DragonLoot-26.1.2', 25)
 }
 if ($AllVersions) {
     if ($JavaHome) { throw '-AllVersions selects the appropriate JDK for each version; omit -JavaHome.' }
     $failed = @()
-    foreach ($targetVersion in @('1.16.5', '1.18.2', '1.19.2', '1.20.1', '1.21.1')) {
+    foreach ($targetVersion in @('1.16.5', '1.18.2', '1.19.2', '1.20.1', '1.21.1', '26.1.2')) {
         $parameters = @{ MinecraftVersion = $targetVersion; Tasks = $Tasks }
         if ($ModVersion) { $parameters.ModVersion = $ModVersion }
         if ($Offline) { $parameters.Offline = $true }
@@ -56,6 +57,10 @@ if ($JavaHome) {
     $adoptium = Join-Path $env:ProgramFiles 'Eclipse Adoptium'
     if (Test-Path -LiteralPath $adoptium) {
         $candidates += Get-ChildItem -LiteralPath $adoptium -Directory | Select-Object -ExpandProperty FullName
+    }
+    $userJdks = Join-Path $env:USERPROFILE '.jdks'
+    if (Test-Path -LiteralPath $userJdks) {
+        $candidates += Get-ChildItem -LiteralPath $userJdks -Directory | Select-Object -ExpandProperty FullName
     }
     $JavaHome = $candidates | Where-Object { Test-JavaVersion $_ $project[1] } | Select-Object -First 1
     if (-not $JavaHome) { throw "Pass -JavaHome with an installed JDK $($project[1])." }

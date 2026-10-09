@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "base": "minecraft:anvil",
+  "addition": "dragonloot:dragon_scale",
+  "result": {
+    "id": "dragonloot:dragon_anvil"
+  },
+  "template": "minecraft:netherite_upgrade_smithing_template"
+}

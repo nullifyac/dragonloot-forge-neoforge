@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:function",
+  "function": "dragonloot_game_tests:channelingnativeeffectsrespectweatherandsky",
+  "environment": "dragonloot_game_tests:regression",
+  "structure": "dragonloot_game_tests:empty",
+  "max_ticks": 200,
+  "setup_ticks": 0,
+  "required": true
+}

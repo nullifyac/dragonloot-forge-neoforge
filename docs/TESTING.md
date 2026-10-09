@@ -11,6 +11,7 @@ with the matching JDK on other systems.
 | 1.19.2 | Forge 43.3.0 | 17 | GameTest |
 | 1.20.1 | Forge 47.3.0 | 17 | GameTest |
 | 1.21.1 | NeoForge 21.1.65 | 21 | GameTest |
+| 26.1.2 | NeoForge 26.1.2.114 | 25 | GameTest |
 
 ## Build and validate
 
@@ -32,7 +33,7 @@ The validator checks resource JSON, metadata, local asset references and declare
 Mixin classes. With `--jar`, it also checks packaged resources, Java targets,
 Mixin registration/refmaps, license inclusion and exclusion of test harnesses.
 These checks do not execute Mixins or verify gameplay or rendering. Forge builds
-use refmaps; NeoForge 1.21.1 uses official names.
+use refmaps; the NeoForge ports use official names.
 
 ## Development server suites
 
@@ -52,7 +53,68 @@ native Java exit; compilation or server startup alone is insufficient.
 - [Pinned optional integrations](COMPATIBILITY-TESTS.md).
 - [1.16.5 smoke tests](../DragonLoot-1.16.5-forge/DragonLoot-1.16/SMOKE-TESTS.md).
 
+### Minecraft 26.1.2
+
+Use JDK 25 and run from `DragonLoot-26.1.2-neoforge/DragonLoot-26.1.2`:
+
+```sh
+./gradlew compileGameTestJava
+./gradlew runGameTestServer -PtestDirectory=build/tests/baseline
+```
+
+On Windows, use `gradlew.bat`. The suite registers 33 required tests covering
+native item use and projectiles, enchantments, smithing assembly and component
+preservation, dragon drops, armor slots, wing eligibility and durability,
+configured gear, and Dragon Anvil input consumption and level costs. Require
+the exact registered test names in `results.xml`, the log's completion message,
+normal world save and shutdown, and exit code zero. Baseline runs check that
+optional integration mods are absent; they do not exercise those mods' APIs.
+
+To check startup settings, prepare a fresh test directory containing
+`config/dragonloot-common.toml` and independent expected values in
+`gear-expectations.properties`, then pass it with `-PtestDirectory`. Supported
+expectation keys are `speed`, `swordModifier`, `axeModifier`, `toolDurability`,
+`chestDurability`, `chestArmor`, `toughness`, `horseArmor`, `toolEnchantability`
+and `scales`. Run another complete process after changing the config and its
+expectations. GameTest resets its test universe on startup, so these runs check
+config loading across process restarts rather than persistent-world behavior.
+
+Optional profiles use `-PcompatProfile=advancednetherite` or
+`-PcompatProfile=all` with the matching native mod JARs in the test directory's
+`mods` folder. The full profile requires Advanced Netherite 2.4.1, Better Combat
+3.2.2, Player Animation Library 1.2.8+mc.26.1 and Cloth Config 26.1.154. Set
+`-PgearPerksExpected=true` only when the Dragon-owned perk setting is enabled.
+To test the compatibility datapack, add `-PrecipeProfile=advancednetherite` and
+`-PtestPacks=path/to/packs`, containing `DLxAN_26.1.2-1.zip`. The recipe fixture
+checks the enabled pack's native compatibility and reloads it at highest
+priority through the server API before checking the actual recipes.
+
+The separate client fixture checks models, textures, equipment layers, poses,
+screenshots and resource reload. Start it with:
+
+```sh
+./gradlew runRuntimeClient -PclientSmoke=true
+```
+
+Without a server address, this checks title initialization only and writes
+`build/runtime/client/client-title-result.json`. Model components require
+server registry synchronization. For model and world rendering checks, start
+`runRuntimeServer` with a disposable server
+world and use `-PclientServerAddress=127.0.0.1:25565` on the client command,
+replacing the port when necessary. Read `client-model-result.json` and
+`client-render-result.json`, and review the screenshots. The fixture uses
+client-only equipment and use-clock states
+for visual cases; its report does not establish gameplay packet handling.
+The normal `runClient` and `runServer` tasks load only the production mod.
+
 ## Packaged dedicated servers
+
+The PowerShell installer and packaged-server helpers below target Minecraft
+1.16.5 through 1.21.1. For 26.1.2, use the official NeoForge 26.1.2.114 server
+installer in a fresh directory with JDK 25, place the production JAR in `mods`,
+and start its generated `run.bat` or `run.sh` with `--nogui`. Verify the loaded
+versions, server readiness, and a normal `stop` and world save separately from
+development GameTests.
 
 Test production JARs separately to catch reobfuscation, side stripping and
 packaging failures. The helper expects filenames of the form
@@ -106,6 +168,6 @@ Check the following on every applicable port:
 - Applicable optional integrations and a connected dedicated-server session.
 
 Lightning rods are unavailable on 1.16.5. Better Combat profiles start at 1.18.2;
-custom projectile dispensing applies only to 1.21.1. Follow the detailed guides
+custom projectile dispensing applies to 1.21.1 and 26.1.2. Follow the detailed guides
 for those boundaries. Keep exact versions, assertion reports, native exits and
 logs for each run; each port needs its own validation.

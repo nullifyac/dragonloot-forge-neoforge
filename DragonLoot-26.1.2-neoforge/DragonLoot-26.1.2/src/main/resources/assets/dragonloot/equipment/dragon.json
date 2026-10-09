@@ -1,0 +1,24 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "dragonloot:dragon"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "dragonloot:dragon"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "dragonloot:dragon"
+      }
+    ],
+    "horse_body": [
+      {
+        "texture": "dragonloot:dragon"
+      }
+    ]
+  }
+}

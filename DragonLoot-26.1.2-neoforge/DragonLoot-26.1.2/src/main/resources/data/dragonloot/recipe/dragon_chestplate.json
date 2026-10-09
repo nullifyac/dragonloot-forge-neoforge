@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "base": "minecraft:netherite_chestplate",
+  "addition": "dragonloot:dragon_scale",
+  "result": {
+    "id": "dragonloot:dragon_chestplate"
+  },
+  "template": "minecraft:netherite_upgrade_smithing_template"
+}

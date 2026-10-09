@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "base": "minecraft:netherite_axe",
+  "addition": "dragonloot:dragon_scale",
+  "result": {
+    "id": "dragonloot:dragon_axe"
+  },
+  "template": "minecraft:netherite_upgrade_smithing_template"
+}

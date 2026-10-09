@@ -1,0 +1,28 @@
+modLoader="javafml"
+loaderVersion="[2,)"
+license="GPL-3.0-or-later"
+
+[[mods]]
+modId="dragonloot"
+version="${version}"
+displayName="DragonLoot"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/enderdragon-loot"
+authors="Pois1x, Globox_Z"
+description='''Adds loot for the Ender Dragon.'''
+
+[[dependencies.dragonloot]]
+modId="neoforge"
+type="required"
+versionRange="[${neoforge_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.dragonloot]]
+modId="minecraft"
+type="required"
+versionRange="[${minecraft_version}]"
+ordering="NONE"
+side="BOTH"
+
+[[mixins]]
+config="dragonloot.mixins.json"

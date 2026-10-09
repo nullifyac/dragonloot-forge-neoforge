@@ -2,7 +2,7 @@
 
 Original mod (Fabric): [DragonLoot by Pois1x](https://github.com/GitPois1x/DragonLoot)
 
-**DragonLoot** adds Ender Dragon loot and dragon-scale upgrades to Minecraft. This repository contains implementations for **Forge** (1.16.5, 1.18.2, 1.19.2, 1.20.1) and **NeoForge** (1.21.1).
+**DragonLoot** adds Ender Dragon loot and dragon-scale upgrades to Minecraft. This repository contains implementations for **Forge** (1.16.5, 1.18.2, 1.19.2, 1.20.1) and **NeoForge** (1.21.1, 26.1.2).
 
 ## Overview
 
@@ -26,6 +26,8 @@ dragonloot-forge/
 |   `-- DragonLoot-1.20/            # Minecraft 1.20.1 (Forge)
 |-- DragonLoot-1.21.1-neoforge/
 |   `-- DragonLoot-1.21/            # Minecraft 1.21.1 (NeoForge)
+|-- DragonLoot-26.1.2-neoforge/
+|   `-- DragonLoot-26.1.2/          # Minecraft 26.1.2 (NeoForge)
 |-- datapack/                      # Versioned compatibility datapacks
 `-- release/                       # Local built JARs (ignored by Git)
 ```
@@ -36,6 +38,7 @@ dragonloot-forge/
 - Java Development Kit (JDK) 8 for 1.16.5
 - Java Development Kit (JDK) 17 for 1.18.2-1.20.1
 - Java Development Kit (JDK) 21 for 1.21.1
+- Java Development Kit (JDK) 25 for 26.1.2
 - Gradle (included via gradlew)
 
 ### Building a Version
@@ -54,6 +57,18 @@ On Windows, you can also use:
 ```
 
 The compiled mod will be available in `build/libs/`.
+
+For Minecraft 26.1.2, use JDK 25 and its own wrapper:
+
+```sh
+cd DragonLoot-26.1.2-neoforge/DragonLoot-26.1.2
+./gradlew assemble
+./gradlew runServer
+```
+
+Use `runClient` for the development client and `runGameTestServer` for the
+isolated server regression suite. On Windows, replace `./gradlew` with
+`.\gradlew.bat`.
 
 ## Features
 
@@ -75,7 +90,7 @@ Tune balance in `config/dragonloot-common.toml`:
 - Dragon Anvil level-cap behavior
 
 Gear and perk settings require a full game/server restart. Use matching gear
-settings on the server and clients; this COMMON config is not synchronized.
+settings on the server and clients; this config file is not synchronized.
 
 ## Version-Specific Details
 
@@ -84,14 +99,14 @@ Each Forge version includes:
 - Forge loader integration
 - Data-driven recipes and mixin tweaks
 
-### NeoForge (1.21.1)
-Latest version with:
+### NeoForge (1.21.1, 26.1.2)
+These ports include:
 - NeoForge loader integration
 - Updated registrations and render hooks
 
 ## Development
 
-All five supported Minecraft versions are actively maintained. Check changes
+All six supported Minecraft versions are maintained. Check changes
 against each applicable port's APIs and document version-specific limitations.
 See the [testing guide](docs/TESTING.md) for build validation and regression
 commands, [optional integration tests](docs/COMPATIBILITY-TESTS.md) for dependency
@@ -149,6 +164,7 @@ Contributions are welcome! Please consider:
 | 1.19.2  | Forge     | Active | 17   |
 | 1.20.1  | Forge     | Active | 17   |
 | 1.21.1  | NeoForge  | Active | 21   |
+| 26.1.2  | NeoForge  | Active | 25   |
 ---
 
 **Last Updated**: October 2026

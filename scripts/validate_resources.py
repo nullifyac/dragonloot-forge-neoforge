@@ -16,6 +16,7 @@ MODULES = {
     '1.19.2': ROOT / 'DragonLoot-1.19.2-forge/DragonLoot-1.19',
     '1.20.1': ROOT / 'DragonLoot-1.20.1-forge/DragonLoot-1.20',
     '1.21.1': ROOT / 'DragonLoot-1.21.1-neoforge/DragonLoot-1.21',
+    '26.1.2': ROOT / 'DragonLoot-26.1.2-neoforge/DragonLoot-26.1.2',
 }
 
 
@@ -48,7 +49,8 @@ def validate_module(module):
                     source = module / 'src/main/java' / (data['package'] + '.' + name).replace('.', '/')
                     if not source.with_suffix('.java').is_file():
                         raise ValueError(f'{path}: missing mixin {name}')
-        if path.is_relative_to(resources / 'assets/dragonloot/models'):
+        if (path.is_relative_to(resources / 'assets/dragonloot/models')
+                or path.is_relative_to(resources / 'assets/dragonloot/items')):
             check_model_refs(data, resources, path)
     for path in resources.rglob('*.toml'):
         tomllib.loads(path.read_text(encoding='utf-8'))
@@ -99,26 +101,26 @@ def validate_jar(jar, module, version):
                 class_name = (mixins['package'] + '.' + name).replace('.', '/') + '.class'
                 if class_name not in names:
                     raise ValueError(f'JAR lacks mixin class: {class_name}')
-        # NeoForge 1.21.1 uses official names in both development and production.
+        # These NeoForge ports use official names in development and production.
         # Older Forge ports still need their declared mapping file.
         if 'refmap' in mixins:
             refmap = read_json(archive.read(mixins['refmap']))
             if not isinstance(refmap, dict):
                 raise ValueError('invalid mixin refmap')
-        elif version != '1.21.1':
+        elif version not in ('1.21.1', '26.1.2'):
             raise ValueError('Forge mixin config must declare its refmap')
-        if version != '1.21.1':
+        if version not in ('1.21.1', '26.1.2'):
             manifest = archive.read('META-INF/MANIFEST.MF').decode('utf-8').replace('\r\n ', '').replace('\n ', '')
             attributes = dict(line.split(': ', 1) for line in manifest.splitlines() if ': ' in line)
             if 'dragonloot.mixins.json' not in attributes.get('MixinConfigs', '').split(','):
                 raise ValueError('Forge JAR must register its mixin config in the manifest')
-        for source_set in ('gametest', 'smokeTest'):
+        for source_set in ('gametest', 'gameTest', 'smokeTest'):
             for source in (module / f'src/{source_set}/java').rglob('*.java'):
                 class_name = source.relative_to(module / f'src/{source_set}/java').with_suffix('').as_posix()
                 if any(name == class_name + '.class' or name.startswith(class_name + '$') for name in names):
                     raise ValueError(f'release JAR includes development regression code: {class_name}')
         major = int.from_bytes(archive.read('net/dragonloot/DragonLootMain.class')[6:8], 'big')
-        expected = 65 if version == '1.21.1' else 52 if version == '1.16.5' else 61
+        expected = 69 if version == '26.1.2' else 65 if version == '1.21.1' else 52 if version == '1.16.5' else 61
         if major != expected:
             raise ValueError(f'wrong Java class version: {major}, expected {expected}')
         if not any(name.startswith('LICENSE') for name in names):
@@ -131,9 +133,10 @@ def stage_prism(output, jar, module, mod_version):
         raise ValueError(f'output already exists; choose a new filename: {output}')
     properties = dict(re.findall(r'^([\w.]+)=(.*)$', (module / 'gradle.properties').read_text(), re.MULTILINE))
     minecraft_version = properties['minecraft_version'].strip()
-    loader = 'neoforge' if 'neo_version' in properties else 'forge'
+    neo_key = 'neoforge_version' if 'neoforge_version' in properties else 'neo_version' if 'neo_version' in properties else None
+    loader = 'neoforge' if neo_key else 'forge'
     loader_uid = 'net.neoforged' if loader == 'neoforge' else 'net.minecraftforge'
-    loader_version = properties['neo_version' if loader == 'neoforge' else 'forge_version'].strip()
+    loader_version = properties[neo_key if loader == 'neoforge' else 'forge_version'].strip()
     pack = {'formatVersion': 1, 'components': [
         {'uid': 'net.minecraft', 'version': minecraft_version, 'important': True},
         {'uid': loader_uid, 'version': loader_version},

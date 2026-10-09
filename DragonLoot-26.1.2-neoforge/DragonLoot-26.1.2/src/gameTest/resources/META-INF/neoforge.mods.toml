@@ -1,0 +1,14 @@
+license="GPL-3.0-or-later"
+
+[[mods]]
+modId="dragonloot_game_tests"
+version="1.0.0"
+displayName="Dragon Loot Runtime Regression Tests"
+description="Development-only gameplay tests; excluded from the released mod."
+
+[[dependencies.dragonloot_game_tests]]
+modId="dragonloot"
+type="required"
+versionRange="[0,)"
+ordering="AFTER"
+side="BOTH"
