@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "base": {
+    "item": "advancednetherite:netherite_diamond_hoe"
+  },
+  "addition": {
+    "item": "dragonloot:dragon_scale"
+  },
+  "template": {
+    "item": "minecraft:netherite_upgrade_smithing_template"
+  },
+  "result": {
+    "id": "dragonloot:dragon_hoe"
+  }
+}
